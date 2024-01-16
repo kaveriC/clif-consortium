@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "CLIF",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "posts/relational_clif/index.html",
+    "href": "posts/relational_clif/index.html",
+    "title": "Relational CLIF ERD",
+    "section": "",
+    "text": "This is an example first post. Whatever you write here will appear inside your post.\nIt is possible to write lists:\nAnd make headers"
+  },
+  {
+    "objectID": "posts/relational_clif/index.html#this-is-a-second-level-heading",
+    "href": "posts/relational_clif/index.html#this-is-a-second-level-heading",
+    "title": "Relational CLIF ERD",
+    "section": "This is a second level heading",
+    "text": "This is a second level heading\nYou can include images, and many other kinds of content.\nIf you are using the visual editor in Rstudio you can drag images onto the editor to insert them into the document. Otherwise, you need to place the image inside of the folder for this post, and then you can insert it to your post directly, like this:\n\nThe first image in a blog post will also be used on the listings page."
+  },
+  {
+    "objectID": "posts.html",
+    "href": "posts.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Relational CLIF ERD\n\n\n\ngoals\n\n\ngeneral\n\n\ndata-dictionary\n\n\n\n\n\n\n\nKaveri Chhikara\n\n\nOct 21, 2022\n\n\n\n\n\n\n\n\nNo matching items"
+  }
+]
