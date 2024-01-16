@@ -1,0 +1,20 @@
+project:
+  type: website
+
+website:
+  title: "CLIF"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+      - posts.qmd # add your posts.qmd file to your navbar!
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+
+
