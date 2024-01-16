@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kaveri Chhikara">
-<meta name="dcterms.date" content="2022-10-21">
+<meta name="dcterms.date" content="2024-01-14">
 
-<title>clif-website - Relational CLIF ERD</title>
+<title>CLIF - Relational CLIF ERD and Data Dictionary</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -81,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">clif-website</span>
+    <span class="navbar-title">CLIF</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -96,7 +96,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../about.html"> 
-<span class="menu-text">About</span></a>
+<span class="menu-text">TEAM</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../posts.html"> 
@@ -113,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Relational CLIF ERD</h1>
+      <h1 class="title">Relational CLIF ERD and Data Dictionary</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">goals</div>
                 <div class="quarto-category">general</div>
@@ -135,7 +135,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">October 21, 2022</p>
+        <p class="date">January 14, 2024</p>
       </div>
     </div>
     
@@ -151,7 +151,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#this-is-a-second-level-heading" id="toc-this-is-a-second-level-heading" class="nav-link active" data-scroll-target="#this-is-a-second-level-heading">This is a second level heading</a></li>
+  <li><a href="#patient_encounters" id="toc-patient_encounters" class="nav-link active" data-scroll-target="#patient_encounters">Patient_encounters</a></li>
+  <li><a href="#patient_demographics" id="toc-patient_demographics" class="nav-link" data-scroll-target="#patient_demographics">Patient_demographics</a></li>
+  <li><a href="#limited_identifiers" id="toc-limited_identifiers" class="nav-link" data-scroll-target="#limited_identifiers">Limited_identifiers</a></li>
+  <li><a href="#encounter_demographics_disposition" id="toc-encounter_demographics_disposition" class="nav-link" data-scroll-target="#encounter_demographics_disposition">Encounter_demographics_disposition</a></li>
+  <li><a href="#vitals" id="toc-vitals" class="nav-link" data-scroll-target="#vitals">Vitals</a></li>
+  <li><a href="#labs" id="toc-labs" class="nav-link" data-scroll-target="#labs">Labs</a></li>
+  <li><a href="#respiratory_support" id="toc-respiratory_support" class="nav-link" data-scroll-target="#respiratory_support">Respiratory_support</a></li>
+  <li><a href="#adt" id="toc-adt" class="nav-link" data-scroll-target="#adt">ADT</a></li>
+  <li><a href="#medication_admin_continuous" id="toc-medication_admin_continuous" class="nav-link" data-scroll-target="#medication_admin_continuous">Medication_admin_continuous</a></li>
   </ul>
 </nav>
     </div>
@@ -162,20 +170,669 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>This is an example first post. Whatever you write here will appear inside your post.</p>
-<p>It is possible to write lists:</p>
-<ol type="1">
-<li>One</li>
-<li>Two</li>
-<li>Three</li>
-</ol>
-<p>And make headers</p>
-<section id="this-is-a-second-level-heading" class="level2">
-<h2 class="anchored" data-anchor-id="this-is-a-second-level-heading">This is a second level heading</h2>
-<p>You can include images, and many other kinds of content.</p>
-<p>If you are using the visual editor in Rstudio you can drag images onto the editor to insert them into the document. Otherwise, you need to place the image inside of the folder for this post, and then you can insert it to your post directly, like this:</p>
+<p>Relational CLIF has 19 tables that are organized into clinically relevant column categories - demographics, objective measures, respiratory support, orders and inputs-outputs. Below are sample templates for each table in R-CLIF.</p>
 <p><img src="ERD.png" class="img-fluid"></p>
-<p>The first image in a blog post will also be used on the listings page.</p>
+<section id="patient_encounters" class="level3">
+<h3 class="anchored" data-anchor-id="patient_encounters">Patient_encounters</h3>
+<table class="table-striped table-hover table">
+<thead>
+<tr class="header">
+<th>patient_id</th>
+<th>encounter_id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>11</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>patient_id</strong> is an ID variable for each patient</li>
+<li><strong>encounter_id</strong> is an ID variable for each patient encounter (a given patient can have multiple encounters)</li>
+</ul>
+</section>
+<section id="patient_demographics" class="level3">
+<h3 class="anchored" data-anchor-id="patient_demographics">Patient_demographics</h3>
+<table class="table-striped table-hover table">
+<thead>
+<tr class="header">
+<th>patient_id</th>
+<th>race</th>
+<th>ethnicity</th>
+<th>sex</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Black or African-American</td>
+<td>Non-hispanic</td>
+<td>Female</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>Black or African-American</td>
+<td>Non-hispanic</td>
+<td>Male</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>White</td>
+<td>Non-hispanic</td>
+<td>Male</td>
+</tr>
+<tr class="even">
+<td>32</td>
+<td>Black or African-American</td>
+<td>Non-hispanic</td>
+<td>Male</td>
+</tr>
+<tr class="odd">
+<td>43</td>
+<td>White</td>
+<td>Hispanic</td>
+<td>Female</td>
+</tr>
+<tr class="even">
+<td>62</td>
+<td>Asian</td>
+<td>Non-hispanic</td>
+<td>Female</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>patient_id</strong> is an ID variable for each patient</li>
+<li><strong>race</strong> description of patient’s race. Categories include Black or African-American, White, American Indian or Alaska Native, Asian, Native Hawaiian or Other Pacific Islander, Unknown, Other</li>
+<li><strong>ethnicity</strong> description of patient’s ethnicity. Categories include Hispanic or Non-Hispanic</li>
+<li><strong>sex</strong> is the patient’s biological sex - Male or Female</li>
+</ul>
+</section>
+<section id="limited_identifiers" class="level3">
+<h3 class="anchored" data-anchor-id="limited_identifiers">Limited_identifiers</h3>
+<table class="table-striped table-hover table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 19%">
+<col style="width: 23%">
+<col style="width: 21%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>encounter_id</th>
+<th>admission_dttm</th>
+<th>discharge_dttm</th>
+<th>birth_dttm</th>
+<th>coordinates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>8/27/2020 8:15:00</td>
+<td>8/27/2020 18:59:00</td>
+<td>8/10/2014</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>6/28/2021 7:00:00</td>
+<td>6/27/2021 19:00:00</td>
+<td>2/11/2000</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>9/17/2021 8:43:00</td>
+<td>9/17/2021 18:59:00</td>
+<td>2/11/2000</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>8/12/2020 00:44:00</td>
+<td>8/12/2020 18:59:00</td>
+<td>4/21/1990</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>4/19/2021 6:23:00</td>
+<td>4/19/2021 18:59:00</td>
+<td>1/23/2019</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>10/6/2022 10:43:00</td>
+<td>10/6/2022 18:59:00</td>
+<td>1/23/2019</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>encounter_id</strong> is an ID variable for each patient encounter (a given patient can have multiple encounters)</li>
+<li><strong>admission_dttm</strong> is the date and time the patient is admitted (in the format %Y-%m-%d %H:%M:% )</li>
+<li><strong>discharge_dttm</strong> is the date and time the patient is discharged (in the format %Y-%m-%d %H:%M:% )</li>
+<li><strong>birth_dttm</strong> is the date of birth</li>
+<li><strong>coordinates</strong> provide patient coordinates</li>
+</ul>
+</section>
+<section id="encounter_demographics_disposition" class="level3">
+<h3 class="anchored" data-anchor-id="encounter_demographics_disposition">Encounter_demographics_disposition</h3>
+<table class="table-striped table-hover table">
+<thead>
+<tr class="header">
+<th>encounter_id</th>
+<th>age_at_admission</th>
+<th>disposition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>6</td>
+<td>Home</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>22</td>
+<td>Home</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>20</td>
+<td>Discharged to another facility</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>2</td>
+<td>Home</td>
+</tr>
+<tr class="even">
+<td>62</td>
+<td>66</td>
+<td>Hospice</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>encounter_id</strong> is an ID variable for each patient encounter (a given patient can have multiple encounters)</li>
+<li><strong>age_at_admission</strong> is the age of the patient at the time of admission (in the format %Y-%m-%d %H:%M:% )</li>
+<li><strong>disposition</strong> is the description of disposition when discharged. Categories include Home, Hospice, Discharged to another facility, Dead, Admitted and Other</li>
+</ul>
+</section>
+<section id="vitals" class="level3">
+<h3 class="anchored" data-anchor-id="vitals">Vitals</h3>
+<table class="table-striped table-hover table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 19%">
+<col style="width: 23%">
+<col style="width: 21%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>encounter_id</th>
+<th>recorded_time</th>
+<th>vital_name</th>
+<th>vital_value</th>
+<th>meas_site_name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>2022-05-05&nbsp;04:18:00</td>
+<td>respiratory_rate</td>
+<td>18</td>
+<td>not specified</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>2022-05-05&nbsp;04:18:00</td>
+<td>spO2</td>
+<td>97</td>
+<td>not specified</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>2022-05-05&nbsp;04:18:00</td>
+<td>height</td>
+<td>73</td>
+<td>not specified</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>2022-05-05&nbsp;04:18:00</td>
+<td>temp</td>
+<td>98.1</td>
+<td>not specified</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>2022-05-05&nbsp;04:18:00</td>
+<td>heart_rate</td>
+<td>73</td>
+<td>not specified</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>2022-05-05&nbsp;04:18:00</td>
+<td>weight</td>
+<td>1756.8</td>
+<td>not specified</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>encounter_id</strong> is an ID variable for each patient encounter ( a given patient can have multiple encounters )</li>
+<li><strong>recorded_time</strong> is the date and time when the vital is recorded</li>
+<li><strong>vital_name</strong> includes a limited number of vitals, namely - temp(C), pulse, sbp, dbp, sp02, respiration, map, height_in, weight_kg</li>
+<li><strong>vital_value</strong> is the recorded value of the vital identified by the CLIF consortium</li>
+<li><strong>meas_site_name</strong> is the site where vital is recorded. It has three categories - arterial, core, not specified.</li>
+</ul>
+</section>
+<section id="labs" class="level3">
+<h3 class="anchored" data-anchor-id="labs">Labs</h3>
+<table class="table-striped table-hover table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 12%">
+<col style="width: 14%">
+<col style="width: 13%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 17%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>encounter_id</th>
+<th>lab_order_time</th>
+<th>lab_result_time</th>
+<th>lab_group</th>
+<th>lab_name</th>
+<th>lab_value</th>
+<th>reference_unit</th>
+<th>lab_type_name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2</td>
+<td>2022-09-30 17:50:00</td>
+<td>2022-09-30 18:53:00</td>
+<td>CBC</td>
+<td>basophil</td>
+<td>1</td>
+<td>%</td>
+<td>standard;poc</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>2022-09-30 17:50:00</td>
+<td>2022-09-30 18:53:00</td>
+<td>CBC</td>
+<td>monocyte</td>
+<td>7</td>
+<td>%</td>
+<td>standard;poc</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>2022-09-30 17:50:00</td>
+<td>2022-09-30 18:53:00</td>
+<td>CBC</td>
+<td>neutrophil</td>
+<td>47</td>
+<td>%</td>
+<td>standard;poc</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>2022-09-30 17:50:00</td>
+<td>2022-09-30 18:53:00</td>
+<td>CBC</td>
+<td>lymphocyte</td>
+<td>44</td>
+<td>%</td>
+<td>standard;poc</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>2022-09-30 17:50:00</td>
+<td>2022-09-30 18:53:00</td>
+<td>CBC</td>
+<td>eosinophils</td>
+<td>1</td>
+<td>%</td>
+<td>standard;poc</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>2022-09-30 17:50:00</td>
+<td>2022-09-30 18:53:00</td>
+<td>LFT</td>
+<td>bilirubin_unconjugated</td>
+<td>0.9</td>
+<td>mg/dL</td>
+<td>standard;poc</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>lab_order_time</strong> is the date and time when the lab is ordered</li>
+<li><strong>lab_order_time</strong> is the date and time when the lab results are available</li>
+<li><strong>lab_group</strong> includes a limited number of labs that are categorized into five groups - ABG, BMP, CBC, Coags, LFT, Lactic Acid, Misc, VBG</li>
+<li><strong>lab_name</strong> includes a limited number of labs identified by the CLIF consortium</li>
+<li><strong>lab_value</strong> is the recorded value corresponding to a lab_name</li>
+<li><strong>reference_unit</strong> is the unit of measurement for that lab</li>
+<li><strong>lab_type_name</strong> has three categories - arterial, venous and standard/proc</li>
+</ul>
+</section>
+<section id="respiratory_support" class="level3">
+<h3 class="anchored" data-anchor-id="respiratory_support">Respiratory_support</h3>
+<table class="table-striped table-hover table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 9%">
+<col style="width: 11%">
+<col style="width: 10%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 12%">
+<col style="width: 9%">
+<col style="width: 11%">
+<col style="width: 5%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>encounter_id</th>
+<th>recorded_time</th>
+<th>device_name</th>
+<th>mode_name</th>
+<th>mode_category</th>
+<th>lpm</th>
+<th>fiO2</th>
+<th>peep</th>
+<th>set_volume</th>
+<th>pressure_support</th>
+<th>set_resp_rate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>4</td>
+<td>10/6/2022 10:20:00</td>
+<td>Vent</td>
+<td>A/C Volume</td>
+<td>Volume</td>
+<td>NA</td>
+<td>0.4</td>
+<td>4</td>
+<td>400</td>
+<td>NA</td>
+<td>16</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>10/6/2022 11:00:00</td>
+<td>Vent</td>
+<td>A/C Volume</td>
+<td>Volume</td>
+<td>NA</td>
+<td>0.4</td>
+<td>4</td>
+<td>400</td>
+<td>NA</td>
+<td>16</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>10/6/2022 15:00:00</td>
+<td>Vent</td>
+<td>A/C Volume</td>
+<td>Volume</td>
+<td>NA</td>
+<td>0.4</td>
+<td>4</td>
+<td>400</td>
+<td>NA</td>
+<td>14</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>10/7/2022 6:45:00</td>
+<td>Nasal Cannula</td>
+<td>NA</td>
+<td>NA</td>
+<td>4</td>
+<td>0.4</td>
+<td>5</td>
+<td>NA</td>
+<td>NA</td>
+<td>16</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>10/7/2022 16:00:00</td>
+<td>Nasal Cannula</td>
+<td>NA</td>
+<td>NA</td>
+<td>2</td>
+<td>0.4</td>
+<td>5</td>
+<td>NA</td>
+<td>0</td>
+<td>NA</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>10/9/2022 5:07:00</td>
+<td>Room Air</td>
+<td>NA</td>
+<td>NA</td>
+<td>NA</td>
+<td>NA</td>
+<td>NA</td>
+<td>NA</td>
+<td>NA</td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>recorded_time</strong> is the date and time when the device started (in the format %Y-%m-%d %H:%M:% )</li>
+<li><strong>device_name</strong> includes a limited number of devices identified by the CLIF consortium, namely - Vent, NIPPV, High Flow NC, Face Mask, Trach Collar, Nasal Cannula, Room Air, Other</li>
+<li><strong>mode_name</strong> includes a limited number of modes identified by the CLIF consortium</li>
+<li><strong>mode_category</strong> includes a limited number of mode categories identified by the CLIF consortium, namely - pressure, volume, spontaneous</li>
+<li><strong>lpm</strong> is liters per minute</li>
+<li><strong>fiO2</strong> is fraction of inspired O2</li>
+<li><strong>peep</strong> is positive-end-expiratory pressure</li>
+<li><strong>set_volume</strong> is measured in mL</li>
+<li><strong>pressure_support</strong> measured in cmH2O</li>
+<li><strong>set_resp_rate</strong> measured in bpm</li>
+</ul>
+</section>
+<section id="adt" class="level3">
+<h3 class="anchored" data-anchor-id="adt">ADT</h3>
+<table class="table-striped table-hover table">
+<thead>
+<tr class="header">
+<th>encounter_id</th>
+<th>in_time</th>
+<th>location_name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>8/31/2021 5:02:00 AM</td>
+<td>Home</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>10/6/2022 10:20:00</td>
+<td>Home</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>8/31/2021 5:02:00 AM</td>
+<td>Home</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>7/26/2022 1:57:00 PM</td>
+<td>Discharged to another facility</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>10/6/2022 10:20:00</td>
+<td>Home</td>
+</tr>
+<tr class="even">
+<td>62</td>
+<td>10/6/2022 10:20:00</td>
+<td>Hospice</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>encounter_id</strong> is an ID variable for each patient encounter (a given patient can have multiple encounters)</li>
+<li><strong>in_time</strong> start date and time at a particular location (in the format %Y-%m-%d %H:%M:% )</li>
+<li><strong>location_name</strong> is the location of the patient inside the hospital. Categories include ER, OR, ICU, Ward, and Other</li>
+</ul>
+</section>
+<section id="medication_admin_continuous" class="level3">
+<h3 class="anchored" data-anchor-id="medication_admin_continuous">Medication_admin_continuous</h3>
+<table class="table-striped table-hover table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 12%">
+<col style="width: 14%">
+<col style="width: 13%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 17%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>encounter_id</th>
+<th>med_order_id</th>
+<th>admin_time</th>
+<th>med_name</th>
+<th>med_category</th>
+<th>med_route</th>
+<th>med_dose</th>
+<th>med_dose_unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2</td>
+<td></td>
+<td>2022-09-30 18:53:00</td>
+<td>CBC</td>
+<td>basophil</td>
+<td>1</td>
+<td>%</td>
+<td>standard;poc</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>2022-09-30 17:50:00</td>
+<td>2022-09-30 18:53:00</td>
+<td>CBC</td>
+<td>monocyte</td>
+<td>7</td>
+<td>%</td>
+<td>standard;poc</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>2022-09-30 17:50:00</td>
+<td>2022-09-30 18:53:00</td>
+<td>CBC</td>
+<td>neutrophil</td>
+<td>47</td>
+<td>%</td>
+<td>standard;poc</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>2022-09-30 17:50:00</td>
+<td>2022-09-30 18:53:00</td>
+<td>CBC</td>
+<td>lymphocyte</td>
+<td>44</td>
+<td>%</td>
+<td>standard;poc</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>2022-09-30 17:50:00</td>
+<td>2022-09-30 18:53:00</td>
+<td>CBC</td>
+<td>eosinophils</td>
+<td>1</td>
+<td>%</td>
+<td>standard;poc</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>2022-09-30 17:50:00</td>
+<td>2022-09-30 18:53:00</td>
+<td>LFT</td>
+<td>bilirubin_unconjugated</td>
+<td>0.9</td>
+<td>mg/dL</td>
+<td>standard;poc</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>encounter_id</strong></li>
+<li><strong>med_order_id</strong></li>
+<li><strong>admin_time</strong></li>
+<li><strong>med_name</strong></li>
+<li><strong>med_category</strong></li>
+<li><strong>med_route</strong></li>
+<li><strong>med_dose</strong></li>
+<li><strong>med_dose_unit</strong></li>
+</ul>
 
 
 </section>

@@ -1,5 +1,42 @@
 ---
-title: "About"
+title: "Meet the CLIF Team"
 ---
 
-About this site
+## University of Chicago
+
+* William Parker
+* Kaveri Chhikara
+* Rachel Baccile
+* Kevin Buell
+* Kevin Smith
+
+## Rush University
+
+* J.C. Rojas
+* Vaishvik C.
+
+## Northwestern University
+
+* Yuan Luo
+* Catherine A Gao
+
+## OHSU
+
+* Pat Lyons
+* Brenna Park-Egan
+
+## John Hopkins University
+
+* Chad Hochberg
+
+## University of Minnesota
+
+* Nick Ingraham
+
+## Tufts University
+
+* Susan Han
+
+## Emory University
+
+* Siva Bhavani

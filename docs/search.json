@@ -2,28 +2,28 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "Meet the CLIF Team",
     "section": "",
-    "text": "About this site"
+    "text": "William Parker\nKaveri Chhikara\nRachel Baccile\nKevin Buell\nKevin Smith"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "CLIF",
+    "title": "Common Longitudinal Intensive Format",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "Multicenter critical care research often relies on sharing sensitive patient data across sites, requiring complex data use agreements (DUAs) and yielding redundant work to account for diverse data infrastructures. To overcome these barriers, we present CLIF, designed specifically for observational studies of critically ill patients across multiple centres. Through CLIF, we aim to streamline data organization into a longitudinal format and establish standard vocabularies to facilitate federated anlaytics and improve data readability for researchers and clinicians.\nThe CLIF consortium, comprising critical care researchers from eight US academic health systems, collaboratively developed CLIF’s schema, clinical vocabularies, and “proof of concept” datasets. CLIF’s tables emphasize care processes, clinical outcomes, and granular clinical physiology measures."
   },
   {
     "objectID": "posts/relational_clif/index.html",
     "href": "posts/relational_clif/index.html",
-    "title": "Relational CLIF ERD",
+    "title": "Relational CLIF ERD and Data Dictionary",
     "section": "",
-    "text": "This is an example first post. Whatever you write here will appear inside your post.\nIt is possible to write lists:\nAnd make headers"
+    "text": "Relational CLIF has 19 tables that are organized into clinically relevant column categories - demographics, objective measures, respiratory support, orders and inputs-outputs. Below are sample templates for each table in R-CLIF.\n\n\nPatient_encounters\n\n\n\npatient_id\nencounter_id\n\n\n\n\n1\n1\n\n\n1\n2\n\n\n1\n3\n\n\n5\n10\n\n\n6\n11\n\n\n6\n12\n\n\n\n\npatient_id is an ID variable for each patient\nencounter_id is an ID variable for each patient encounter (a given patient can have multiple encounters)\n\n\n\nPatient_demographics\n\n\n\npatient_id\nrace\nethnicity\nsex\n\n\n\n\n1\nBlack or African-American\nNon-hispanic\nFemale\n\n\n5\nBlack or African-American\nNon-hispanic\nMale\n\n\n6\nWhite\nNon-hispanic\nMale\n\n\n32\nBlack or African-American\nNon-hispanic\nMale\n\n\n43\nWhite\nHispanic\nFemale\n\n\n62\nAsian\nNon-hispanic\nFemale\n\n\n\n\npatient_id is an ID variable for each patient\nrace description of patient’s race. Categories include Black or African-American, White, American Indian or Alaska Native, Asian, Native Hawaiian or Other Pacific Islander, Unknown, Other\nethnicity description of patient’s ethnicity. Categories include Hispanic or Non-Hispanic\nsex is the patient’s biological sex - Male or Female\n\n\n\nLimited_identifiers\n\n\n\n\n\n\n\n\n\n\nencounter_id\nadmission_dttm\ndischarge_dttm\nbirth_dttm\ncoordinates\n\n\n\n\n1\n8/27/2020 8:15:00\n8/27/2020 18:59:00\n8/10/2014\n\n\n\n2\n6/28/2021 7:00:00\n6/27/2021 19:00:00\n2/11/2000\n\n\n\n3\n9/17/2021 8:43:00\n9/17/2021 18:59:00\n2/11/2000\n\n\n\n10\n8/12/2020 00:44:00\n8/12/2020 18:59:00\n4/21/1990\n\n\n\n11\n4/19/2021 6:23:00\n4/19/2021 18:59:00\n1/23/2019\n\n\n\n12\n10/6/2022 10:43:00\n10/6/2022 18:59:00\n1/23/2019\n\n\n\n\n\nencounter_id is an ID variable for each patient encounter (a given patient can have multiple encounters)\nadmission_dttm is the date and time the patient is admitted (in the format %Y-%m-%d %H:%M:% )\ndischarge_dttm is the date and time the patient is discharged (in the format %Y-%m-%d %H:%M:% )\nbirth_dttm is the date of birth\ncoordinates provide patient coordinates\n\n\n\nEncounter_demographics_disposition\n\n\n\nencounter_id\nage_at_admission\ndisposition\n\n\n\n\n1\n6\nHome\n\n\n2\n22\nHome\n\n\n3\n2\n\n\n\n10\n20\nDischarged to another facility\n\n\n11\n2\nHome\n\n\n62\n66\nHospice\n\n\n\n\nencounter_id is an ID variable for each patient encounter (a given patient can have multiple encounters)\nage_at_admission is the age of the patient at the time of admission (in the format %Y-%m-%d %H:%M:% )\ndisposition is the description of disposition when discharged. Categories include Home, Hospice, Discharged to another facility, Dead, Admitted and Other\n\n\n\nVitals\n\n\n\n\n\n\n\n\n\n\nencounter_id\nrecorded_time\nvital_name\nvital_value\nmeas_site_name\n\n\n\n\n1\n2022-05-05 04:18:00\nrespiratory_rate\n18\nnot specified\n\n\n1\n2022-05-05 04:18:00\nspO2\n97\nnot specified\n\n\n1\n2022-05-05 04:18:00\nheight\n73\nnot specified\n\n\n1\n2022-05-05 04:18:00\ntemp\n98.1\nnot specified\n\n\n1\n2022-05-05 04:18:00\nheart_rate\n73\nnot specified\n\n\n1\n2022-05-05 04:18:00\nweight\n1756.8\nnot specified\n\n\n\n\nencounter_id is an ID variable for each patient encounter ( a given patient can have multiple encounters )\nrecorded_time is the date and time when the vital is recorded\nvital_name includes a limited number of vitals, namely - temp(C), pulse, sbp, dbp, sp02, respiration, map, height_in, weight_kg\nvital_value is the recorded value of the vital identified by the CLIF consortium\nmeas_site_name is the site where vital is recorded. It has three categories - arterial, core, not specified.\n\n\n\nLabs\n\n\n\n\n\n\n\n\n\n\n\n\n\nencounter_id\nlab_order_time\nlab_result_time\nlab_group\nlab_name\nlab_value\nreference_unit\nlab_type_name\n\n\n\n\n2\n2022-09-30 17:50:00\n2022-09-30 18:53:00\nCBC\nbasophil\n1\n%\nstandard;poc\n\n\n2\n2022-09-30 17:50:00\n2022-09-30 18:53:00\nCBC\nmonocyte\n7\n%\nstandard;poc\n\n\n2\n2022-09-30 17:50:00\n2022-09-30 18:53:00\nCBC\nneutrophil\n47\n%\nstandard;poc\n\n\n2\n2022-09-30 17:50:00\n2022-09-30 18:53:00\nCBC\nlymphocyte\n44\n%\nstandard;poc\n\n\n2\n2022-09-30 17:50:00\n2022-09-30 18:53:00\nCBC\neosinophils\n1\n%\nstandard;poc\n\n\n2\n2022-09-30 17:50:00\n2022-09-30 18:53:00\nLFT\nbilirubin_unconjugated\n0.9\nmg/dL\nstandard;poc\n\n\n\n\nlab_order_time is the date and time when the lab is ordered\nlab_order_time is the date and time when the lab results are available\nlab_group includes a limited number of labs that are categorized into five groups - ABG, BMP, CBC, Coags, LFT, Lactic Acid, Misc, VBG\nlab_name includes a limited number of labs identified by the CLIF consortium\nlab_value is the recorded value corresponding to a lab_name\nreference_unit is the unit of measurement for that lab\nlab_type_name has three categories - arterial, venous and standard/proc\n\n\n\nRespiratory_support\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nencounter_id\nrecorded_time\ndevice_name\nmode_name\nmode_category\nlpm\nfiO2\npeep\nset_volume\npressure_support\nset_resp_rate\n\n\n\n\n4\n10/6/2022 10:20:00\nVent\nA/C Volume\nVolume\nNA\n0.4\n4\n400\nNA\n16\n\n\n4\n10/6/2022 11:00:00\nVent\nA/C Volume\nVolume\nNA\n0.4\n4\n400\nNA\n16\n\n\n4\n10/6/2022 15:00:00\nVent\nA/C Volume\nVolume\nNA\n0.4\n4\n400\nNA\n14\n\n\n4\n10/7/2022 6:45:00\nNasal Cannula\nNA\nNA\n4\n0.4\n5\nNA\nNA\n16\n\n\n4\n10/7/2022 16:00:00\nNasal Cannula\nNA\nNA\n2\n0.4\n5\nNA\n0\nNA\n\n\n4\n10/9/2022 5:07:00\nRoom Air\nNA\nNA\nNA\nNA\nNA\nNA\nNA\nNA\n\n\n\n\nrecorded_time is the date and time when the device started (in the format %Y-%m-%d %H:%M:% )\ndevice_name includes a limited number of devices identified by the CLIF consortium, namely - Vent, NIPPV, High Flow NC, Face Mask, Trach Collar, Nasal Cannula, Room Air, Other\nmode_name includes a limited number of modes identified by the CLIF consortium\nmode_category includes a limited number of mode categories identified by the CLIF consortium, namely - pressure, volume, spontaneous\nlpm is liters per minute\nfiO2 is fraction of inspired O2\npeep is positive-end-expiratory pressure\nset_volume is measured in mL\npressure_support measured in cmH2O\nset_resp_rate measured in bpm\n\n\n\nADT\n\n\n\nencounter_id\nin_time\nlocation_name\n\n\n\n\n1\n8/31/2021 5:02:00 AM\nHome\n\n\n2\n10/6/2022 10:20:00\nHome\n\n\n3\n8/31/2021 5:02:00 AM\nHome\n\n\n10\n7/26/2022 1:57:00 PM\nDischarged to another facility\n\n\n11\n10/6/2022 10:20:00\nHome\n\n\n62\n10/6/2022 10:20:00\nHospice\n\n\n\n\nencounter_id is an ID variable for each patient encounter (a given patient can have multiple encounters)\nin_time start date and time at a particular location (in the format %Y-%m-%d %H:%M:% )\nlocation_name is the location of the patient inside the hospital. Categories include ER, OR, ICU, Ward, and Other\n\n\n\nMedication_admin_continuous\n\n\n\n\n\n\n\n\n\n\n\n\n\nencounter_id\nmed_order_id\nadmin_time\nmed_name\nmed_category\nmed_route\nmed_dose\nmed_dose_unit\n\n\n\n\n2\n\n2022-09-30 18:53:00\nCBC\nbasophil\n1\n%\nstandard;poc\n\n\n2\n2022-09-30 17:50:00\n2022-09-30 18:53:00\nCBC\nmonocyte\n7\n%\nstandard;poc\n\n\n2\n2022-09-30 17:50:00\n2022-09-30 18:53:00\nCBC\nneutrophil\n47\n%\nstandard;poc\n\n\n2\n2022-09-30 17:50:00\n2022-09-30 18:53:00\nCBC\nlymphocyte\n44\n%\nstandard;poc\n\n\n2\n2022-09-30 17:50:00\n2022-09-30 18:53:00\nCBC\neosinophils\n1\n%\nstandard;poc\n\n\n2\n2022-09-30 17:50:00\n2022-09-30 18:53:00\nLFT\nbilirubin_unconjugated\n0.9\nmg/dL\nstandard;poc\n\n\n\n\nencounter_id\nmed_order_id\nadmin_time\nmed_name\nmed_category\nmed_route\nmed_dose\nmed_dose_unit"
   },
   {
     "objectID": "posts/relational_clif/index.html#this-is-a-second-level-heading",
     "href": "posts/relational_clif/index.html#this-is-a-second-level-heading",
-    "title": "Relational CLIF ERD",
+    "title": "Relational CLIF ERD and Data Dictionary",
     "section": "This is a second level heading",
     "text": "This is a second level heading\nYou can include images, and many other kinds of content.\nIf you are using the visual editor in Rstudio you can drag images onto the editor to insert them into the document. Otherwise, you need to place the image inside of the folder for this post, and then you can insert it to your post directly, like this:\n\nThe first image in a blog post will also be used on the listings page."
   },
@@ -32,6 +32,76 @@
     "href": "posts.html",
     "title": "Blog",
     "section": "",
-    "text": "Relational CLIF ERD\n\n\n\ngoals\n\n\ngeneral\n\n\ndata-dictionary\n\n\n\n\n\n\n\nKaveri Chhikara\n\n\nOct 21, 2022\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Relational CLIF ERD and Data Dictionary\n\n\n\ngoals\n\n\ngeneral\n\n\ndata-dictionary\n\n\n\n\n\n\n\nKaveri Chhikara\n\n\nJan 14, 2024\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#our-mission",
+    "href": "index.html#our-mission",
+    "title": "Common Longitudinal Intensive Format",
+    "section": "",
+    "text": "Multicenter critical care research often relies on sharing sensitive patient data across sites, requiring complex data use agreements (DUAs) and yielding redundant work to account for diverse data infrastructures. To overcome these barriers, we present CLIF, designed specifically for observational studies of critically ill patients across multiple centres. Through CLIF, we aim to streamline data organization into a longitudinal format and establish standard vocabularies to facilitate federated anlaytics and improve data readability for researchers and clinicians.\nThe CLIF consortium, comprising critical care researchers from eight US academic health systems, collaboratively developed CLIF’s schema, clinical vocabularies, and “proof of concept” datasets. CLIF’s tables emphasize care processes, clinical outcomes, and granular clinical physiology measures."
+  },
+  {
+    "objectID": "index.html#members",
+    "href": "index.html#members",
+    "title": "Common Longitudinal Intensive Format",
+    "section": "Members",
+    "text": "Members"
+  },
+  {
+    "objectID": "about.html#john-hopkins-university",
+    "href": "about.html#john-hopkins-university",
+    "title": "Meet the CLIF Team",
+    "section": "John Hopkins University",
+    "text": "John Hopkins University\n\nChad Hochberg"
+  },
+  {
+    "objectID": "about.html#university-of-chicago",
+    "href": "about.html#university-of-chicago",
+    "title": "Meet the CLIF Team",
+    "section": "",
+    "text": "William Parker\nKaveri Chhikara\nRachel Baccile\nKevin Buell\nKevin Smith"
+  },
+  {
+    "objectID": "about.html#rush-university",
+    "href": "about.html#rush-university",
+    "title": "Meet the CLIF Team",
+    "section": "Rush University",
+    "text": "Rush University\n\nJ.C. Rojas\nVaishvik C."
+  },
+  {
+    "objectID": "about.html#northwestern-university",
+    "href": "about.html#northwestern-university",
+    "title": "Meet the CLIF Team",
+    "section": "Northwestern University",
+    "text": "Northwestern University\n\nYuan Luo\nCatherine A Gao"
+  },
+  {
+    "objectID": "about.html#ohsu",
+    "href": "about.html#ohsu",
+    "title": "Meet the CLIF Team",
+    "section": "OHSU",
+    "text": "OHSU\n\nPat Lyons\nBrenna Park-Egan"
+  },
+  {
+    "objectID": "about.html#university-of-minnesota",
+    "href": "about.html#university-of-minnesota",
+    "title": "Meet the CLIF Team",
+    "section": "University of Minnesota",
+    "text": "University of Minnesota\n\nNick Ingraham"
+  },
+  {
+    "objectID": "about.html#tufts-university",
+    "href": "about.html#tufts-university",
+    "title": "Meet the CLIF Team",
+    "section": "Tufts University",
+    "text": "Tufts University\n\nSusan Han"
+  },
+  {
+    "objectID": "about.html#emory-university",
+    "href": "about.html#emory-university",
+    "title": "Meet the CLIF Team",
+    "section": "Emory University",
+    "text": "Emory University\n\nSiva Bhavani"
   }
 ]
