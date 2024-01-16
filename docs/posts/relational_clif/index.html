@@ -71,6 +71,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -174,7 +175,12 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="ERD.png" class="img-fluid"></p>
 <section id="patient_encounters" class="level3">
 <h3 class="anchored" data-anchor-id="patient_encounters">Patient_encounters</h3>
+<div class="scrollable-table">
 <table class="table-striped table-hover table">
+<colgroup>
+<col style="width: 75%">
+<col style="width: 25%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>patient_id</th>
@@ -208,6 +214,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+</div>
 <ul>
 <li><strong>patient_id</strong> is an ID variable for each patient</li>
 <li><strong>encounter_id</strong> is an ID variable for each patient encounter (a given patient can have multiple encounters)</li>
@@ -215,7 +222,14 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="patient_demographics" class="level3">
 <h3 class="anchored" data-anchor-id="patient_demographics">Patient_demographics</h3>
+<div class="scrollable-table">
 <table class="table-striped table-hover table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>patient_id</th>
@@ -263,6 +277,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+</div>
 <ul>
 <li><strong>patient_id</strong> is an ID variable for each patient</li>
 <li><strong>race</strong> description of patient’s race. Categories include Black or African-American, White, American Indian or Alaska Native, Asian, Native Hawaiian or Other Pacific Islander, Unknown, Other</li>
@@ -272,13 +287,14 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="limited_identifiers" class="level3">
 <h3 class="anchored" data-anchor-id="limited_identifiers">Limited_identifiers</h3>
+<div class="scrollable-table">
 <table class="table-striped table-hover table">
 <colgroup>
-<col style="width: 21%">
-<col style="width: 19%">
-<col style="width: 23%">
-<col style="width: 21%">
-<col style="width: 13%">
+<col style="width: 43%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -334,6 +350,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+</div>
 <ul>
 <li><strong>encounter_id</strong> is an ID variable for each patient encounter (a given patient can have multiple encounters)</li>
 <li><strong>admission_dttm</strong> is the date and time the patient is admitted (in the format %Y-%m-%d %H:%M:% )</li>
@@ -344,7 +361,13 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="encounter_demographics_disposition" class="level3">
 <h3 class="anchored" data-anchor-id="encounter_demographics_disposition">Encounter_demographics_disposition</h3>
+<div class="scrollable-table">
 <table class="table-striped table-hover table">
+<colgroup>
+<col style="width: 60%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>encounter_id</th>
@@ -385,6 +408,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+</div>
 <ul>
 <li><strong>encounter_id</strong> is an ID variable for each patient encounter (a given patient can have multiple encounters)</li>
 <li><strong>age_at_admission</strong> is the age of the patient at the time of admission (in the format %Y-%m-%d %H:%M:% )</li>
@@ -393,13 +417,14 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="vitals" class="level3">
 <h3 class="anchored" data-anchor-id="vitals">Vitals</h3>
+<div class="scrollable-table">
 <table class="table-striped table-hover table">
 <colgroup>
-<col style="width: 21%">
-<col style="width: 19%">
-<col style="width: 23%">
-<col style="width: 21%">
-<col style="width: 13%">
+<col style="width: 43%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -455,6 +480,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+</div>
 <ul>
 <li><strong>encounter_id</strong> is an ID variable for each patient encounter ( a given patient can have multiple encounters )</li>
 <li><strong>recorded_time</strong> is the date and time when the vital is recorded</li>
@@ -465,16 +491,17 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="labs" class="level3">
 <h3 class="anchored" data-anchor-id="labs">Labs</h3>
+<div class="scrollable-table">
 <table class="table-striped table-hover table">
 <colgroup>
-<col style="width: 13%">
-<col style="width: 12%">
-<col style="width: 14%">
-<col style="width: 13%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 17%">
-<col style="width: 12%">
+<col style="width: 30%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -551,6 +578,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+</div>
 <ul>
 <li><strong>lab_order_time</strong> is the date and time when the lab is ordered</li>
 <li><strong>lab_order_time</strong> is the date and time when the lab results are available</li>
@@ -563,19 +591,20 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="respiratory_support" class="level3">
 <h3 class="anchored" data-anchor-id="respiratory_support">Respiratory_support</h3>
+<div class="scrollable-table">
 <table class="table-striped table-hover table">
 <colgroup>
-<col style="width: 10%">
-<col style="width: 9%">
-<col style="width: 11%">
-<col style="width: 10%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 12%">
-<col style="width: 9%">
-<col style="width: 11%">
-<col style="width: 5%">
-<col style="width: 7%">
+<col style="width: 23%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -673,6 +702,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+</div>
 <ul>
 <li><strong>recorded_time</strong> is the date and time when the device started (in the format %Y-%m-%d %H:%M:% )</li>
 <li><strong>device_name</strong> includes a limited number of devices identified by the CLIF consortium, namely - Vent, NIPPV, High Flow NC, Face Mask, Trach Collar, Nasal Cannula, Room Air, Other</li>
@@ -688,7 +718,13 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="adt" class="level3">
 <h3 class="anchored" data-anchor-id="adt">ADT</h3>
+<div class="scrollable-table">
 <table class="table-striped table-hover table">
+<colgroup>
+<col style="width: 60%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>encounter_id</th>
@@ -729,6 +765,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+</div>
 <ul>
 <li><strong>encounter_id</strong> is an ID variable for each patient encounter (a given patient can have multiple encounters)</li>
 <li><strong>in_time</strong> start date and time at a particular location (in the format %Y-%m-%d %H:%M:% )</li>
@@ -737,16 +774,17 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="medication_admin_continuous" class="level3">
 <h3 class="anchored" data-anchor-id="medication_admin_continuous">Medication_admin_continuous</h3>
+<div class="scrollable-table">
 <table class="table-striped table-hover table">
 <colgroup>
-<col style="width: 13%">
-<col style="width: 12%">
-<col style="width: 14%">
-<col style="width: 13%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 17%">
-<col style="width: 12%">
+<col style="width: 30%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -763,75 +801,76 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td>2</td>
-<td></td>
-<td>2022-09-30 18:53:00</td>
-<td>CBC</td>
-<td>basophil</td>
-<td>1</td>
-<td>%</td>
-<td>standard;poc</td>
+<td>43</td>
+<td>10/6/2022 11:10:00</td>
+<td>phenylephrine</td>
+<td>vasoactives</td>
+<td>Intravenous</td>
+<td>0.4</td>
+<td>mcg/kg/min</td>
 </tr>
 <tr class="even">
 <td>2</td>
-<td>2022-09-30 17:50:00</td>
-<td>2022-09-30 18:53:00</td>
-<td>CBC</td>
-<td>monocyte</td>
-<td>7</td>
-<td>%</td>
-<td>standard;poc</td>
+<td>76</td>
+<td>10/6/2022 11:13:00</td>
+<td>phenylephrine</td>
+<td>vasoactives</td>
+<td>Intravenous</td>
+<td>0.75</td>
+<td>mcg/kg/min</td>
 </tr>
 <tr class="odd">
 <td>2</td>
-<td>2022-09-30 17:50:00</td>
-<td>2022-09-30 18:53:00</td>
-<td>CBC</td>
-<td>neutrophil</td>
-<td>47</td>
-<td>%</td>
-<td>standard;poc</td>
+<td>89</td>
+<td>10/6/2022 11:32:00</td>
+<td>insulin</td>
+<td>endocrine</td>
+<td>Intravenous</td>
+<td>2</td>
+<td>Units/hr</td>
 </tr>
 <tr class="even">
-<td>2</td>
-<td>2022-09-30 17:50:00</td>
-<td>2022-09-30 18:53:00</td>
-<td>CBC</td>
-<td>lymphocyte</td>
-<td>44</td>
-<td>%</td>
-<td>standard;poc</td>
+<td>11</td>
+<td>42</td>
+<td>1/22/2022 00:00:00</td>
+<td>propofol</td>
+<td>sedation</td>
+<td>Intravenous</td>
+<td>40</td>
+<td>mcg/kg/min</td>
 </tr>
 <tr class="odd">
-<td>2</td>
-<td>2022-09-30 17:50:00</td>
-<td>2022-09-30 18:53:00</td>
-<td>CBC</td>
-<td>eosinophils</td>
-<td>1</td>
-<td>%</td>
-<td>standard;poc</td>
+<td>11</td>
+<td>807</td>
+<td>1/22/2022 02:13:00</td>
+<td>propofol</td>
+<td>sedation</td>
+<td>Intravenous</td>
+<td>30</td>
+<td>mcg/kg/min</td>
 </tr>
 <tr class="even">
-<td>2</td>
-<td>2022-09-30 17:50:00</td>
-<td>2022-09-30 18:53:00</td>
-<td>LFT</td>
-<td>bilirubin_unconjugated</td>
-<td>0.9</td>
-<td>mg/dL</td>
-<td>standard;poc</td>
+<td>11</td>
+<td>432</td>
+<td>1/22/2022 04:00:00</td>
+<td>fentanyl</td>
+<td>sedation</td>
+<td>Intravenous</td>
+<td>150</td>
+<td>mcg/hr</td>
 </tr>
 </tbody>
 </table>
+</div>
 <ul>
-<li><strong>encounter_id</strong></li>
-<li><strong>med_order_id</strong></li>
-<li><strong>admin_time</strong></li>
-<li><strong>med_name</strong></li>
-<li><strong>med_category</strong></li>
-<li><strong>med_route</strong></li>
-<li><strong>med_dose</strong></li>
-<li><strong>med_dose_unit</strong></li>
+<li><strong>encounter_id</strong> is an ID variable for each patient encounter (a given patient can have multiple encounters)</li>
+<li><strong>med_order_id</strong> a unique ID for med_order placed</li>
+<li><strong>admin_time</strong> start date and time for medication administration</li>
+<li><strong>med_name</strong> medication name</li>
+<li><strong>med_category</strong> medication category</li>
+<li><strong>med_route</strong> eod of medicine delivery</li>
+<li><strong>med_dose</strong> quantity taken in dose</li>
+<li><strong>med_dose_unit</strong> unit of dose</li>
 </ul>
 
 
