@@ -1,0 +1,16 @@
+## Ongoing Projects
+
+### Severity of Illness (SIPA)
+
+- **Description:** Develop and validate a novel triage score using pre-life support data.
+- **Funding:** National Library of Medicine
+
+### Variation in Ventilation
+
+- **Description:** Aligning hourly mechanical ventilation data from several U.S. hospitals to determine between-hospital variation in low tidal volume ventilation (LTVV), a crucial evidence-based practice for mechanically ventilated patients.
+- **Funding:** 
+
+### Eligibility for Mobilization
+
+- **Description:** Identify and define the duration of time that patients on ventilators are eligible/safe to perform physical/occupational therapy.
+- **Funding:** 

@@ -10,6 +10,8 @@ website:
         text: Home
       - href: about.qmd
         text: TEAM
+      - href: projects.qmd
+        text: Projects
       - posts.qmd # add your posts.qmd file to your navbar!
 
 format:
