@@ -1,5 +1,10 @@
 ## Ongoing Projects
 
+### Development of a Common Longitudinal ICU Format (CLIF)
+
+- **Description:** Development of CLIF, designed specifically for observational studies of critically ill patients across multiple centres.
+- **Funding:** National Library of Medicine
+
 ### Severity of Illness (SIPA)
 
 - **Description:** Develop and validate a novel triage score using pre-life support data.
