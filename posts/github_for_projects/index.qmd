@@ -50,7 +50,7 @@ With your repository cloned, navigate to the "vent_variation" directory. This di
 
 ### Project Specific Setup: R Project Initialization
 
-The variation in ventilation project script is written in R .qmd file. To setup the project workflow, follow the following steps:
+The variation in ventilation project script is a `.qmd` file. To setup the project workflow, follow the following steps:
 
 * Start by launching RStudio on your system. To create a new project in the RStudio IDE, use the Create Project command (available on the Projects menu and on the global toolbar):
 
