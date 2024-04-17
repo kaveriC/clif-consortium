@@ -15,6 +15,11 @@
 - **Description:** Aligning hourly mechanical ventilation data from several U.S. hospitals to determine between-hospital variation in low tidal volume ventilation (LTVV), a crucial evidence-based practice for mechanically ventilated patients.
 - **Funding:** 
 
+### Temperature Trajectory Subphenotypes
+
+- **Description:** 
+- **Funding:** 
+
 ### Eligibility for Mobilization
 
 - **Description:** Identify and define the duration of time that patients on ventilators are eligible/safe to perform physical/occupational therapy.

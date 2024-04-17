@@ -1,0 +1,73 @@
+---
+title: "Using GitHub for CLIF projects"
+author: "Kaveri Chhikara"
+date: "2024-4-17"
+categories: [github, project-workflow, collaboration]
+tbl-colwidths: [75,25]
+format:
+  html:
+    theme: sandstone
+    css: styles.css  #
+---
+
+![](github_image.jpeg)
+
+This blog provides a structured approach to setting up GitHub, tailored specifically for our collaborative projects. By standardizing our setup, we can enhance our workflows, ensure consistency across our datasets, and simplify the complexities involved in managing our extensive research data. We’ll start our GitHub journey with Nick’s project on  variation in ventilation and use it as an example in this guide.
+
+### Step 1: Prepare your environment
+First, confirm that GitHub is installed and properly configured on your workstation. [Follow the steps on the official GitHub docs](https://docs.github.com/en/get-started/getting-started-with-git/set-up-git)
+
+### Step 2: Fork the repository
+Navigate to the [CLIF-1.0 GitHub repository](https://github.com/kaveriC/CLIF-1.0) and fork the repository. To fork a repository just means to make a copy that you are going to manage. When you [fork a repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/about-forks) you can make changes without affecting the original repository.
+
+**Action:** Click the fork button to create your personal copy of the repository.
+
+![](Step2_fork.png)
+
+### Step 3: Clone your forked repository
+
+You’ll then see the forked repository on your profile.You can tell that you are on your own forked version because it will have your username and the name you chose for the repository as well as “forked from” in the top left corner. Clone your forked repository. We need to gain remote access to communicate securely with another computer. This will provide us an encrypted connection between the two network end points. 
+
+**Action:** Click on the green code button to clone the repository.
+
+![](Step3_clone.png)
+
+Note: The process to clone your repository will depend on if you are using GitHub Desktop, Git in R or Git Bash on command line. 
+
+* If you are using the command line, follow the steps delineated here- [Step 2: Cloning a Forked Repository](https://medium.com/nerd-for-tech/fork-clone-push-pull-a-basic-guide-to-using-git-github-63ad4f5975a3) 
+
+* If you are using GitHub Desktop, follow the setup instructions here- [GitHub Desktop](https://desktop.github.com/) 
+
+* You can also link git directly with RStudio. Follow the steps here- [Connect RStudio to Git and GitHub](https://happygitwithr.com/rstudio-git-github.html) 
+
+
+
+### Step 4: Access your files
+
+With your repository cloned, navigate to the "vent_variation" directory. This directory contains the files needed for your project, ensuring you have immediate access to relevant scripts. To pull updated files, [follow the steps here to sync the fork branch.](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork)
+
+![](Step4_access.png)
+
+### Project Specific Setup: R Project Initialization
+
+The variation in ventilation project script is written in R .qmd file. To setup the project workflow, follow the following steps:
+
+* Start by launching RStudio on your system. To create a new project in the RStudio IDE, use the Create Project command (available on the Projects menu and on the global toolbar):
+
+![](project_step1.png)
+
+* Create project in the existing directory and provide the path to your CLIF-1.0 project specific directory. Example- `~/Desktop/CLIF-1.0/projects/vent_variation`
+
+![](project_step2_1.png)
+![](project_step2_2.png)
+
+* Your environment to run the vent_variation.qmd file is now ready!
+![](project_step3.png)
+
+
+
+
+
+
+
+
