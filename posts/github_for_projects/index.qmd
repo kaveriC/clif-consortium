@@ -10,7 +10,7 @@ format:
     css: styles.css  #
 ---
 
-![](github_image.jpeg)
+![](github_image.jpeg){fig-align="center"}
 
 This blog provides a structured approach to setting up GitHub, tailored specifically for our collaborative projects. By standardizing our setup, we can enhance our workflows, ensure consistency across our datasets, and simplify the complexities involved in managing our extensive research data. We’ll start our GitHub journey with Nick’s project on  variation in ventilation and use it as an example in this guide.
 
@@ -59,9 +59,10 @@ The variation in ventilation project script is a `.qmd` file. To setup the proje
 * Create project in the existing directory and provide the path to your CLIF-1.0 project specific directory. Example- `~/Desktop/CLIF-1.0/projects/vent_variation`
 
 ![](project_step2_1.png)
+
 ![](project_step2_2.png)
 
-* Your environment to run the vent_variation.qmd file is now ready!
+* You are now ready to run the `vent_variation.qmd` file!
 ![](project_step3.png)
 
 
