@@ -5,6 +5,13 @@ project:
 website:
   title: "CLIF Consortium"
   description: "Website and blog for the CLIF Consortium"
+  page-footer: 
+    background: "#F6F5F3"
+    center: © 2024  &middot; Made with
+      [![](https://quarto.org/quarto.png){fig-alt="Quarto" width=65px}](https://quarto.org/) 
+    right:
+      - icon: github
+        href: https://github.com/kaveriC/clif-consortium/
   navbar:
     left:
       - href: index.qmd
