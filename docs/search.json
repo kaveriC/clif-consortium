@@ -39,28 +39,28 @@
     "href": "about.html",
     "title": "Meet the CLIF Team",
     "section": "",
-    "text": "William Parker, MD, PhD\nKaveri Chhikara, MS\nRachel Baccile, MPP\nKevin Buell, MBBS\nKevin Smith, MD\nJay Koyner, MD\nBhakti Patel, MD"
+    "text": "William Parker, MD, PhD   \n\n\n\n\n\nJay Koyner, MD   \n\n\n\n\n\nKevin Smith, MD   \n\n\n\n\n\nKevin Buell, MBBS   \n\n\n\n\n\nBhakti Patel, MD   \n\n\n\n\n\nKaveri Chhikara, MS   \n\n\n\n\n\nRachel Baccile, MPP   \n\n\n\n\n\nKyle Carey, MS"
   },
   {
     "objectID": "about.html#university-of-chicago",
     "href": "about.html#university-of-chicago",
     "title": "Meet the CLIF Team",
     "section": "",
-    "text": "William Parker, MD, PhD\nKaveri Chhikara, MS\nRachel Baccile, MPP\nKevin Buell, MBBS\nKevin Smith, MD\nJay Koyner, MD\nBhakti Patel, MD"
+    "text": "William Parker, MD, PhD   \n\n\n\n\n\nJay Koyner, MD   \n\n\n\n\n\nKevin Smith, MD   \n\n\n\n\n\nKevin Buell, MBBS   \n\n\n\n\n\nBhakti Patel, MD   \n\n\n\n\n\nKaveri Chhikara, MS   \n\n\n\n\n\nRachel Baccile, MPP   \n\n\n\n\n\nKyle Carey, MS"
   },
   {
     "objectID": "about.html#rush-university",
     "href": "about.html#rush-university",
     "title": "Meet the CLIF Team",
     "section": "Rush University",
-    "text": "Rush University\n\nJ.C. Rojas, MD\nVaishvik C., MS"
+    "text": "Rush University\n\n\n\n\nJ.C. Rojas, MD      \n\n\n\n\n\nVaishvik C., MS"
   },
   {
     "objectID": "about.html#northwestern-university",
     "href": "about.html#northwestern-university",
     "title": "Meet the CLIF Team",
     "section": "Northwestern University",
-    "text": "Northwestern University\n\nYuan Luo, PhD\nCatherine A Gao, MD\nChengsheng Mao, PhD\nSaki Amagai, MS"
+    "text": "Northwestern University\n\n\n\n\nCatherine Gao, MD   \n\n\n\n\n\nYuan Luo, PhD   \n\n\n\n\n\nChengsheng Mao, PhD   \n\n\n\n\n\nSaki Amagai, PhD"
   },
   {
     "objectID": "about.html#ohsu",
@@ -74,28 +74,28 @@
     "href": "about.html#john-hopkins-university",
     "title": "Meet the CLIF Team",
     "section": "John Hopkins University",
-    "text": "John Hopkins University\n\nChad Hochberg, MD"
+    "text": "John Hopkins University\n\n\n\n\nChad Hochberg, MD"
   },
   {
     "objectID": "about.html#university-of-minnesota",
     "href": "about.html#university-of-minnesota",
     "title": "Meet the CLIF Team",
     "section": "University of Minnesota",
-    "text": "University of Minnesota\n\nNick Ingraham, MD"
+    "text": "University of Minnesota\n\n\n\n\nNicholas Ingraham, MD"
   },
   {
     "objectID": "about.html#tufts-university",
     "href": "about.html#tufts-university",
     "title": "Meet the CLIF Team",
     "section": "Tufts University",
-    "text": "Tufts University\n\nSusan Han, MD"
+    "text": "Tufts University\n\n\n\n\nSusan Han, MD"
   },
   {
     "objectID": "about.html#emory-university",
     "href": "about.html#emory-university",
     "title": "Meet the CLIF Team",
     "section": "Emory University",
-    "text": "Emory University\n\nSiva Bhavani, MD\nMuna Nour, MS"
+    "text": "Emory University\n\n\n\n\nSiva Bhavani, MD   \n\n\n\n\n\nMuna Nour, MPH"
   },
   {
     "objectID": "posts/sipa_blog/SIPA_blog_post.html#constructing-a-48-hour-analytic-dataset",
@@ -229,5 +229,33 @@
     "title": "Meet the CLIF Team",
     "section": "University of Chicago",
     "text": "University of Chicago\n\nWilliam Parker\nKaveri Chhikara\nRachel Baccile\nKevin Buell\nKevin Smith\nJay Koyner\nBhakti Patel"
+  },
+  {
+    "objectID": "about.html#principal-investigators",
+    "href": "about.html#principal-investigators",
+    "title": "Meet the CLIF Team",
+    "section": "",
+    "text": "William Parker, MD, PhDUniversity of Chicago\n\n\n\n\n\nJ.C. Rojas, MDRush University\n\n\n\n\n\nPat Lyons, MDOregon Health & Science University\n\n\n\n\n\nNicholas Ingraham, MDUniversity of Minnesota\n\n\n\n\n\nChad Hochberg, MDJohn Hopkins University\n\n\n\n\n\nCatherine Gao, MDNorthwestern University\n\n\n\n\n\nSiva Bhavani, MDEmory University\n\n\n\n\n\nSusan Han, MDTufts University\n\n\n\n\n\nKevin Buell, MBBS University of Chicago\n\n\n\n\n\nKevin Smith, MDUniversity of Chicago\n\n\n\n\n\nJay Koyner, MDUniversity of Chicago\n\n\n\n\n\nYuan Luo, PhDNorthwestern University\n\n\n\n\n\nChengsheng Mao, PhDNorthwestern University"
+  },
+  {
+    "objectID": "about.html#data-scientists",
+    "href": "about.html#data-scientists",
+    "title": "Meet the CLIF Team",
+    "section": "Data Scientists",
+    "text": "Data Scientists\n\n\n\n\nKaveri Chhikara, MSUniversity of Chicago\n\n\n\n\n\nRachel Baccile, MPPUniversity of Chicago\n\n\n\n\n\nKyle Carey, MSUniversity of Chicago\n\n\n\n\n\nVaishvik C., MSRush University\n\n\n\n\n\nSaki Amagai,PhD StudentNorthwestern University\n\n\n\n\n\nMuna Nour, MPHEmory University"
+  },
+  {
+    "objectID": "about.html#oregon-health-science-university",
+    "href": "about.html#oregon-health-science-university",
+    "title": "Meet the CLIF Team",
+    "section": "Oregon Health & Science University",
+    "text": "Oregon Health & Science University\n\n\n\n\nPat Lyons, MD"
+  },
+  {
+    "objectID": "about.html#section",
+    "href": "about.html#section",
+    "title": "Meet the CLIF Team",
+    "section": "",
+    "text": "Susan Han, MDTufts University"
   }
 ]
