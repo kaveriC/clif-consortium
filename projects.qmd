@@ -1,26 +1,42 @@
-## Ongoing Projects
+## Ongoing Projects within the CLIF consortium
 
-### Development of a Common Longitudinal ICU Format (CLIF)
 
-- **Description:** Development of CLIF, designed specifically for observational studies of critically ill patients across multiple centres.
-- **Funding:** National Library of Medicine
+The CLIF consortium is a network of NIH funded investigators. 
 
-### Severity of Illness (SIPA)
+Principal Investigators (PIs) in the consortium are supported by a wide range of NIH grants that use big data and advanced ML techniques to answer open scientific questions related to critical illness. Each of these projects would be better with CLIF rather than done in silos. 
 
-- **Description:** Develop and validate a novel triage score using pre-life support data.
-- **Funding:** National Library of Medicine
+### Improving the efficiency and equity of critical care allocation during a crisis with place-based disadvantage indices
 
-### Variation in Ventilation
+- **CLIF Project Description:** Creating a life support allocation triage score for crisis standards of care 
+- **Grant:** [R01 LM014263](https://reporter.nih.gov/search/skf_8uTY8USB45uQrSL2Ug/project-details/10817718)
+- **PI:** William Parker, University of Chicago
 
-- **Description:** Aligning hourly mechanical ventilation data from several U.S. hospitals to determine between-hospital variation in low tidal volume ventilation (LTVV), a crucial evidence-based practice for mechanically ventilated patients.
-- **Funding:** 
+### Identifying Areas to Improve ICU Outcomes through Provider Variation
 
-### Temperature Trajectory Subphenotypes
+- **CLIF Project Description:** Studying hospital variation in low-tidal volume ventilation across hospital systems
+- **Grant:** [K23 HL166783](https://reporter.nih.gov/search/HFtCRP89oECUkVZSA_8mEw/project-details/10754951)
+- **PI:** Nicholas Ingraham, University of Minnesota
 
-- **Description:** 
-- **Funding:** 
+### Identification of Precision Sepsis Subphenotypes Using Vital Sign Trajectories
 
-### Eligibility for Mobilization
+- **CLIF Project Description:** Validating the association of temperature trajectories and ICU mortality across hospital systems
+- **Grant:** [K23 GM144867](https://reporter.nih.gov/search/7XgA7wwyL0ictZyceawqRA/project-details/10683303)
+- **PI:** Sivasubramanium Bhavani, Emory University
 
-- **Description:** Identify and define the duration of time that patients on ventilators are eligible/safe to perform physical/occupational therapy.
-- **Funding:** 
+### Sustainable Implementation of Prone Positioning for the Acute Respiratory Distress Syndrome
+
+- **CLIF Project Description:** Studying the association between proning practice patterns and ARDS survival
+- **Grant:** [K23 HL169743](https://reporter.nih.gov/search/2-fXoeMMW0yafEM_qnyY4A/project-details/10722194)
+- **PI:** Chad Hochberg, John Hopkins University
+
+### Early Mobilization: Operationalizing Big Data & Implementation Science to Lead Expansion to ICUs (E-MOBILE-ICU)
+
+- **CLIF Project Description:** Identifying critically ill patients who are eligible for mobilization using the electronic healthcare record 
+- **Grant:** [K23 HL148387](https://reporter.nih.gov/search/m0yB8RKJLUuEoOlobWszpw/project-details/10055025)
+- **PI:** Bhakti Patel, University of Chicago
+
+### Machine learning to predict cure in severe pneumonia episodes
+
+- **CLIF Project Description:** Prediction of severe pneumonia using machine learning
+- **Grant:** [K23HL169815](https://reporter.nih.gov/search/BSW6ioAssE6rMGSDYX6Jcw/project-details/10890415)
+- **PI:** Catherine Gao, Northwestern University

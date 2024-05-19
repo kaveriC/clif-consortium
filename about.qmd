@@ -9,6 +9,8 @@ title: "Meet the CLIF Team"
 * Rachel Baccile
 * Kevin Buell
 * Kevin Smith
+* Jay Koyner
+* Bhakti Patel
 
 ## Rush University
 
@@ -19,6 +21,8 @@ title: "Meet the CLIF Team"
 
 * Yuan Luo
 * Catherine A Gao
+* Chengsheng Mao 
+* Saki Amagai
 
 ## OHSU
 
@@ -40,3 +44,4 @@ title: "Meet the CLIF Team"
 ## Emory University
 
 * Siva Bhavani
+* Muna Nour

@@ -3,7 +3,8 @@ project:
   output-dir: docs
 
 website:
-  title: "CLIF"
+  title: "CLIF Consortium"
+  description: "Website and blog for the CLIF Consortium"
   navbar:
     left:
       - href: index.qmd
@@ -12,7 +13,29 @@ website:
         text: TEAM
       - href: projects.qmd
         text: Projects
-      - posts.qmd # add your posts.qmd file to your navbar!
+      - href: data-dictionary.qmd
+        text: Data Dictionary
+      # - posts.qmd # add your posts.qmd file to your navbar!
+    right:
+      - icon: github
+        href: https://github.com/kaveriC/CLIF-1.0/
+
+# navbar:
+#     left:
+#       - text: Home
+#         href: index.qmd
+#       - text: Team
+#         href: about.qmd
+#       - text: Projects
+#         href: projects.qmd
+#       - text: Blog
+#         href: blog.qmd
+#       - text: Data Dictionary
+#         href: data-dictionary.qmd
+#     right:
+#       - icon: github
+#         href: https://github.com/kaveriC/clif-consortium/
+
 
 format:
   html:
