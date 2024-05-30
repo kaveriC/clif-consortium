@@ -137,6 +137,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#respiratory_support" id="toc-respiratory_support" class="nav-link" data-scroll-target="#respiratory_support">Respiratory_support</a></li>
   <li><a href="#medication_admin_continuous" id="toc-medication_admin_continuous" class="nav-link" data-scroll-target="#medication_admin_continuous">Medication_admin_continuous</a></li>
   <li><a href="#dialysis" id="toc-dialysis" class="nav-link" data-scroll-target="#dialysis">Dialysis</a></li>
+  <li><a href="#provider" id="toc-provider" class="nav-link" data-scroll-target="#provider">Provider</a></li>
   </ul>
 </nav>
     </div>
@@ -865,9 +866,9 @@ ul.task-list li input[type="checkbox"] {
 <td>2022-09-30 17:50:00</td>
 <td>2022-09-30 18:05:00</td>
 <td>2022-09-30 18:53:00</td>
+<td></td>
+<td>CBC</td>
 <td>basophil</td>
-<td>CBC</td>
-<td>CBC</td>
 <td>1</td>
 <td>%</td>
 <td>standard</td>
@@ -877,9 +878,9 @@ ul.task-list li input[type="checkbox"] {
 <td>2022-09-30 17:50:00</td>
 <td>2022-09-30 18:05:00</td>
 <td>2022-09-30 18:53:00</td>
+<td></td>
+<td>CBC</td>
 <td>monocyte</td>
-<td>CBC</td>
-<td>CBC</td>
 <td>7</td>
 <td>%</td>
 <td>standard</td>
@@ -889,9 +890,9 @@ ul.task-list li input[type="checkbox"] {
 <td>2022-09-30 17:50:00</td>
 <td>2022-09-30 18:05:00</td>
 <td>2022-09-30 18:53:00</td>
+<td></td>
+<td>CBC</td>
 <td>neutrophil</td>
-<td>CBC</td>
-<td>CBC</td>
 <td>47</td>
 <td>%</td>
 <td>standard</td>
@@ -901,9 +902,9 @@ ul.task-list li input[type="checkbox"] {
 <td>2022-09-30 17:50:00</td>
 <td>2022-09-30 18:05:00</td>
 <td>2022-09-30 18:53:00</td>
+<td></td>
+<td>CBC</td>
 <td>lymphocyte</td>
-<td>CBC</td>
-<td>CBC</td>
 <td>44</td>
 <td>%</td>
 <td>standard</td>
@@ -913,9 +914,9 @@ ul.task-list li input[type="checkbox"] {
 <td>2022-09-30 17:50:00</td>
 <td>2022-09-30 18:05:00</td>
 <td>2022-09-30 18:53:00</td>
+<td></td>
+<td>CBC</td>
 <td>eosinophils</td>
-<td>CBC</td>
-<td>CBC</td>
 <td>1</td>
 <td>%</td>
 <td>standard</td>
@@ -925,9 +926,9 @@ ul.task-list li input[type="checkbox"] {
 <td>2022-09-30 17:50:00</td>
 <td>2022-09-30 18:05:00</td>
 <td>2022-09-30 18:53:00</td>
+<td></td>
+<td>LFT</td>
 <td>bilirubin_unconjugated</td>
-<td>LFT</td>
-<td>LFT</td>
 <td>0.9</td>
 <td>mg/dL</td>
 <td>standard</td>
@@ -1625,6 +1626,45 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </div>
+</section>
+<section id="provider" class="level2">
+<h2 class="anchored" data-anchor-id="provider">Provider</h2>
+<table class="table">
+<colgroup>
+<col style="width: 53%">
+<col style="width: 22%">
+<col style="width: 24%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable Name</th>
+<th>Data Type</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>encounter_id</td>
+<td>VARCHAR</td>
+<td>ID variable for each patient encounter</td>
+</tr>
+<tr class="even">
+<td>provider_id</td>
+<td>VARCHAR</td>
+<td>ID variable for each primary attending</td>
+</tr>
+<tr class="odd">
+<td>start_dttm</td>
+<td>DATETIME</td>
+<td>Start date and time of the provider (in the format %Y-%m-%d %H:%M:%S)</td>
+</tr>
+<tr class="even">
+<td>stop_dttm</td>
+<td>DATETIME</td>
+<td>Stop date and time of the provider (in the format %Y-%m-%d %H:%M:%S)</td>
+</tr>
+</tbody>
+</table>
 
 
 </section>
