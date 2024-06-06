@@ -12,7 +12,7 @@ format:
 
 ![](github_image.jpeg){fig-align="center"}
 
-This blog provides a structured approach to setting up GitHub, tailored specifically for our collaborative projects. By standardizing our setup, we can enhance our workflows, ensure consistency across our datasets, and simplify the complexities involved in managing our extensive research data. We’ll start our GitHub journey with Nick’s project on  variation in ventilation and use it as an example in this guide.
+This blog provides a structured approach to setting up GitHub, tailored specifically for our collaborative projects. By standardizing our setup, we can enhance our workflows, ensure consistency across our datasets, and simplify the complexities involved in managing our extensive research data.
 
 ### Step 1: Prepare your environment
 To follow this tutorial, you must have a GitHub account and Rstudio installed in your system. 
@@ -31,15 +31,11 @@ Navigate to the [CLIF-1.0 GitHub repository](https://github.com/kaveriC/CLIF-1.0
 
 ### Step 3: Clone your forked repository
 
-You’ll then see the forked repository on your profile.You can tell that you are on your own forked version because it will have your username and the name you chose for the repository as well as “forked from” in the top left corner. Clone your forked repository. We need to gain remote access to communicate securely with another computer. This will provide us an encrypted connection between the two network end points. 
-
-**Action:** 
-
 * Go to your GitHub account and navigate to the forked repository.
 * Click the "Code" button and copy the URL (HTTPS or SSH recommended).
 * Open a terminal (or Git Bash on Windows)
 * Run the following command to clone the repository on your local machine. (Replace `your-username` with your GitHub username)
-`git clone https://github.com/your-username/CLIF-1.0.git`
+  `git clone https://github.com/your-username/CLIF-1.0.git`
 
 ![](Step3_clone.png)
 
