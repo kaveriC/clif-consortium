@@ -2,9 +2,7 @@
   {
     "listing": "/posts.html",
     "items": [
-      "/posts/github_for_projects/index.html",
-      "/posts/sipa_blog/SIPA_blog_post.html",
-      "/posts/relational_clif/index.html"
+      "/posts/github-clif/index.html"
     ]
   }
 ]

@@ -22,7 +22,7 @@ website:
         text: Projects
       - href: data-dictionary.qmd
         text: Data Dictionary
-      # - posts.qmd # add your posts.qmd file to your navbar!
+      - posts.qmd # add your posts.qmd file to your navbar!
     right:
       - icon: github
         href: https://github.com/kaveriC/CLIF-1.0/

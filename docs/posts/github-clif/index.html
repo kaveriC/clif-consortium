@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Kaveri Chhikara">
+<meta name="dcterms.date" content="2024-06-06">
 
-<title>CLIF Consortium - Common Longitudinal ICU data Format</title>
+<title>CLIF Consortium - Using CLIF GitHub with R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,21 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -67,17 +70,18 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
+<link rel="stylesheet" href="../../styles.css">
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">CLIF Consortium</span>
     </a>
   </div>
@@ -88,23 +92,23 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">TEAM</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./projects.html"> 
+    <a class="nav-link" href="../../projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./data-dictionary.html"> 
+    <a class="nav-link" href="../../data-dictionary.html"> 
 <span class="menu-text">Data Dictionary</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./posts.html"> 
+    <a class="nav-link" href="../../posts.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
@@ -122,41 +126,222 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Using CLIF GitHub with R</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">github</div>
+                <div class="quarto-category">collaboration</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Kaveri Chhikara </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">June 6, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#step-1-prepare-your-environment" id="toc-step-1-prepare-your-environment" class="nav-link active" data-scroll-target="#step-1-prepare-your-environment">Step 1: Prepare your environment</a></li>
+  <li><a href="#step-2-fork-the-repository" id="toc-step-2-fork-the-repository" class="nav-link" data-scroll-target="#step-2-fork-the-repository">Step 2: Fork the repository</a></li>
+  <li><a href="#step-3-clone-your-forked-repository" id="toc-step-3-clone-your-forked-repository" class="nav-link" data-scroll-target="#step-3-clone-your-forked-repository">Step 3: Clone your forked repository</a></li>
+  <li><a href="#step-4-open-the-repository-in-rstudio" id="toc-step-4-open-the-repository-in-rstudio" class="nav-link" data-scroll-target="#step-4-open-the-repository-in-rstudio">Step 4: Open the repository in RStudio</a></li>
+  <li><a href="#step-5-pull-updates-from-the-original-repository" id="toc-step-5-pull-updates-from-the-original-repository" class="nav-link" data-scroll-target="#step-5-pull-updates-from-the-original-repository">Step 5: Pull updates from the original repository</a></li>
+  <li><a href="#step-6-create-a-pull-request-pr" id="toc-step-6-create-a-pull-request-pr" class="nav-link" data-scroll-target="#step-6-create-a-pull-request-pr">Step 6: Create a Pull Request (PR)</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<div class="quarto-about-jolla content">
-  <img src="clif_logo.png" class="about-image
-  rectangle " style="width: 15em;">
- <header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Common Longitudinal ICU data Format</h1>
-</div>
-<div class="quarto-title-meta">
-  </div>
-</header><main class="content" id="quarto-document-content">
-<div class="text-box">
-<p>
-<strong>Federated Critical Care Research</strong>
-</p>
-<p>
-Multicenter critical care research often relies on sharing sensitive patient data across sites, requiring complex data use agreements (DUAs) and yielding redundant work to account for diverse data infrastructures. To overcome these barriers, we present CLIF, designed specifically for observational studies of critically ill patients across multiple centres. Through CLIF, we aim to streamline data organization into a longitudinal format and establish standard vocabularies to facilitate federated analytics and improve data readability for researchers and clinicians.
-</p>
-<p>
-The CLIF consortium, comprising critical care researchers from eight US academic health systems, collaboratively developed CLIF’s schema, clinical vocabularies, and “proof of concept” datasets. CLIF’s tables emphasize care processes, clinical outcomes, and granular clinical physiology measures.
-</p>
-</div>
-<p>
-<strong>Participating sites</strong>
-</p>
-<p><img src="member_logos.jpeg" class="img-fluid"></p>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
-</main>  
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="github_image.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
 </div>
- <!-- /main -->
+<p>This blog provides a structured approach to setting up GitHub, tailored specifically for our collaborative projects. By standardizing our setup, we can enhance our workflows, ensure consistency across our datasets, and simplify the complexities involved in managing our extensive research data. We’ll start our GitHub journey with Nick’s project on variation in ventilation and use it as an example in this guide.</p>
+<section id="step-1-prepare-your-environment" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-prepare-your-environment">Step 1: Prepare your environment</h3>
+<p>To follow this tutorial, you must have a GitHub account and Rstudio installed in your system.</p>
+<p>Additionally, confirm that GitHub is installed and properly configured on your workstation. <a href="https://docs.github.com/en/get-started/getting-started-with-git/set-up-git">Follow the steps on the official GitHub docs</a></p>
+</section>
+<section id="step-2-fork-the-repository" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-fork-the-repository">Step 2: Fork the repository</h3>
+<p>Navigate to the <a href="https://github.com/kaveriC/CLIF-1.0">CLIF-1.0 GitHub repository</a> and fork the repository. To fork a repository just means to make a copy that you are going to manage. When you <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/about-forks">fork a repository</a> you can make changes without affecting the original repository.</p>
+<p><strong>Action:</strong></p>
+<ul>
+<li>Click the fork button to create your personal copy of the repository.</li>
+<li>GitHub will create a copy of the repository under your GitHub account.</li>
+</ul>
+<p><img src="Step2_fork.png" class="img-fluid"></p>
+</section>
+<section id="step-3-clone-your-forked-repository" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-clone-your-forked-repository">Step 3: Clone your forked repository</h3>
+<p>You’ll then see the forked repository on your profile.You can tell that you are on your own forked version because it will have your username and the name you chose for the repository as well as “forked from” in the top left corner. Clone your forked repository. We need to gain remote access to communicate securely with another computer. This will provide us an encrypted connection between the two network end points.</p>
+<p><strong>Action:</strong></p>
+<ul>
+<li>Go to your GitHub account and navigate to the forked repository.</li>
+<li>Click the “Code” button and copy the URL (HTTPS or SSH recommended).</li>
+<li>Open a terminal (or Git Bash on Windows)</li>
+<li>Run the following command to clone the repository on your local machine. (Replace <code>your-username</code> with your GitHub username) <code>git clone https://github.com/your-username/CLIF-1.0.git</code></li>
+</ul>
+<p><img src="Step3_clone.png" class="img-fluid"></p>
+</section>
+<section id="step-4-open-the-repository-in-rstudio" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-open-the-repository-in-rstudio">Step 4: Open the repository in RStudio</h3>
+<p>Now that you have a local version of the repository on your machine, we can start working! Start by ensuring that Git is configured in Rstudio</p>
+<section id="configure-git-in-rstudio" class="level4">
+<h4 class="anchored" data-anchor-id="configure-git-in-rstudio">Configure Git in RStudio</h4>
+<ol type="1">
+<li><strong>Open RStudio:</strong> Launch RStudio on your computer</li>
+<li><strong>Global Options:</strong> Go to <code>Tools</code> -&gt; <code>Global Options</code>.</li>
+<li><strong>Git/SVN settings:</strong></li>
+</ol>
+<ul>
+<li>In the left sidebar, click on <code>Git/SVN</code>.</li>
+<li>Ensure that the “Enable version control interface for RStudio projects” option is checked.</li>
+<li>Set the path to the Git executable. It is usually detected automatically, but if not, you can manually set the path:
+<ul>
+<li>On Windows: It is usually <code>C:/Program Files/Git/bin/git.exe</code> or <code>C:/Program Files (x86)/Git/bin/git.exe</code>.</li>
+<li>On macOS: It is usually <code>/usr/local/bin/git</code>.</li>
+<li>On Linux: It is usually <code>/usr/bin/git</code>.</li>
+</ul></li>
+</ul>
+<ol start="4" type="1">
+<li><strong>Apply Changes:</strong> Click <code>Apply</code> and then click <code>OK</code> to save the settings.</li>
+</ol>
+</section>
+<section id="open-clif-repository-with-git-in-rstudio" class="level4">
+<h4 class="anchored" data-anchor-id="open-clif-repository-with-git-in-rstudio">Open CLIF repository with Git in RStudio</h4>
+<ol type="1">
+<li>Go to <code>File</code> -&gt; <code>New Project</code>.</li>
+<li>Select <code>Existing Directory</code>. This should be the local instance of your forked repository.</li>
+<li>Navigate to the directory of the cloned repository and click <code>Create Project</code>.</li>
+</ol>
+</section>
+<section id="use-the-git-tab" class="level4">
+<h4 class="anchored" data-anchor-id="use-the-git-tab">Use the Git tab</h4>
+<p>Now you can easily interact with your forked remote repository and the local repository using the below options in RStudio.</p>
+<ol type="1">
+<li>Commit Changes:</li>
+</ol>
+<ul>
+<li>Click on the Git tab.</li>
+<li>You will see a list of files that have been changed.</li>
+<li>Select the files you want to commit by checking the boxes next to them.</li>
+<li>Click Commit, enter a commit message, and click Commit again.</li>
+</ul>
+<ol start="2" type="1">
+<li>Push Changes:</li>
+</ol>
+<ul>
+<li>After committing, click the Push button to send your changes to the remote repository.</li>
+</ul>
+<ol start="3" type="1">
+<li>Pull Changes:</li>
+</ol>
+<ul>
+<li>Click the Pull button to fetch and merge changes from the remote repository into your local repository.</li>
+</ul>
+<ol start="4" type="1">
+<li>Diff and History:</li>
+</ol>
+<ul>
+<li>Use the Diff button to see differences between the current version and the previous commit.</li>
+<li>Use the History button to view the commit history.</li>
+</ul>
+</section>
+</section>
+<section id="step-5-pull-updates-from-the-original-repository" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-pull-updates-from-the-original-repository">Step 5: Pull updates from the original repository</h3>
+<section id="add-the-original-repository-as-a-remote" class="level4">
+<h4 class="anchored" data-anchor-id="add-the-original-repository-as-a-remote">Add the Original Repository as a Remote:</h4>
+<ul>
+<li>Open your project in RStudio.</li>
+<li>Go to the Terminal tab in RStudio (usually located at the bottom left).</li>
+<li>Add the original repository (upstream) as a remote: <code>git remote add upstream https://github.com/kaveriC/CLIF-1.0.git</code></li>
+</ul>
+</section>
+<section id="fetch-updates-from-the-original-repository" class="level4">
+<h4 class="anchored" data-anchor-id="fetch-updates-from-the-original-repository">Fetch Updates from the Original Repository:</h4>
+<ul>
+<li>In the terminal, run <code>git fetch upstream</code></li>
+</ul>
+</section>
+<section id="merge-updates-into-your-local-branch" class="level4">
+<h4 class="anchored" data-anchor-id="merge-updates-into-your-local-branch">Merge Updates into Your Local Branch:</h4>
+<ul>
+<li>Ensure you are on your main branch (or the branch you want to update): <code>git checkout main</code></li>
+<li>Merge the changes from the upstream repository into your local branch: <code>git merge upstream/main</code></li>
+<li>Resolve any merge conflicts if they occur.</li>
+</ul>
+</section>
+<section id="push-the-updates-to-your-fork" class="level4">
+<h4 class="anchored" data-anchor-id="push-the-updates-to-your-fork">Push the Updates to Your Fork:</h4>
+<ul>
+<li>Push the merged changes to your forked repository: <code>git push origin main</code></li>
+</ul>
+</section>
+</section>
+<section id="step-6-create-a-pull-request-pr" class="level3">
+<h3 class="anchored" data-anchor-id="step-6-create-a-pull-request-pr">Step 6: Create a Pull Request (PR)</h3>
+<p>After you commit and push your changes to your forked repository, you can create a pull request to merge these updates with the main original repository.</p>
+<section id="using-the-github-web-interface-for-pull-requests" class="level4">
+<h4 class="anchored" data-anchor-id="using-the-github-web-interface-for-pull-requests">Using the GitHub Web Interface for Pull Requests</h4>
+<ul>
+<li>Navigate to Your Forked Repository: Go to your forked repository on GitHub.</li>
+<li>Create a Pull Request:
+<ul>
+<li>Click on the Pull Requests tab.</li>
+<li>Click the New Pull Request button.</li>
+<li>Select the base repository (original repository) and the branch you want to merge into (typically main).</li>
+<li>Select the head repository (your fork) and the branch with your changes.</li>
+<li>Click Create Pull Request.</li>
+<li>Add a title and description for your pull request, then click Create Pull Request.</li>
+</ul></li>
+</ul>
+</section>
+<section id="using-rstudio-for-pull-requests" class="level4">
+<h4 class="anchored" data-anchor-id="using-rstudio-for-pull-requests">Using RStudio for Pull Requests</h4>
+<p>While this step is typically done through the GitHub web interface, you can initiate it from the command line if needed.</p>
+<ul>
+<li>Open the terminal in RStudio and use the GitHub CLI (gh) to create a pull request: <code>gh pr create --base kaveriC:main --head your-username:main --title "Your PR Title" --body "Your PR Description"</code></li>
+<li>Replace your-username with your GitHub username and customize the title and description as needed.</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -177,6 +362,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
