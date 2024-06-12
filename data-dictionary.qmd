@@ -158,7 +158,7 @@ Relational CLIF has 20 tables that are organized into clinically relevant column
 | lab_group         | VARCHAR   | Limited number of labs categorized into five groups - ABG, BMP, CBC, Coags, LFT, Lactic Acid, Misc, VBG |
 | lab_value         | DOUBLE   | Recorded value corresponding to a lab_name                     |
 | reference_unit    | VARCHAR   | Unit of measurement for that lab                                |
-| lab_type_name     | VARCHAR   | Three categories - arterial, venous, and standard/proc          |
+| lab_type_name     | VARCHAR   | Three categories - arterial, venous, standard, poc          |
 
 **Example:**
 
