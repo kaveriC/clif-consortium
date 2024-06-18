@@ -1,6 +1,6 @@
 ---
 title: "Common Longitudinal ICU data Format"
-image: clif_logo.png
+image: images/clif_logo.png
 about:
     template: jolla
     image-shape: rectangle
@@ -15,4 +15,4 @@ about:
 
 <p><strong>Participating sites</strong></p>
 
-![](member_logos.jpeg)
+![](images/member_logos.jpeg)
