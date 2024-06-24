@@ -98,6 +98,9 @@ title: "Meet the CLIF Team"
     <a href="https://scholar.google.com/citations?user=1S-Nm9cAAAAJ&hl=en&oi=sra" target="_blank">
       <img src="images/scholar_icon.png" alt="Google Scholar" class="icon">
     </a></p></div>
+  <div><img src="headshots/placeholder.jpg" alt="Brenna Park-Egan" class="team-img">
+    <p><strong>Brenna Park-Egan, MS </strong><br>
+    </p></div>
 </div>
 
 ## John Hopkins University
@@ -143,6 +146,19 @@ title: "Meet the CLIF Team"
     <a href="https://scholar.google.com/citations?hl=en&user=qnzL2JUAAAAJ" target="_blank">
       <img src="images/scholar_icon.png" alt="Google Scholar" class="icon">
     </a></p></div>
+</div>
+
+## University of Michigan
+
+<div class="team-grid">
+  <div><img src="headshots/anna_barker.jpg" alt="Anna Barker" class="team-img">
+    <p><strong>Anna Barker, MD</strong><br>
+    <a href="https://www.linkedin.com/in/anna-barker-0505a319/" target="_blank">
+       <img src="images/linkedin_icon.png" alt="LinkedIn" class="icon">
+    </a></p></div>
+  <div><img src="headshots/placeholder.jpg" alt="Mark Nuppnau" class="team-img">
+    <p><strong>Mark Nuppnau, MS </strong><br>
+    </p></div>
 </div>
 
 

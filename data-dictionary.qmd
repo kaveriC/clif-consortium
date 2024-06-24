@@ -128,7 +128,7 @@ Relational CLIF has 20 tables that are organized into clinically relevant column
 | encounter_id      | VARCHAR   | ID variable for each patient encounter (a given patient can have multiple encounters) |
 | recorded_dttm     | DATETIME  | Date and time when the vital is recorded (in the format %Y-%m-%d %H:%M:%S) |
 | vital_name        | VARCHAR   | Original vital name string recorded in the raw data             |
-| vital_category    | VARCHAR   | Limited number of vitals, namely - temp_c, pulse, sbp, dbp, sp02, respiratory_rate, map, height_inches, weight_kg |
+| vital_category    | VARCHAR   | Limited number of vitals, namely - temp_c, pulse, sbp, dbp, spo2, respiratory_rate, map, height_inches, weight_kg |
 | vital_value       | DOUBLE   | Recorded value of the vital identified by the CLIF consortium   |
 | meas_site_name    | VARCHAR   | Site where vital is recorded. It has three categories - arterial, core, not specified |
 
