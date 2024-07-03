@@ -4,7 +4,7 @@
     "href": "posts.html",
     "title": "Blog",
     "section": "",
-    "text": "Using CLIF GitHub with R\n\n\n\ngithub\n\n\ncollaboration\n\n\n\n\n\n\n\nKaveri Chhikara\n\n\nJun 6, 2024\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "CLIF Microbiology\n\n\n\nehr-to-clif\n\n\nmicrobiology\n\n\nERD\n\n\n\n\n\n\n\nKevin Buell, Kaveri Chhikara\n\n\nJul 3, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nUsing CLIF GitHub with R\n\n\n\ngithub\n\n\ncollaboration\n\n\n\n\n\n\n\nKaveri Chhikara\n\n\nJun 6, 2024\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -278,5 +278,117 @@
     "title": "Meet the CLIF Team",
     "section": "University of Michigan",
     "text": "University of Michigan\n\n\n\n\nAnna Barker, MD   \n\n\n\n\n\nMark Nuppnau, MS"
+  },
+  {
+    "objectID": "posts/github-clif copy/index.html",
+    "href": "posts/github-clif copy/index.html",
+    "title": "EHR to CLIF Microbiology",
+    "section": "",
+    "text": "This guide provides detailed steps on how to construct the CLIF microbiology table using EHR data."
+  },
+  {
+    "objectID": "posts/github-clif copy/index.html#notes-on-cde-nih-infection-site",
+    "href": "posts/github-clif copy/index.html#notes-on-cde-nih-infection-site",
+    "title": "EHR to CLIF Microbiology",
+    "section": "Notes on CDE NIH Infection Site",
+    "text": "Notes on CDE NIH Infection Site\n\n\n\n\n\n\n\nCategory\nDetails\n\n\n\n\nCatheter tip\nIncludes central venous catheter tips and pacemaker leads.\n\n\nGI tract unspecified\nUse only if it cannot be categorized into esophagus, stomach, small intestine, or large intestine.\n\n\n\nInterpreted as a luminal GI source.\n\n\nGenito-urinary tract unspecified\nUse for urine cultures.\n\n\n\nIncludes kidney, renal pelvis, ureters, and bladder.\n\n\n\nUse for stents, tissue, abscess, cysts, etc.\n\n\nRash, pustules, or abscesses not typical of any of the above\nInterpreted as a superficial skin pustular source.\n\n\n\nDoes not include deep abscesses (e.g., psoas abscess).\n\n\nLower respiratory tract (lung)\nIncludes all respiratory samples such as tracheal samples, BAL, induced and normal sputum, TBBx, and lung abscesses.\n\n\n\nTypically, fluids are not categorized as “respiratory tract unspecified”.\n\n\n\nRespiratory fluids are complicated to classify; use specimen_description to further classify fluid location (e.g., BAL vs sputum vs trach).\n\n\nJoints\nIncludes samples from within the joint (e.g., synovial, bursa).\n\n\n\nDoes not include overlying skin or muscle.\n\n\nSpinal cord\nDoes not include vertebral osteomyelitis, which falls under “bone cortex (osteomyelitis)”.\n\n\nWound site\nIncludes infected incisions.\n\n\n\nDoes not capture ulcers, as it is often unclear if the ulcer is skin-only vs muscle/fascia vs bone."
+  },
+  {
+    "objectID": "posts/github-clif copy/index.html#note-on-the-cde-organism-table",
+    "href": "posts/github-clif copy/index.html#note-on-the-cde-organism-table",
+    "title": "EHR to CLIF Microbiology",
+    "section": "Note on the CDE Organism table",
+    "text": "Note on the CDE Organism table\n\n\n\n\n\n\n\nCategory\nDetails\n\n\n\n\nOrganism_name structure\nStructured as “genus_species”.\n\n\n\nIf the species is not available, use “genus_sp”.\n\n\nObligatory anaerobes\nCheck if the bacteria is an obligatory anaerobe.\n\n\n\nClassified into “anaerobic bacteria (nos, except for bacteroides, clostridium)”.\n\n\nGram +/- without genus/species\nFor strings of “gram +/- without genus/species”, use the corresponding categories for fluid_cat.\n\n\n\nApply that category in fluid_name as well."
+  },
+  {
+    "objectID": "posts/microbiology/index.html",
+    "href": "posts/microbiology/index.html",
+    "title": "CLIF Microbiology",
+    "section": "",
+    "text": "This guide provides detailed steps on how to construct the CLIF microbiology table using EHR data.\n\n\n\n\n\n\n\n\nencounter_id\ntest_id: For one component (e.g., gram culture smear) for a given fluid with a unique order and collection time. If two pathogens are identified, this yields two rows with the same test_id.\norganism_id: For one culture for a given fluid with a unique order and collection time, linked to a separate sensitivity table. If two pathogens are identified, this yields two rows with the same culture_id.\norder_dttm\ncollect_dttm\nresult_dttm\nfluid_name\nfluid_category (Defined by NIH CDE)\norganism_name\norganism_category (Defined by NIH CDE)\n\n\n\n\n\nCDE NIH Organism: List of categorized organism names defined by NIH.\nclif_vocab_microbiology_organism_ucmc.csv: Helps categorize organism name strings.\nCDE NIH Infection Site: List of categorized infectious fluid names defined by NIH.\nclif_vocab_microbiology_fluid_ucmc.csv: Identifies and categorizes infectious fluid names."
+  },
+  {
+    "objectID": "posts/microbiology/index.html#notes-on-cde-nih-infection-site",
+    "href": "posts/microbiology/index.html#notes-on-cde-nih-infection-site",
+    "title": "CLIF Microbiology",
+    "section": "Notes on CDE NIH Infection Site",
+    "text": "Notes on CDE NIH Infection Site\n\n\n\n\n\n\n\nCategory\nDetails\n\n\n\n\nCatheter tip\nIncludes central venous catheter tips and pacemaker leads.\n\n\nGI tract unspecified\nUse only if it cannot be categorized into esophagus, stomach, small intestine, or large intestine.\n\n\n\nInterpreted as a luminal GI source.\n\n\nGenito-urinary tract unspecified\nUse for urine cultures.\n\n\n\nIncludes kidney, renal pelvis, ureters, and bladder.\n\n\n\nUse for stents, tissue, abscess, cysts, etc.\n\n\nRash, pustules, or abscesses not typical of any of the above\nInterpreted as a superficial skin pustular source.\n\n\n\nDoes not include deep abscesses (e.g., psoas abscess).\n\n\nLower respiratory tract (lung)\nIncludes all respiratory samples such as tracheal samples, BAL, induced and normal sputum, TBBx, and lung abscesses.\n\n\n\nTypically, fluids are not categorized as “respiratory tract unspecified”.\n\n\n\nRespiratory fluids are complicated to classify; use specimen_description to further classify fluid location (e.g., BAL vs sputum vs trach).\n\n\nJoints\nIncludes samples from within the joint (e.g., synovial, bursa).\n\n\n\nDoes not include overlying skin or muscle.\n\n\nSpinal cord\nDoes not include vertebral osteomyelitis, which falls under “bone cortex (osteomyelitis)”.\n\n\nWound site\nIncludes infected incisions.\n\n\n\nDoes not capture ulcers, as it is often unclear if the ulcer is skin-only vs muscle/fascia vs bone."
+  },
+  {
+    "objectID": "posts/microbiology/index.html#note-on-the-cde-organism-table",
+    "href": "posts/microbiology/index.html#note-on-the-cde-organism-table",
+    "title": "CLIF Microbiology",
+    "section": "Note on the CDE Organism table",
+    "text": "Note on the CDE Organism table\n\n\n\n\n\n\n\nCategory\nDetails\n\n\n\n\nOrganism_name structure\nStructured as “genus_species”.\n\n\n\nIf the species is not available, use “genus_sp”.\n\n\nObligatory anaerobes\nCheck if the bacteria is an obligatory anaerobe.\n\n\n\nClassified into “anaerobic bacteria (nos, except for bacteroides, clostridium)”.\n\n\nGram +/- without genus/species\nFor strings of “gram +/- without genus/species”, use the corresponding categories for fluid_cat.\n\n\n\nApply that category in fluid_name as well."
+  },
+  {
+    "objectID": "posts/microbiology/index.html#common-problems-encountered",
+    "href": "posts/microbiology/index.html#common-problems-encountered",
+    "title": "CLIF Microbiology",
+    "section": "Common Problems Encountered",
+    "text": "Common Problems Encountered\n\nDescribing Organisms:\n\nThere are tens of thousands of strings to describe organisms (e.g., 100,000 CFU E coli, Esch. Coli, E.Coli, etc.).\nUse ontology tables to left_bind and map out organism strings to “organism_name” (genus_species) and “organism_category” (as determined by NIH CDE).\nFor instance, this is a snapshort of 20 records only for negative gram stain and Enterobacter + culture!\n\n\n\n\n\n\nDuplicated Data:\n\nAs one microbiology result can be spread over many rows, left_binding 1:1 using the microbiology ontology tables may create duplicates.\nThese duplicates will need to be addressed later.\n\nNon-descriptive Fluid Names:\n\nSome fluid names describe where the micro fluid is collected (e.g., blood culture anaerobic and aerobic), but many do not (e.g., anaerobic culture, I&D).\nUse other dataset columns, such as “specimen_description” or “source”, to recategorize cultures whose location is not obvious from the “fluid_name”.\nFor instance, At UoC, we have a separate component == “specimen description” that further describes fluid collection. UoW and Northshore also had something similar.\n\n\n\n\n\n\nMultiple Strings for Components:\n\nThere are multiple strings to describe each component of a fluid_name (e.g., gram stain, gram for anaerobic stain, gramstain, etc.).\nDifferent fluid names have components specific to them (e.g., only bacterial cultures have gram stains)."
+  },
+  {
+    "objectID": "posts/microbiology/index.html#step-1-identify-fluid-names-ordering-infectious-studies",
+    "href": "posts/microbiology/index.html#step-1-identify-fluid-names-ordering-infectious-studies",
+    "title": "CLIF Microbiology",
+    "section": "Step 1: Identify Fluid Names Ordering Infectious Studies",
+    "text": "Step 1: Identify Fluid Names Ordering Infectious Studies\nTo begin cleaning your CLIF micro data, you first need to identify fluid names that order an infectious study. If your dataset contains all labs ordered at your site, you need to filter out those specific to infectious cultures. The clif_vocab_microbiology_fluid_ucmc table contains a list of infectious fluid names that map to the fluid category. Here’s how you can do it:\nfluid_name_ontology &lt;- read_excel(\"pathway\") %&gt;%\n  mutate(across(where(is.character), tolower)) %&gt;%\n  filter(culture == 1) %&gt;%\n  select(-culture)\nNext, check for other infectious orders that need to be included in your site’s fluid names:\nData %&gt;%\n  filter(is.na(fluid_category)) %&gt;%\n  distinct(fluid_names)\nLook at the table for any infectious fluid names that the micro_ontology table did not pick up. You will need to include these.\nYou can then either:\n\nUpdate the micro_ontology table and repeat the left bind.\nUse case_when(fluid_name == ____) then fluid category is ____."
+  },
+  {
+    "objectID": "posts/microbiology/index.html#introduction",
+    "href": "posts/microbiology/index.html#introduction",
+    "title": "CLIF Microbiology",
+    "section": "",
+    "text": "This guide provides detailed steps on how to construct the CLIF microbiology table using EHR data.\n\n\n\n\n\n\n\n\nencounter_id\ntest_id: For one component (e.g., gram culture smear) for a given fluid with a unique order and collection time. If two pathogens are identified, this yields two rows with the same test_id.\norganism_id: For one culture for a given fluid with a unique order and collection time, linked to a separate sensitivity table. If two pathogens are identified, this yields two rows with the same culture_id.\norder_dttm\ncollect_dttm\nresult_dttm\nfluid_name\nfluid_category (Defined by NIH CDE)\norganism_name\norganism_category (Defined by NIH CDE)\n\n\n\n\n\nCDE NIH Organism: List of categorized organism names defined by NIH.\nclif_vocab_microbiology_organism_ucmc.csv: Helps categorize organism name strings.\nCDE NIH Infection Site: List of categorized infectious fluid names defined by NIH.\nclif_vocab_microbiology_fluid_ucmc.csv: Identifies and categorizes infectious fluid names."
+  },
+  {
+    "objectID": "posts/microbiology/index.html#step-2-reclassify-fluid-categories",
+    "href": "posts/microbiology/index.html#step-2-reclassify-fluid-categories",
+    "title": "CLIF Microbiology",
+    "section": "Step 2: Reclassify Fluid Categories",
+    "text": "Step 2: Reclassify Fluid Categories\nReclassify fluid_category == “other unspecified” into a more specific category using case_when or grepl. With this approach, about 30% of fluid names might be left bound to the fluid_category \"other unspecified\" because the fluid name does not contain any description of where the fluid originates from.\nReclassify these “other_unspecified” cultures into their correct fluid_category. At UoC, the fluid_description is a string typed in by the clinician in EPIC and is therefore the correct fluid_category.\nIn the below example, we reclassify fluid categories for brain and eyes:\n# Reclassify fluid categories for brain\nsipa_data.brain.pre &lt;- sipa_data.v7 %&gt;%\n  filter(fluid_category == \"other unspecified\" | fluid_category == \"brain\") %&gt;%\n  mutate(fluid_category = case_when(component_name == \"specimen description\" & grepl(\"brain\", ord_value, ignore.case = TRUE) ~ \"brain\",\n                                    TRUE ~ fluid_category)) %&gt;%\n  ungroup()\n\n# Reclassify fluid categories for eyes\nsipa_data.eyes.pre &lt;- sipa_data.v7 %&gt;%\n  filter(fluid_category == \"other unspecified\" | fluid_category == \"eyes\") %&gt;%\n  mutate(fluid_category = case_when(component_name == \"specimen description\" & grepl(\"conjunctival|conjunctivall|corneal|corneal\nEnsure that your reclassification is correct by checking for coherenc. Be careful with your grepl term because it is EXTREMELY easy to miscategorise fluids.\nFor instance, bladder could be gallbladderor urinary bladder\nData %&gt;%\n  mutate(fluid_category = case_when(\n    str_detect(fluid_name, \"bladder\") ~ \"urinary bladder\",\n    TRUE ~ fluid_category\n  ))\nAfter every grepl/case_when, you need to\nData %&gt;%\n  filter(fluid_category == \"fluid_category\") %&gt;%\n  distinct(fluid_names, fluid_category)\nLook at the table to see that the pairings are coherent."
+  },
+  {
+    "objectID": "posts/microbiology/index.html#step-2-check-for-other-infectious-orders",
+    "href": "posts/microbiology/index.html#step-2-check-for-other-infectious-orders",
+    "title": "CLIF Microbiology",
+    "section": "Step 2: Check for other infectious orders",
+    "text": "Step 2: Check for other infectious orders\nNext, check for other infectious orders that need to be included in your site’s fluid names:\nData %&gt;%\n  filter(is.na(fluid_category)) %&gt;%\n  distinct(fluid_names)\nLook at the table for any infectious fluid names that the micro_ontology table did not pick up. You will need to include these.\nYou can then either:\n\nUpdate the micro_ontology table and repeat the left bind.\nUse case_when(fluid_name == ____) then fluid category is ____."
+  },
+  {
+    "objectID": "posts/microbiology/index.html#step-3-reclassify-fluid-categories",
+    "href": "posts/microbiology/index.html#step-3-reclassify-fluid-categories",
+    "title": "CLIF Microbiology",
+    "section": "Step 3: Reclassify Fluid Categories",
+    "text": "Step 3: Reclassify Fluid Categories\nReclassify fluid_category == “other unspecified” into a more specific category using case_when or grepl. With this approach, about 30% of fluid names might be left bound to the fluid_category \"other unspecified\" because the fluid name does not contain any description of where the fluid originates from.\nReclassify these “other_unspecified” cultures into their correct fluid_category. At UoC, the fluid_description is a string typed in by the clinician in EPIC and is therefore the correct fluid_category.\nData %&gt;%\n  mutate(fluid_category = case_when(\n    str_detect(fluid_name, \"bladder\") ~ \"urinary bladder\",\n    TRUE ~ fluid_category\n  ))\nEnsure that your reclassification is correct by checking for coherence:\nData %&gt;%\n  filter(fluid_category == \"fluid_category\") %&gt;%\n  distinct(fluid_names, fluid_category)"
+  },
+  {
+    "objectID": "posts/microbiology/index.html#step-3-create-component-categories",
+    "href": "posts/microbiology/index.html#step-3-create-component-categories",
+    "title": "CLIF Microbiology",
+    "section": "Step 3: Create Component categories",
+    "text": "Step 3: Create Component categories\nThe type of fluid name should be specified. There are three levels for this: Culture, Gram stain, and Smear.\nSince there were few component names at UoC, an ontology table wasn’t created. Instead, you can use case_when to create a new column for component_category:\nData %&gt;%\n  mutate(component_category = case_when(\n    str_detect(component_name, \"gram stain\") ~ \"Gram stain\",\n    str_detect(component_name, \"smear\") ~ \"Smear\",\n    TRUE ~ \"Culture\"\n  ))"
+  },
+  {
+    "objectID": "posts/microbiology/index.html#step-4-categorize-organism-name-strings",
+    "href": "posts/microbiology/index.html#step-4-categorize-organism-name-strings",
+    "title": "CLIF Microbiology",
+    "section": "Step 4: Categorize Organism Name Strings",
+    "text": "Step 4: Categorize Organism Name Strings\nCategorize organism name strings into organism_name and organism_category by left binding the clif_vocab_microbiology_organism_ucmc.csv table:\n\n\n\n\n\nData &lt;- Data %&gt;%\n  left_join(micro_name_ontology, by = \"organism_string\")\nCheck for organism strings that did not get captured with the left bind:\nData %&gt;%\n  filter(is.na(organism_category)) %&gt;%\n  distinct(organism_string)\nInclude any missing organism strings by either:\n\nUsing case_when for specific strings.\nUpdating the organism_name_ontology table manually and repeating the left bind.\n\nFor updating the organism name ontology table, you could also use the CLIF Assitant. You can feed CLIF assistant your strings. It can help you classify them into organism_names and organism_categories."
+  },
+  {
+    "objectID": "posts/microbiology/index.html#step-5-final-steps-to-clean-the-data",
+    "href": "posts/microbiology/index.html#step-5-final-steps-to-clean-the-data",
+    "title": "CLIF Microbiology",
+    "section": "Step 5: Final Steps to Clean the Data",
+    "text": "Step 5: Final Steps to Clean the Data\n\nCreate Test ID and Culture ID\nA test_id is a unique number that identifies one patient, one infectious lab (fluid_name) collected at one time point, and its component_name.\nA culture_id is a unique number that identifies one patient, one infectious lab (fluid_name) collected at one time point, and its component_name for a culture."
+  },
+  {
+    "objectID": "posts/microbiology/index.html#potential-additional-steps",
+    "href": "posts/microbiology/index.html#potential-additional-steps",
+    "title": "CLIF Microbiology",
+    "section": "Potential additional steps",
+    "text": "Potential additional steps\nWhether or not you need to perform these additional steps depends on how many redundant string rows your dataset has\n\nRemove Duplicate Rows\n\n\nTo remove duplicate rows, use the following R code:\n\ndistinct(encounter_id, order_dttm, collect_dttm, result_dttm, fluid_name, fluid_category, component_name, component_category, organism_name, organism_category, susceptibility_columns)\n\nOne organism collected from a patient, from one body fluid, at one time, growing one bug, with a set susceptibility pattern should take up one row\n\nIf two different bugs grow from same culture, they take up two rows\nIf two identical bugs grow with different susceptibility profile, they take up two rows\n\n\n\nReview additional rows of\n\n\nNo growth\n\nExample that no growth should be removed. The below screenshot is one culture. The “no growth” of “no bacteroides fragilis group or clostridium perfringes isolated” comes from left bind. It is not appropriate given the culture actually grows pseudomonas.\n\n\n\n\n\n\nOther bacteria\n\nExample that other bacteria should be removed. We ultimately want one row showing the growth enterococcus and not “other bacteria”\n\n\n\n\n\n\n\n\nNotes on CDE NIH Infection Site\n\n\n\n\n\n\n\nCategory\nDetails\n\n\n\n\nCatheter tip\nIncludes central venous catheter tips and pacemaker leads.\n\n\nGI tract unspecified\nUse only if it cannot be categorized into esophagus, stomach, small intestine, or large intestine.\n\n\n\nInterpreted as a luminal GI source.\n\n\nGenito-urinary tract unspecified\nUse for urine cultures.\n\n\n\nIncludes kidney, renal pelvis, ureters, and bladder.\n\n\n\nUse for stents, tissue, abscess, cysts, etc.\n\n\nRash, pustules, or abscesses not typical of any of the above\nInterpreted as a superficial skin pustular source.\n\n\n\nDoes not include deep abscesses (e.g., psoas abscess).\n\n\nLower respiratory tract (lung)\nIncludes all respiratory samples such as tracheal samples, BAL, induced and normal sputum, TBBx, and lung abscesses.\n\n\n\nTypically, fluids are not categorized as “respiratory tract unspecified”.\n\n\n\nRespiratory fluids are complicated to classify; use specimen_description to further classify fluid location (e.g., BAL vs sputum vs trach).\n\n\nJoints\nIncludes samples from within the joint (e.g., synovial, bursa).\n\n\n\nDoes not include overlying skin or muscle.\n\n\nSpinal cord\nDoes not include vertebral osteomyelitis, which falls under “bone cortex (osteomyelitis)”.\n\n\nWound site\nIncludes infected incisions.\n\n\n\nDoes not capture ulcers, as it is often unclear if the ulcer is skin-only vs muscle/fascia vs bone.\n\n\n\n\n\nNotes on the CDE Organism table\n\n\n\n\n\n\n\nCategory\nDetails\n\n\n\n\nOrganism_name structure\nStructured as “genus_species”.\n\n\n\nIf the species is not available, use “genus_sp”.\n\n\nObligatory anaerobes\nCheck if the bacteria is an obligatory anaerobe.\n\n\n\nClassified into “anaerobic bacteria (nos, except for bacteroides, clostridium)”.\n\n\nGram +/- without genus/species\nFor strings of “gram +/- without genus/species”, use the corresponding categories for fluid_cat.\n\n\n\nApply that category in fluid_name as well.\n\n\n\n\n\nCommon Problems Encountered\n\nDescribing Organisms:\n\nThere are tens of thousands of strings to describe organisms (e.g., 100,000 CFU E coli, Esch. Coli, E.Coli, etc.).\nUse ontology tables to left_bind and map out organism strings to “organism_name” (genus_species) and “organism_category” (as determined by NIH CDE).\nFor instance, this is a snapshort of 20 records only for negative gram stain and Enterobacter + culture!\n\n\n\n\n\n\nDuplicated Data:\n\nAs one microbiology result can be spread over many rows, left_binding 1:1 using the microbiology ontology tables may create duplicates.\nThese duplicates will need to be addressed later.\n\nNon-descriptive Fluid Names:\n\nSome fluid names describe where the micro fluid is collected (e.g., blood culture anaerobic and aerobic), but many do not (e.g., anaerobic culture, I&D).\nUse other dataset columns, such as “specimen_description” or “source”, to recategorize cultures whose location is not obvious from the “fluid_name”.\nFor instance, At UoC, we have a separate component == “specimen description” that further describes fluid collection. UoW and Northshore also had something similar.\n\n\n\n\n\n\nMultiple Strings for Components:\n\nThere are multiple strings to describe each component of a fluid_name (e.g., gram stain, gram for anaerobic stain, gramstain, etc.).\nDifferent fluid names have components specific to them (e.g., only bacterial cultures have gram stains)."
   }
 ]

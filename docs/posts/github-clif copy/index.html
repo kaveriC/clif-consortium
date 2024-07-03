@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Kevin Buell, Kaveri Chhikara">
+<meta name="dcterms.date" content="2024-07-03">
 
-<title>CLIF Consortium - Blog</title>
+<title>CLIF Consortium - EHR to CLIF Microbiology</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,77 +68,20 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
+<link rel="stylesheet" href="../../styles.css">
 <link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">CLIF Consortium</span>
     </a>
   </div>
@@ -149,23 +92,23 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">TEAM</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./projects.html"> 
+    <a class="nav-link" href="../../projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./data-dictionary.html"> 
+    <a class="nav-link" href="../../data-dictionary.html"> 
 <span class="menu-text">Data Dictionary</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./posts.html" aria-current="page"> 
+    <a class="nav-link" href="../../posts.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
@@ -183,110 +126,214 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">EHR to CLIF Microbiology</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">ehr-to-clif</div>
+                <div class="quarto-category">microbiology</div>
+                <div class="quarto-category">ERD</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Kevin Buell, Kaveri Chhikara </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 3, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="ERD">ERD <span class="quarto-category-count">(1)</span></div><div class="category" data-category="collaboration">collaboration <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ehr-to-clif">ehr-to-clif <span class="quarto-category-count">(1)</span></div><div class="category" data-category="github">github <span class="quarto-category-count">(1)</span></div><div class="category" data-category="microbiology">microbiology <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#desired-clif-table-structure" id="toc-desired-clif-table-structure" class="nav-link active" data-scroll-target="#desired-clif-table-structure">Desired CLIF Table Structure</a></li>
+  <li><a href="#documents-to-facilitate-cleaning-data" id="toc-documents-to-facilitate-cleaning-data" class="nav-link" data-scroll-target="#documents-to-facilitate-cleaning-data">Documents to facilitate cleaning data</a></li>
+  <li><a href="#notes-on-cde-nih-infection-site" id="toc-notes-on-cde-nih-infection-site" class="nav-link" data-scroll-target="#notes-on-cde-nih-infection-site">Notes on CDE NIH Infection Site</a></li>
+  <li><a href="#note-on-the-cde-organism-table" id="toc-note-on-the-cde-organism-table" class="nav-link" data-scroll-target="#note-on-the-cde-organism-table">Note on the CDE Organism table</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Blog</h1>
-</div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<p>This guide provides detailed steps on how to construct the CLIF microbiology table using EHR data.</p>
+<section id="desired-clif-table-structure" class="level3">
+<h3 class="anchored" data-anchor-id="desired-clif-table-structure">Desired CLIF Table Structure</h3>
+<ul>
+<li>encounter_id</li>
+<li>test_id: For one component (e.g., gram culture smear) for a given fluid with a unique order and collection time. If two pathogens are identified, this yields two rows with the same test_id.</li>
+<li>culture_id: For one culture for a given fluid with a unique order and collection time, linked to a separate sensitivity table. If two pathogens are identified, this yields two rows with the same culture_id.</li>
+<li>order_dttm</li>
+<li>collect_dttm</li>
+<li>result_dttm</li>
+<li>fluid_name</li>
+<li>fluid_category (Defined by NIH CDE)</li>
+<li>component_name (e.g., gram stain, culture etc)</li>
+<li>component_category (e.g., gram stain, culture, smear)</li>
+<li>organism_name</li>
+<li>organism_category (Defined by NIH CDE)</li>
+</ul>
+</section>
+<section id="documents-to-facilitate-cleaning-data" class="level3">
+<h3 class="anchored" data-anchor-id="documents-to-facilitate-cleaning-data">Documents to facilitate cleaning data</h3>
+<ol type="1">
+<li><a href="https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/clif_nih_vocab_microbiology_organism.csv">CDE NIH Organism</a>: List of categorized organism names defined by NIH.</li>
+<li><a href="https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/ucmc/clif_vocab_microbiology_organism_ucmc.csv">clif_vocab_microbiology_organism_ucmc.csv</a>: Helps categorize organism name strings.</li>
+<li><a href="https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/clif_nih_vocab_microbiology_fluid.csv">CDE NIH Infection Site</a>: List of categorized infectious fluid names defined by NIH.</li>
+<li><a href="https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/ucmc/clif_vocab_microbiology_fluid_ucmc.csv">clif_vocab_microbiology_fluid_ucmc.csv</a>: Identifies and categorizes infectious fluid names.</li>
+</ol>
+</section>
+<section id="notes-on-cde-nih-infection-site" class="level2">
+<h2 class="anchored" data-anchor-id="notes-on-cde-nih-infection-site">Notes on CDE NIH Infection Site</h2>
+<table class="table">
+<colgroup>
+<col style="width: 75%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Category</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Catheter tip</strong></td>
+<td>Includes central venous catheter tips and pacemaker leads.</td>
+</tr>
+<tr class="even">
+<td><strong>GI tract unspecified</strong></td>
+<td>Use only if it cannot be categorized into esophagus, stomach, small intestine, or large intestine.</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Interpreted as a luminal GI source.</td>
+</tr>
+<tr class="even">
+<td><strong>Genito-urinary tract unspecified</strong></td>
+<td>Use for urine cultures.</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Includes kidney, renal pelvis, ureters, and bladder.</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Use for stents, tissue, abscess, cysts, etc.</td>
+</tr>
+<tr class="odd">
+<td><strong>Rash, pustules, or abscesses not typical of any of the above</strong></td>
+<td>Interpreted as a superficial skin pustular source.</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Does not include deep abscesses (e.g., psoas abscess).</td>
+</tr>
+<tr class="odd">
+<td><strong>Lower respiratory tract (lung)</strong></td>
+<td>Includes all respiratory samples such as tracheal samples, BAL, induced and normal sputum, TBBx, and lung abscesses.</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Typically, fluids are not categorized as “respiratory tract unspecified”.</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Respiratory fluids are complicated to classify; use specimen_description to further classify fluid location (e.g., BAL vs sputum vs trach).</td>
+</tr>
+<tr class="even">
+<td><strong>Joints</strong></td>
+<td>Includes samples from within the joint (e.g., synovial, bursa).</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Does not include overlying skin or muscle.</td>
+</tr>
+<tr class="even">
+<td><strong>Spinal cord</strong></td>
+<td>Does not include vertebral osteomyelitis, which falls under “bone cortex (osteomyelitis)”.</td>
+</tr>
+<tr class="odd">
+<td><strong>Wound site</strong></td>
+<td>Includes infected incisions.</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Does not capture ulcers, as it is often unclear if the ulcer is skin-only vs muscle/fascia vs bone.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="note-on-the-cde-organism-table" class="level2">
+<h2 class="anchored" data-anchor-id="note-on-the-cde-organism-table">Note on the CDE Organism table</h2>
+<table class="table">
+<colgroup>
+<col style="width: 75%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Category</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Organism_name structure</strong></td>
+<td>Structured as “genus_species”.</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>If the species is not available, use “genus_sp”.</td>
+</tr>
+<tr class="odd">
+<td><strong>Obligatory anaerobes</strong></td>
+<td>Check if the bacteria is an obligatory anaerobe.</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Classified into “anaerobic bacteria (nos, except for bacteroides, clostridium)”.</td>
+</tr>
+<tr class="odd">
+<td><strong>Gram +/- without genus/species</strong></td>
+<td>For strings of “gram +/- without genus/species”, use the corresponding categories for fluid_cat.</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Apply that category in fluid_name as well.</td>
+</tr>
+</tbody>
+</table>
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="ehr-to-clif,microbiology,ERD" data-listing-date-sort="1719982800000" data-listing-file-modified-sort="1720032134287" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="19" data-listing-word-count-sort="3675">
-<a href="./posts/microbiology/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="posts/microbiology/schema.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-CLIF Microbiology
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('ehr-to-clif'); return false;">
-ehr-to-clif
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('microbiology'); return false;">
-microbiology
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('ERD'); return false;">
-ERD
-</div>
-</div>
-<div class="card-text listing-description">
-This guide provides detailed steps on how to construct the CLIF microbiology table using EHR data.
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Kevin Buell, Kaveri Chhikara
-</div>
-<div class="listing-date">
-Jul 3, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="github,collaboration" data-listing-date-sort="1717650000000" data-listing-file-modified-sort="1717694129258" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="889">
-<a href="./posts/github-clif/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="posts/github-clif/github_image.jpeg" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Using CLIF GitHub with R
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('github'); return false;">
-github
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('collaboration'); return false;">
-collaboration
-</div>
-</div>
-<div class="card-text listing-description">
-This blog provides a structured approach to setting up GitHub, tailored specifically for our collaborative projects. By standardizing our setup, we can enhance our…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Kaveri Chhikara
-</div>
-<div class="listing-date">
-Jun 6, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
