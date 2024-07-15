@@ -45,4 +45,4 @@ Principal Investigators (PIs) in the consortium are supported by a wide range of
 
 - **CLIF Project Description:** Develop an oncology-specific sepsis prediction model using EHR data and human-centered design
 - **Grant:** [K08CA270383](https://reporter.nih.gov/search/NtN6kDznS0abLd7eY-HHuw/project-details/10884029)
-- **PI:** Patrick G Lyons, Oregon Health and Science University
+- **PI:** Patrick Lyons, Oregon Health and Science University
