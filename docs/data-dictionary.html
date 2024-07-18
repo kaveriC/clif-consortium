@@ -188,13 +188,13 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td>patient_id</td>
-<td>VARCHAR</td>
-<td>ID variable for each patient</td>
+<td>INT</td>
+<td>ID variable for each patient. Every patient assigned a unique identifier is presumed to be a distinct individual</td>
 </tr>
 <tr class="even">
 <td>encounter_id</td>
-<td>VARCHAR</td>
-<td>ID variable for each patient encounter (a given patient can have multiple encounters)</td>
+<td>INT</td>
+<td>ID variable for each patient encounter (a given patient can have multiple encounters). Each encounter_id represents a unique hospitalization for a patient, capturing the entire duration of the hospital stay. This is the primary key for most other tables</td>
 </tr>
 </tbody>
 </table>
@@ -240,37 +240,43 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="patient_demographics">Patient_demographics</h2>
 <table class="table">
 <colgroup>
-<col style="width: 39%">
-<col style="width: 28%">
-<col style="width: 31%">
+<col style="width: 30%">
+<col style="width: 22%">
+<col style="width: 24%">
+<col style="width: 22%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Variable Name</th>
 <th>Data Type</th>
 <th>Definition</th>
+<th>Permissible Values</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>patient_id</td>
-<td>VARCHAR</td>
-<td>ID variable for each patient</td>
+<td>encounter_id</td>
+<td>INT</td>
+<td>ID variable for each patient encounter</td>
+<td></td>
 </tr>
 <tr class="even">
 <td>race</td>
 <td>VARCHAR</td>
-<td>Description of patient’s race. Categories include Black or African-American, White, American Indian or Alaska Native, Asian, Native Hawaiian or Other Pacific Islander, Unknown, Other</td>
+<td>Description of patient’s race. Each site could have different strings in source data</td>
+<td><code>Black</code> , <code>White</code>, <code>American Indian or Alaska Native</code>, <code>Asian</code>, <code>Native Hawaiian or Other Pacific Islander</code>, <code>Unknown</code>, <code>Other</code></td>
 </tr>
 <tr class="odd">
 <td>ethnicity</td>
 <td>VARCHAR</td>
-<td>Description of patient’s ethnicity. Categories include Hispanic or Non-Hispanic</td>
+<td>Description of patient’s ethnicity</td>
+<td><code>Hispanic</code>, <code>Non-Hispanic</code>, <code>Unknown</code></td>
 </tr>
 <tr class="even">
 <td>sex</td>
 <td>VARCHAR</td>
-<td>Patient’s biological sex - Male or Female</td>
+<td>Patient’s biological sex</td>
+<td><code>Male</code> , <code>Female</code>, <code>Unknown</code></td>
 </tr>
 </tbody>
 </table>
@@ -288,13 +294,13 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td>1</td>
-<td>Black or African-American</td>
+<td>Black</td>
 <td>Non-hispanic</td>
 <td>Female</td>
 </tr>
 <tr class="even">
 <td>5</td>
-<td>Black or African-American</td>
+<td>Black</td>
 <td>Non-hispanic</td>
 <td>Male</td>
 </tr>
@@ -306,7 +312,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="even">
 <td>32</td>
-<td>Black or African-American</td>
+<td>Asian</td>
 <td>Non-hispanic</td>
 <td>Male</td>
 </tr>
@@ -318,7 +324,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="even">
 <td>62</td>
-<td>Asian</td>
+<td>Other</td>
 <td>Non-hispanic</td>
 <td>Female</td>
 </tr>
@@ -344,28 +350,28 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td>encounter_id</td>
-<td>VARCHAR</td>
-<td>ID variable for each patient encounter</td>
+<td>INT</td>
+<td>ID variable for each patient encounter. Each encounter_id represents a unique hospitalization for a patient, capturing the entire duration of the hospital stay</td>
 </tr>
 <tr class="even">
 <td>admission_dttm</td>
 <td>DATETIME</td>
-<td>Date and time the patient is admitted (in the format %Y-%m-%d %H:%M:%S)</td>
+<td>Date and time the patient is admitted (in the format %Y-%m-%d %H:%M:%S). Use this date to determine the start date and time of the patient hospitalization</td>
 </tr>
 <tr class="odd">
 <td>discharge_dttm</td>
 <td>DATETIME</td>
-<td>Date and time the patient is discharged (in the format %Y-%m-%d %H:%M:%S)</td>
+<td>Date and time the patient is discharged (in the format %Y-%m-%d %H:%M:%S). Use this date to determine the distacharge date of the patient hospitalization</td>
 </tr>
 <tr class="even">
-<td>birth_dttm</td>
+<td>birth_date</td>
 <td>DATETIME</td>
-<td>Date of birth</td>
+<td>Patient date of birth. This variable is used to calculate age at admission for analysis</td>
 </tr>
 <tr class="odd">
-<td>coordinates</td>
+<td>zipcode_9digit</td>
 <td>VARCHAR</td>
-<td>Patient coordinates</td>
+<td>Patient zipcode. This variable is used to link the database with other indices like ADI, SVI etc</td>
 </tr>
 </tbody>
 </table>
@@ -374,10 +380,10 @@ ul.task-list li input[type="checkbox"] {
 <table class="table">
 <colgroup>
 <col style="width: 14%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 21%">
-<col style="width: 13%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 19%">
+<col style="width: 19%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -385,7 +391,7 @@ ul.task-list li input[type="checkbox"] {
 <th>admission_dttm</th>
 <th>discharge_dttm</th>
 <th>birth_dttm</th>
-<th>coordinates</th>
+<th>zipcode_9digit</th>
 </tr>
 </thead>
 <tbody>
@@ -439,37 +445,43 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="encounter_demographics_disposition">Encounter_demographics_disposition</h2>
 <table class="table">
 <colgroup>
-<col style="width: 47%">
-<col style="width: 25%">
-<col style="width: 27%">
+<col style="width: 32%">
+<col style="width: 17%">
+<col style="width: 18%">
+<col style="width: 31%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Variable Name</th>
 <th>Data Type</th>
 <th>Definition</th>
+<th>Permissible Values</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>encounter_id</td>
-<td>VARCHAR</td>
-<td>ID variable for each patient encounter</td>
+<td>INT</td>
+<td>ID variable for each patient encounter.</td>
+<td></td>
 </tr>
 <tr class="even">
 <td>age_at_admission</td>
 <td>INT</td>
-<td>Age of the patient at the time of admission</td>
+<td>Age of the patient at the time of admission. Calculated using the admission_dttm and birth_date from the limited identifiers table.</td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>disposition_name</td>
 <td>VARCHAR</td>
-<td>Original disposition name string recorded in the raw data</td>
+<td>Original disposition name string recorded in the raw data. This field allows for the storing of the dispostion value as it appears in the source data. This field is not used for analysis.</td>
+<td></td>
 </tr>
 <tr class="even">
 <td>disposition_category</td>
 <td>VARCHAR</td>
-<td>Description of disposition when discharged. Categories include Home, Hospice, Discharged to another facility, Dead, Admitted, Other</td>
+<td>Description of disposition when discharged. Map source values stored in disposition_name to the mCIDE categories.</td>
+<td><code>Home</code>, <code>Hospice</code>, <code>Discharged to another facility</code>, <code>Dead</code>, <code>Admitted</code>, <code>Other</code></td>
 </tr>
 </tbody>
 </table>
@@ -494,38 +506,44 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td>1</td>
 <td>6</td>
-<td></td>
+<td>Discharged to Home or Self Care (Routine Discharge)</td>
 <td>Home</td>
 </tr>
 <tr class="even">
 <td>2</td>
 <td>22</td>
-<td></td>
+<td>Discharged/transferred to Home Under Care of Organized Home Health Service Org</td>
 <td>Home</td>
 </tr>
 <tr class="odd">
 <td>3</td>
-<td>2</td>
-<td></td>
+<td>54</td>
+<td>Left Against Medical Advice or Discontinued Care</td>
 <td>Home</td>
 </tr>
 <tr class="even">
 <td>10</td>
 <td>20</td>
-<td></td>
+<td>Discharged/transferred to a Short-Term General Hospital for Inpatient Care</td>
 <td>Discharged to another facility</td>
 </tr>
 <tr class="odd">
 <td>11</td>
 <td>2</td>
-<td></td>
-<td>Home</td>
+<td>Discharged/transferred to a Facility that Provides Custodial or Supportive Care</td>
+<td>Discharged to another facility</td>
 </tr>
 <tr class="even">
 <td>62</td>
 <td>66</td>
-<td></td>
+<td>Hospice - Medical Facility (Certified) Providing Hospice Level of Care</td>
 <td>Hospice</td>
+</tr>
+<tr class="odd">
+<td>634</td>
+<td>827</td>
+<td>Expired</td>
+<td>Dead</td>
 </tr>
 </tbody>
 </table>
@@ -535,47 +553,55 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="adt">ADT</h2>
 <table class="table">
 <colgroup>
-<col style="width: 20%">
-<col style="width: 11%">
-<col style="width: 68%">
+<col style="width: 16%">
+<col style="width: 9%">
+<col style="width: 55%">
+<col style="width: 19%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Variable Name</th>
 <th>Data Type</th>
 <th>Definition</th>
+<th>Permissible Values</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>encounter_id</td>
-<td>VARCHAR</td>
-<td>ID variable for each patient encounter (a given patient can have multiple encounters)</td>
+<td>INT</td>
+<td>ID variable for each patient encounter</td>
+<td></td>
 </tr>
 <tr class="even">
 <td>hospital_id</td>
 <td>VARCHAR</td>
 <td>Assign an ID to each hospital in the hospital system</td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>in_dttm</td>
 <td>DATETIME</td>
-<td>Start date and time at a particular location (in the format %Y-%m-%d %H:%M:%S)</td>
+<td>Start date and time at a particular location</td>
+<td>Datetime format should be %Y-%m-%d %H:%M:%S</td>
 </tr>
 <tr class="even">
 <td>out_dttm</td>
 <td>DATETIME</td>
-<td>End date and time at a particular location (in the format %Y-%m-%d %H:%M:%S)</td>
+<td>End date and time at a particular location</td>
+<td>Datetime format should be %Y-%m-%d %H:%M:%S</td>
 </tr>
 <tr class="odd">
 <td>location_name</td>
 <td>VARCHAR</td>
-<td>Location of the patient inside the hospital (e.g., ER, OR, ICU, Ward, Other)</td>
+<td>Location of the patient inside the hospital. This field is used to store the patient location from the source data. This field is not used for analysis.</td>
+<td>No restriction</td>
 </tr>
 <tr class="even">
 <td>location_category</td>
 <td>VARCHAR</td>
-<td>Category of the location (e.g., ER, OR, ICU, Ward, Other)</td>
+<td>Map location_name from the source data to categories identified under CLIF.</td>
+<td><code>ER</code>, <code>OR</code>, <code>ICU</code>, <code>Ward</code>, <code>Other</code></td>
 </tr>
 </tbody>
 </table>
@@ -587,7 +613,7 @@ ul.task-list li input[type="checkbox"] {
 <col style="width: 13%">
 <col style="width: 19%">
 <col style="width: 19%">
-<col style="width: 14%">
+<col style="width: 15%">
 <col style="width: 18%">
 </colgroup>
 <thead>
@@ -606,7 +632,7 @@ ul.task-list li input[type="checkbox"] {
 <td>A</td>
 <td>2020-12-28 10:35:00</td>
 <td>2020-12-29 03:21:00</td>
-<td>ER</td>
+<td>ED CCD</td>
 <td>ER</td>
 </tr>
 <tr class="even">
@@ -614,7 +640,7 @@ ul.task-list li input[type="checkbox"] {
 <td>A</td>
 <td>2020-12-29 03:21:00</td>
 <td>2020-12-29 07:25:00</td>
-<td>Ward</td>
+<td>N03W</td>
 <td>Ward</td>
 </tr>
 <tr class="odd">
@@ -622,7 +648,7 @@ ul.task-list li input[type="checkbox"] {
 <td>A</td>
 <td>2021-03-18 05:02:00</td>
 <td>2021-03-19 20:22:00</td>
-<td>ICU</td>
+<td>N03W</td>
 <td>ICU</td>
 </tr>
 <tr class="even">
@@ -630,7 +656,7 @@ ul.task-list li input[type="checkbox"] {
 <td>B</td>
 <td>2021-03-19 20:22:00</td>
 <td>2021-03-22 09:30:00</td>
-<td>Ward</td>
+<td>T5SW</td>
 <td>Ward</td>
 </tr>
 <tr class="odd">
@@ -638,7 +664,7 @@ ul.task-list li input[type="checkbox"] {
 <td>F</td>
 <td>2022-09-30 17:50:00</td>
 <td>2022-09-30 23:30:00</td>
-<td>ER</td>
+<td>ER COMER</td>
 <td>ER</td>
 </tr>
 </tbody>
@@ -649,47 +675,55 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="vitals">Vitals</h2>
 <table class="table">
 <colgroup>
-<col style="width: 20%">
-<col style="width: 11%">
-<col style="width: 68%">
+<col style="width: 16%">
+<col style="width: 9%">
+<col style="width: 55%">
+<col style="width: 18%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Variable Name</th>
 <th>Data Type</th>
 <th>Definition</th>
+<th>Permissible Values</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>encounter_id</td>
-<td>VARCHAR</td>
-<td>ID variable for each patient encounter (a given patient can have multiple encounters)</td>
+<td>INT</td>
+<td>ID variable for each patient encounter.</td>
+<td></td>
 </tr>
 <tr class="even">
 <td>recorded_dttm</td>
 <td>DATETIME</td>
-<td>Date and time when the vital is recorded (in the format %Y-%m-%d %H:%M:%S)</td>
+<td>Date and time when the vital is recorded.</td>
+<td>Datetime format should be %Y-%m-%d %H:%M:%S</td>
 </tr>
 <tr class="odd">
 <td>vital_name</td>
 <td>VARCHAR</td>
-<td>Original vital name string recorded in the raw data</td>
+<td>This field is used to store the description of the flowsheet measure from the source data. This field is not used for analysis.</td>
+<td>No restriction</td>
 </tr>
 <tr class="even">
 <td>vital_category</td>
 <td>VARCHAR</td>
-<td>Limited number of vitals, namely - temp_c, pulse, sbp, dbp, spo2, respiratory_rate, map, height_inches, weight_kg</td>
+<td>Map flowsheet measures stored in vital_name to the to categories identified under CLIF.</td>
+<td><code>temp_c</code>, <code>pulse</code>, <code>sbp</code>, <code>dbp</code>, <code>spo2</code>, <code>respiratory_rate</code>, <code>map</code>, <code>height_inches</code>, <code>weight_kg</code></td>
 </tr>
 <tr class="odd">
 <td>vital_value</td>
 <td>DOUBLE</td>
-<td>Recorded value of the vital identified by the CLIF consortium</td>
+<td>Recorded value of the vital. Ensure that the measurement unit is aligned with the permissible units of measurements.</td>
+<td><code>temp_c = Celsius</code>, <code>height_inches = Inch</code>, <code>weight_kg = Kg</code>, <code>map = mm/Hg</code>, <code>spo2 = %</code>, No unit for <code>pulse</code>, <code>sbp</code>, <code>dbp</code>, and <code>respiratory_rate</code></td>
 </tr>
 <tr class="even">
 <td>meas_site_name</td>
 <td>VARCHAR</td>
 <td>Site where vital is recorded. It has three categories - arterial, core, not specified</td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -718,7 +752,7 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td>1</td>
 <td>2022-05-05 04:18:00</td>
-<td>respiratory_rate</td>
+<td>RESPIRATIONS</td>
 <td>respiratory_rate</td>
 <td>18</td>
 <td>not specified</td>
@@ -726,7 +760,7 @@ ul.task-list li input[type="checkbox"] {
 <tr class="even">
 <td>1</td>
 <td>2022-05-05 04:18:00</td>
-<td>spo2</td>
+<td>PULSE OXIMETRY</td>
 <td>spo2</td>
 <td>97</td>
 <td>not specified</td>
@@ -734,33 +768,33 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td>1</td>
 <td>2022-05-05 04:18:00</td>
-<td>height_inches</td>
-<td>height_inches</td>
-<td>73</td>
-<td>not specified</td>
-</tr>
-<tr class="even">
-<td>1</td>
-<td>2022-05-05 04:18:00</td>
-<td>temp_c</td>
+<td>NUR RS CORE TEMPERATURE MEASUREMENT</td>
 <td>temp_c</td>
 <td>98.1</td>
 <td>core</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>1</td>
 <td>2022-05-05 04:18:00</td>
-<td>pulse</td>
+<td>PULSE</td>
 <td>pulse</td>
 <td>73</td>
 <td>not specified</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>1</td>
-<td>2022-05-05 04:18:00</td>
-<td>weight_kg</td>
+<td>2022-05-01 11:23:00</td>
+<td>WEIGHT/SCALE</td>
 <td>weight_kg</td>
 <td>78.8</td>
+<td>not specified</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>2022-05-01 11:23:00</td>
+<td>HEIGHT</td>
+<td>height_inches</td>
+<td>73</td>
 <td>not specified</td>
 </tr>
 </tbody>
@@ -770,68 +804,74 @@ ul.task-list li input[type="checkbox"] {
 <section id="labs" class="level2">
 <h2 class="anchored" data-anchor-id="labs">Labs</h2>
 <table class="table">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 11%">
-<col style="width: 68%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Variable Name</th>
 <th>Data Type</th>
 <th>Definition</th>
+<th>Permissible Values</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>encounter_id</td>
-<td>VARCHAR</td>
-<td>ID variable for each patient encounter (a given patient can have multiple encounters)</td>
+<td>INT</td>
+<td>ID variable for each patient encounter</td>
+<td></td>
 </tr>
 <tr class="even">
 <td>lab_order_dttm</td>
 <td>DATETIME</td>
-<td>Date and time when the lab is ordered (in the format %Y-%m-%d %H:%M:%S)</td>
+<td>Date and time when the lab is ordered</td>
+<td>Datetime format should be %Y-%m-%d %H:%M:%S</td>
 </tr>
 <tr class="odd">
 <td>lab_collect_dttm</td>
 <td>DATETIME</td>
-<td>Date and time when the specimen is collected (in the format %Y-%m-%d %H:%M:%S)</td>
+<td>Date and time when the specimen is collected</td>
+<td>Datetime format should be %Y-%m-%d %H:%M:%S</td>
 </tr>
 <tr class="even">
 <td>lab_result_dttm</td>
 <td>DATETIME</td>
-<td>Date and time when the lab results are available (in the format %Y-%m-%d %H:%M:%S)</td>
+<td>Date and time when the lab results are available</td>
+<td>Datetime format should be %Y-%m-%d %H:%M:%S</td>
 </tr>
 <tr class="odd">
 <td>lab_name</td>
 <td>VARCHAR</td>
-<td>Original lab name string recorded in the raw data for a limited number of labs identified by the CLIF consortium</td>
+<td>Original lab name string recorded in the raw data. This field is not used for analysis.</td>
+<td></td>
 </tr>
 <tr class="even">
 <td>lab_category</td>
 <td>VARCHAR</td>
-<td>Limited number of labs identified by the CLIF consortium</td>
+<td>43 labs identified by the CLIF consortium</td>
+<td><a href="https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/clif_vocab_labs.csv">List of lab categories in CLIF</a></td>
 </tr>
 <tr class="odd">
 <td>lab_group</td>
 <td>VARCHAR</td>
-<td>Limited number of labs categorized into five groups - ABG, BMP, CBC, Coags, LFT, Lactic Acid, Misc, VBG</td>
+<td>Lab categories roll up to form lab groups</td>
+<td><code>ABG</code>, <code>BMP</code>, <code>CBC</code>, <code>Coags</code>, <code>LFT</code>, <code>Lactic Acid</code>, <code>Misc</code>, <code>VBG</code></td>
 </tr>
 <tr class="even">
 <td>lab_value</td>
 <td>DOUBLE</td>
-<td>Recorded value corresponding to a lab_name</td>
+<td>Recorded value corresponding to a lab</td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>reference_unit</td>
 <td>VARCHAR</td>
 <td>Unit of measurement for that lab</td>
+<td>Permissible reference values for each <code>lab_category</code> listed <a href="https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/clif_vocab_labs.csv">here</a></td>
 </tr>
 <tr class="even">
 <td>lab_type_name</td>
 <td>VARCHAR</td>
-<td>Following categories - arterial, venous, standard, poc</td>
+<td>Following categories -</td>
+<td><code>arterial</code>, <code>venous</code>, <code>standard</code>, <code>poc</code></td>
 </tr>
 </tbody>
 </table>
@@ -870,7 +910,7 @@ ul.task-list li input[type="checkbox"] {
 <td>2022-09-30 17:50:00</td>
 <td>2022-09-30 18:05:00</td>
 <td>2022-09-30 18:53:00</td>
-<td></td>
+<td>BASOPHILS</td>
 <td>CBC</td>
 <td>basophil</td>
 <td>1</td>
@@ -882,7 +922,7 @@ ul.task-list li input[type="checkbox"] {
 <td>2022-09-30 17:50:00</td>
 <td>2022-09-30 18:05:00</td>
 <td>2022-09-30 18:53:00</td>
-<td></td>
+<td>MONOCYTES</td>
 <td>CBC</td>
 <td>monocyte</td>
 <td>7</td>
@@ -894,7 +934,7 @@ ul.task-list li input[type="checkbox"] {
 <td>2022-09-30 17:50:00</td>
 <td>2022-09-30 18:05:00</td>
 <td>2022-09-30 18:53:00</td>
-<td></td>
+<td>NEUTROPHILS</td>
 <td>CBC</td>
 <td>neutrophil</td>
 <td>47</td>
@@ -906,7 +946,7 @@ ul.task-list li input[type="checkbox"] {
 <td>2022-09-30 17:50:00</td>
 <td>2022-09-30 18:05:00</td>
 <td>2022-09-30 18:53:00</td>
-<td></td>
+<td>LYMPHOCYTES</td>
 <td>CBC</td>
 <td>lymphocyte</td>
 <td>44</td>
@@ -918,7 +958,7 @@ ul.task-list li input[type="checkbox"] {
 <td>2022-09-30 17:50:00</td>
 <td>2022-09-30 18:05:00</td>
 <td>2022-09-30 18:53:00</td>
-<td></td>
+<td>EOSINOPHILS</td>
 <td>CBC</td>
 <td>eosinophils</td>
 <td>1</td>
@@ -930,7 +970,7 @@ ul.task-list li input[type="checkbox"] {
 <td>2022-09-30 17:50:00</td>
 <td>2022-09-30 18:05:00</td>
 <td>2022-09-30 18:53:00</td>
-<td></td>
+<td>BILIRUBIN, UNCONJUGATED</td>
 <td>LFT</td>
 <td>bilirubin_unconjugated</td>
 <td>0.9</td>
@@ -945,133 +985,158 @@ ul.task-list li input[type="checkbox"] {
 <section id="respiratory_support" class="level2">
 <h2 class="anchored" data-anchor-id="respiratory_support">Respiratory_support</h2>
 <table class="table">
-<colgroup>
-<col style="width: 31%">
-<col style="width: 9%">
-<col style="width: 58%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Variable Name</th>
 <th>Data Type</th>
 <th>Definition</th>
+<th>Permissible Values</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>encounter_id</td>
-<td>VARCHAR</td>
-<td>ID variable for each patient encounter (a given patient can have multiple encounters)</td>
+<td>INT</td>
+<td>ID variable for each patient encounter</td>
+<td></td>
 </tr>
 <tr class="even">
 <td>recorded_dttm</td>
 <td>DATETIME</td>
-<td>Date and time when the device started (in the format %Y-%m-%d %H:%M:%S)</td>
+<td>Date and time when the device started</td>
+<td>Datetime format should be %Y-%m-%d %H:%M:%S</td>
 </tr>
 <tr class="odd">
 <td>device_name</td>
 <td>VARCHAR</td>
-<td>Includes raw string of the devices</td>
+<td>Includes raw string of the devices. Not used for analysis</td>
+<td><a href="https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/clif_vocab_respiratory_support_devices.csv">Example mapping for device name to device category</a></td>
 </tr>
 <tr class="even">
 <td>device_category</td>
 <td>VARCHAR</td>
-<td>Includes a limited number of devices identified by the CLIF consortium, namely - Vent, NIPPV, CPAP, High Flow NC, Face Mask, Trach Collar, Nasal Cannula, Room Air, Other</td>
+<td>Includes a limited number of devices identified by the CLIF consortium</td>
+<td><code>Vent</code>, <code>NIPPV</code>, <code>CPAP</code>, <code>High Flow NC</code>, <code>Face Mask</code>, <code>Trach Collar</code>, <code>Nasal Cannula</code>, <code>Room Air</code>, <code>Other</code></td>
 </tr>
 <tr class="odd">
 <td>mode_name</td>
 <td>VARCHAR</td>
-<td>Includes raw string of the modes</td>
+<td>Includes raw string of the modes. Not used for analysis</td>
+<td><a href="https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/clif_vocab_respiratory_support_modes.csv">Example mapping for mode name to mode category</a></td>
 </tr>
 <tr class="even">
 <td>mode_category</td>
 <td>VARCHAR</td>
 <td>Limited number of modes identified by the CLIF consortium</td>
+<td><code>Assist Control-Volume Control</code>, <code>Pressure Support/CPAP</code>, <code>Pressure Control</code>, <code>Pressure-Regulated Volume Control</code>, <code>Other</code>, <code>SIMV</code>, <code>Blow by</code></td>
 </tr>
 <tr class="odd">
 <td>tracheostomy</td>
 <td>BOOLEAN</td>
-<td>Indicates if tracheostomy is performed (0 = No, 1 = Yes)</td>
+<td>Indicates if tracheostomy is performed</td>
+<td>0 = No, 1 = Yes</td>
 </tr>
 <tr class="even">
 <td>fio2_set</td>
 <td>DOUBLE</td>
 <td>Fraction of inspired oxygen set</td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>lpm_set</td>
 <td>DOUBLE</td>
 <td>Liters per minute set</td>
+<td></td>
 </tr>
 <tr class="even">
 <td>tidal_volume_set</td>
 <td>DOUBLE</td>
 <td>Tidal volume set (in mL)</td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>resp_rate_set</td>
 <td>DOUBLE</td>
 <td>Respiratory rate set (in bpm)</td>
+<td></td>
 </tr>
 <tr class="even">
 <td>pressure_control_set</td>
 <td>DOUBLE</td>
 <td>Pressure control set (in cmH2O)</td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>pressure_support_set</td>
 <td>DOUBLE</td>
 <td>Pressure support set (in cmH2O)</td>
+<td></td>
 </tr>
 <tr class="even">
 <td>flow_rate_set</td>
 <td>DOUBLE</td>
 <td>Flow rate set</td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>peak_inspiratory_pressure_set</td>
 <td>DOUBLE</td>
 <td>Peak inspiratory pressure set (in cmH2O)</td>
+<td></td>
 </tr>
 <tr class="even">
 <td>inspiratory_time_set</td>
 <td>DOUBLE</td>
 <td>Inspiratory time set (in seconds)</td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>peep_set</td>
 <td>DOUBLE</td>
 <td>Positive-end-expiratory pressure set (in cmH2O)</td>
+<td></td>
 </tr>
 <tr class="even">
 <td>tidal_volume_obs</td>
 <td>DOUBLE</td>
 <td>Observed tidal volume (in mL)</td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>resp_rate_obs</td>
 <td>DOUBLE</td>
 <td>Observed respiratory rate (in bpm)</td>
+<td></td>
 </tr>
 <tr class="even">
 <td>plateau_pressure_obs</td>
 <td>DOUBLE</td>
 <td>Observed plateau pressure (in cmH2O)</td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>peak_inspiratory_pressure_obs</td>
 <td>DOUBLE</td>
 <td>Observed peak inspiratory pressure (in cmH2O)</td>
+<td></td>
 </tr>
 <tr class="even">
 <td>peep_obs</td>
 <td>DOUBLE</td>
 <td>Observed positive-end-expiratory pressure (in cmH2O)</td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>minute_vent_obs</td>
 <td>DOUBLE</td>
 <td>Observed minute ventilation (in liters)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -1363,58 +1428,62 @@ ul.task-list li input[type="checkbox"] {
 <section id="medication_admin_continuous" class="level2">
 <h2 class="anchored" data-anchor-id="medication_admin_continuous">Medication_admin_continuous</h2>
 <table class="table">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 11%">
-<col style="width: 68%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Variable Name</th>
 <th>Data Type</th>
 <th>Definition</th>
+<th>Permissible Values</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>encounter_id</td>
-<td>VARCHAR</td>
-<td>ID variable for each patient encounter (a given patient can have multiple encounters)</td>
+<td>INT</td>
+<td>ID variable for each patient encounter</td>
+<td></td>
 </tr>
 <tr class="even">
 <td>med_order_id</td>
 <td>VARCHAR</td>
-<td>Date and time when the lab is ordered (in the format %Y-%m-%d %H:%M:%S)</td>
+<td>Medication order id. Foreign key to link this table to other medication tables</td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>admin_dttm</td>
 <td>DATETIME</td>
-<td>Date and time when the medicine was administered (in the format %Y-%m-%d %H:%M:%S)</td>
+<td>Date and time when the medicine was administered</td>
+<td>Datetime format should be %Y-%m-%d %H:%M:%S</td>
 </tr>
 <tr class="even">
 <td>med_name</td>
 <td>VARCHAR</td>
 <td>Original med name string recorded in the raw data for a limited number of labs identified by the CLIF consortium</td>
+<td><a href="https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/ucmc_cide_mappings/clif_vocab_medication_admin_continuous_med_ucmc.csv">Example mapping of med_name to med_category</a></td>
 </tr>
 <tr class="odd">
 <td>med_category</td>
 <td>VARCHAR</td>
 <td>Limited number of medication categories identified by the CLIF consortium</td>
+<td><a href="https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/clif_vocab_medication_admin_continuous.csv">List of continuous medication categories in CLIF</a></td>
 </tr>
 <tr class="even">
 <td>med_route</td>
 <td>VARCHAR</td>
 <td>eod of medicine delivery</td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>med_dose</td>
 <td>VARCHAR</td>
 <td>quantity taken in dose</td>
+<td></td>
 </tr>
 <tr class="even">
 <td>med_dose_unit</td>
 <td>VARCHAR</td>
 <td>unit of dose</td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -1513,47 +1582,55 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="dialysis">Dialysis</h2>
 <table class="table">
 <colgroup>
-<col style="width: 53%">
-<col style="width: 22%">
-<col style="width: 24%">
+<col style="width: 37%">
+<col style="width: 15%">
+<col style="width: 17%">
+<col style="width: 28%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Variable Name</th>
 <th>Data Type</th>
 <th>Definition</th>
+<th>Permissible values</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>encounter_id</td>
-<td>VARCHAR</td>
+<td>INT</td>
 <td>ID variable for each patient encounter</td>
+<td></td>
 </tr>
 <tr class="even">
 <td>start_dttm</td>
 <td>DATETIME</td>
-<td>Start date and time of dialysis (in the format %Y-%m-%d %H:%M:%S)</td>
+<td>Start date and time of dialysis</td>
+<td>Datetime format should be %Y-%m-%d %H:%M:%S</td>
 </tr>
 <tr class="odd">
 <td>stop_dttm</td>
 <td>DATETIME</td>
-<td>Stop date and time of dialysis (in the format %Y-%m-%d %H:%M:%S)</td>
+<td>Stop date and time of dialysis</td>
+<td>Datetime format should be %Y-%m-%d %H:%M:%S</td>
 </tr>
 <tr class="even">
 <td>dialysis_type</td>
 <td>VARCHAR</td>
-<td>Type of dialysis performed (e.g., crrt)</td>
+<td>Type of dialysis performed</td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>dialysate_flow_amount</td>
 <td>DOUBLE</td>
 <td>Amount of dialysate flow</td>
+<td></td>
 </tr>
 <tr class="even">
 <td>ultrafiltration_amount</td>
 <td>DOUBLE</td>
 <td>Amount of ultrafiltration</td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -1649,7 +1726,7 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td>encounter_id</td>
-<td>VARCHAR</td>
+<td>INT</td>
 <td>ID variable for each patient encounter</td>
 </tr>
 <tr class="even">
