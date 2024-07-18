@@ -144,7 +144,7 @@
     "href": "data-dictionary.html",
     "title": "CLIF Data Dictionary",
     "section": "",
-    "text": "Below is the entity-relationship diagram (ERD) that provides an overview of the relational CLIF database structure.\nRelational CLIF has 20 tables that are organized into clinically relevant column categories - demographics, objective measures, respiratory support, orders, and inputs-outputs. Below are sample templates for each table in R-CLIF. Here you can find detailed descriptions of each table and their fields."
+    "text": "Below is the entity-relationship diagram (ERD) that provides an overview of the relational CLIF database structure.\nRelational CLIF has 20 tables that are organized into clinically relevant column categories - demographics, objective measures, respiratory support, orders, and inputs-outputs. Below are sample templates for each table in R-CLIF. Here you can find detailed descriptions of each table and their fields.\nYou can use our custom GPT- CLIF Assistant to learn more about CLIF and develop analysis scripts using Clifford (Synthetic CLIF)"
   },
   {
     "objectID": "data-dictionary.html#patient_encounters",

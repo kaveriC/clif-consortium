@@ -9,6 +9,8 @@ Below is the entity-relationship diagram (ERD) that provides an overview of the 
 
 Relational CLIF has 20 tables that are organized into clinically relevant column categories - demographics, objective measures, respiratory support, orders, and inputs-outputs. Below are sample templates for each table in R-CLIF. Here you can find detailed descriptions of each table and their fields.
 
+You can use our custom GPT- [CLIF Assistant](https://chatgpt.com/g/g-h1nk6d3eR-clif-assistant) to learn more about CLIF and develop analysis scripts using [Clifford (Synthetic CLIF)](https://github.com/kaveriC/CLIF-1.0/tree/main/clifford)
+
 ## Patient_encounters
 
 | Variable Name | Data Type | Definition |
