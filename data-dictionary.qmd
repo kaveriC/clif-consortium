@@ -160,7 +160,7 @@ You can use our custom GPT- [CLIF Assistant](https://chatgpt.com/g/g-h1nk6d3eR-c
 | lab_group         | VARCHAR   | Lab categories roll up to form lab groups                       | `ABG`, `BMP`, `CBC`, `Coags`, `LFT`, `Lactic Acid`, `Misc`, `VBG `|
 | lab_value         | DOUBLE    | Recorded value corresponding to a lab                           |                                    |
 | reference_unit    | VARCHAR   | Unit of measurement for that lab                                |Permissible reference values for each `lab_category` listed [here](https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/clif_vocab_labs.csv)                                                         |
-| lab_type_name     | VARCHAR   | Following categories -                                          | `arterial`, `venous`, `standard`, `poc`                 |
+| lab_type_name     | VARCHAR   | Type of lab                                                     | `arterial`, `venous`, `standard`, `poc`                 |
 
 **Example:**
 
