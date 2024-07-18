@@ -132,7 +132,7 @@ You can use our custom GPT- [CLIF Assistant](https://chatgpt.com/g/g-h1nk6d3eR-c
 | vital_name        | VARCHAR   | This field is used to store the description of the flowsheet measure from the source data. This field is not used for analysis. | No restriction |
 | vital_category    | VARCHAR   | Map flowsheet measures stored in vital_name to the to categories identified under CLIF. | `temp_c`, `pulse`, `sbp`, `dbp`, `spo2`, `respiratory_rate`, `map`, `height_inches`, `weight_kg`|
 | vital_value       | DOUBLE    | Recorded value of the vital. Ensure that the measurement unit is aligned with the permissible units of measurements.  | `temp_c = Celsius`, `height_inches = Inch`, `weight_kg = Kg`, `map = mm/Hg`, `spo2 = %`, No unit for `pulse`, `sbp`, `dbp`, and `respiratory_rate` |
-| meas_site_name    | VARCHAR   | Site where vital is recorded. It has three categories - arterial, core, not specified | |
+| meas_site_name    | VARCHAR   | Site where vital is recorded | No restrictions. Record the site name from the source data. |
 
 **Example:**
 
