@@ -15,8 +15,8 @@ You can use our custom GPT- [CLIF Assistant](https://chatgpt.com/g/g-h1nk6d3eR-c
 
 | Variable Name | Data Type | Definition |
 |---------------|-----------|------------|
-| patient_id    | INT   | ID variable for each patient. Every patient assigned a unique identifier is presumed to be a distinct individual 
-| encounter_id  | INT   | ID variable for each patient encounter (a given patient can have multiple encounters). Each encounter_id represents a unique hospitalization for a patient, capturing the entire duration of the hospital stay. This is the primary key for most other tables 
+| patient_id    | VARCHAR   | ID variable for each patient. Every patient assigned a unique identifier is presumed to be a distinct individual 
+| encounter_id  | VARCHAR   | ID variable for each patient encounter (a given patient can have multiple encounters). Each encounter_id represents a unique hospitalization for a patient, capturing the entire duration of the hospital stay. This is the primary key for most other tables 
 
 **Example:**
 
@@ -36,7 +36,7 @@ You can use our custom GPT- [CLIF Assistant](https://chatgpt.com/g/g-h1nk6d3eR-c
 
 | Variable Name | Data Type | Definition | Permissible Values |
 |---------------|-----------|------------|-----------|
-| encounter_id  | INT   |ID variable for each patient encounter |
+| encounter_id  | VARCHAR   |ID variable for each patient encounter |
 | race          | VARCHAR   | Description of patient's race. Each site could have different strings in source data | `Black` , `White`, `American Indian or Alaska Native`, `Asian`, `Native Hawaiian or Other Pacific Islander`, `Unknown`, `Other` |
 | ethnicity     | VARCHAR   | Description of patient's ethnicity | `Hispanic`, `Non-Hispanic`, `Unknown`|
 | sex           | VARCHAR   | Patient's biological sex |`Male` , `Female`, `Unknown` |
@@ -59,7 +59,7 @@ You can use our custom GPT- [CLIF Assistant](https://chatgpt.com/g/g-h1nk6d3eR-c
 
 | Variable Name   | Data Type | Definition | 
 |-----------------|-----------|------------|
-| encounter_id    | INT   | ID variable for each patient encounter. Each encounter_id represents a unique hospitalization for a patient, capturing the entire duration of the hospital stay |
+| encounter_id    | VARCHAR   | ID variable for each patient encounter. Each encounter_id represents a unique hospitalization for a patient, capturing the entire duration of the hospital stay |
 | admission_dttm  | DATETIME  | Date and time the patient is admitted (in the format %Y-%m-%d %H:%M:%S). Use this date to determine the start date and time of the patient hospitalization |
 | discharge_dttm  | DATETIME  | Date and time the patient is discharged (in the format %Y-%m-%d %H:%M:%S). Use this date to determine the distacharge date of the patient hospitalization|
 | birth_date      | DATETIME  | Patient date of birth. This variable is used to calculate age at admission for analysis |
@@ -83,7 +83,7 @@ You can use our custom GPT- [CLIF Assistant](https://chatgpt.com/g/g-h1nk6d3eR-c
 
 | Variable Name       | Data Type | Definition | Permissible Values |
 |---------------------|-----------|------------|--------------------|
-| encounter_id        | INT       | ID variable for each patient encounter. | |
+| encounter_id        | VARCHAR       | ID variable for each patient encounter. | |
 | age_at_admission    | INT       | Age of the patient at the time of admission. Calculated using the admission_dttm and birth_date from the limited identifiers table. | |
 | disposition_name    | VARCHAR   | Original disposition name string recorded in the raw data. This field allows for the storing of the dispostion value as it appears in the source data. This field is not used for analysis.| |
 | disposition_category| VARCHAR   | Description of disposition when discharged. Map source values stored in disposition_name to the mCIDE categories.| `Home`, `Hospice`, `Discharged to another facility`, `Dead`, `Admitted`, `Other` |
@@ -107,7 +107,7 @@ You can use our custom GPT- [CLIF Assistant](https://chatgpt.com/g/g-h1nk6d3eR-c
 
 | Variable Name     | Data Type | Definition                                                      | Permissible Values |
 |-------------------|-----------|-----------------------------------------------------------------|-----------------------|
-| encounter_id      | INT       | ID variable for each patient encounter                          |                       |
+| encounter_id      | VARCHAR       | ID variable for each patient encounter                          |                       |
 | hospital_id       | VARCHAR   | Assign an ID to each hospital in the hospital system            |                       |
 | in_dttm           | DATETIME  | Start date and time at a particular location                    | Datetime format should be %Y-%m-%d %H:%M:%S |
 | out_dttm          | DATETIME  | End date and time at a particular location                      | Datetime format should be %Y-%m-%d %H:%M:%S  |
@@ -132,7 +132,7 @@ You can use our custom GPT- [CLIF Assistant](https://chatgpt.com/g/g-h1nk6d3eR-c
 
 | Variable Name     | Data Type | Definition                                                      | Permissible Values |
 |-------------------|-----------|-----------------------------------------------------------------|----------------------|
-| encounter_id      | INT       | ID variable for each patient encounter.  | |
+| encounter_id      | VARCHAR       | ID variable for each patient encounter.  | |
 | recorded_dttm     | DATETIME  | Date and time when the vital is recorded. |Datetime format should be %Y-%m-%d %H:%M:%S  |
 | vital_name        | VARCHAR   | This field is used to store the description of the flowsheet measure from the source data. This field is not used for analysis. | No restriction |
 | vital_category    | VARCHAR   | Map flowsheet measures stored in vital_name to the to categories identified under CLIF. | `temp_c`, `pulse`, `sbp`, `dbp`, `spo2`, `respiratory_rate`, `map`, `height_inches`, `weight_kg`|
@@ -157,7 +157,7 @@ You can use our custom GPT- [CLIF Assistant](https://chatgpt.com/g/g-h1nk6d3eR-c
 
 | Variable Name     | Data Type | Definition                                                      | Permissible Values |
 |-------------------|-----------|-----------------------------------------------------------------|-----------------|
-| encounter_id      | INT       | ID variable for each patient encounter                          | 
+| encounter_id      | VARCHAR       | ID variable for each patient encounter                          | 
 | lab_order_dttm    | DATETIME  | Date and time when the lab is ordered                           |Datetime format should be %Y-%m-%d %H:%M:%S |
 | lab_collect_dttm  | DATETIME  | Date and time when the specimen is collected                    |Datetime format should be %Y-%m-%d %H:%M:%S |
 | lab_result_dttm   | DATETIME  | Date and time when the lab results are available                |Datetime format should be %Y-%m-%d %H:%M:%S |
@@ -188,7 +188,7 @@ You can use our custom GPT- [CLIF Assistant](https://chatgpt.com/g/g-h1nk6d3eR-c
 
 | Variable Name                     | Data Type | Definition                                                      | Permissible Values |
 |-----------------------------------|-----------|-----------------------------------------------------------------|-----------------|
-| encounter_id                      |  INT      | ID variable for each patient encounter                          |                 |
+| encounter_id                      | VARCHAR   | ID variable for each patient encounter                          |                 |
 | recorded_dttm                     | DATETIME  | Date and time when the device started                           |Datetime format should be %Y-%m-%d %H:%M:%S |
 | device_name                       | VARCHAR   | Includes raw string of the devices. Not used for analysis       |[Example mapping for device name to device category](https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/clif_vocab_respiratory_support_devices.csv)                  |
 | device_category                   | VARCHAR   | Includes a limited number of devices identified by the CLIF consortium |`Vent`, `NIPPV`, `CPAP`, `High Flow NC`, `Face Mask`, `Trach Collar`, `Nasal Cannula`, `Room Air`, `Other` |
@@ -234,7 +234,7 @@ You can use our custom GPT- [CLIF Assistant](https://chatgpt.com/g/g-h1nk6d3eR-c
 
 | Variable Name     | Data Type | Definition                                                      | Permissible Values |
 |-------------------|-----------|-----------------------------------------------------------------|--------------------|
-| encounter_id      | INT       | ID variable for each patient encounter| |
+| encounter_id      | VARCHAR   | ID variable for each patient encounter| |
 | med_order_id      | VARCHAR   | Medication order id. Foreign key to link this table to other medication tables | |
 | admin_dttm        | DATETIME  | Date and time when the medicine was administered | Datetime format should be %Y-%m-%d %H:%M:%S  |
 | med_name          | VARCHAR   | Original med name string recorded in the raw data for a limited number of labs identified by the CLIF consortium | [Example mapping of med_name to med_category](https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/ucmc_cide_mappings/clif_vocab_medication_admin_continuous_med_ucmc.csv)|
@@ -265,7 +265,7 @@ Note: The `medication_admin_intermittent` table has exactly the same schema. The
 
 | Variable Name            | Data Type | Definition | Permissible values |
 |--------------------------|-----------|------------|--------------------|
-| encounter_id             | INT       | ID variable for each patient encounter | | 
+| encounter_id             | VARCHAR   | ID variable for each patient encounter | | 
 | start_dttm               | DATETIME  | Start date and time of dialysis |Datetime format should be %Y-%m-%d %H:%M:%S |
 | stop_dttm                | DATETIME  | Stop date and time of dialysis |Datetime format should be %Y-%m-%d %H:%M:%S |
 | dialysis_type            | VARCHAR   | Type of dialysis performed | |
@@ -291,7 +291,7 @@ Note: The `medication_admin_intermittent` table has exactly the same schema. The
 
 | Variable Name     | Data Type | Definition                                                      | Permissible Values |
 |-------------------|-----------|-----------------------------------------------------------------|----------------------|
-| encounter_id      | INT       | ID variable for each patient encounter.  | |
+| encounter_id      | VARCHAR   | ID variable for each patient encounter.  | |
 | recorded_dttm     | DATETIME  | Date and time when the vital is recorded. |Datetime format should be %Y-%m-%d %H:%M:%S  |
 | position_name     | VARCHAR   | This field is used to store the description of the position from the source data. This field is not used for analysis. | No restriction |
 | position_category | VARCHAR   | Map flowsheet measures stored in vital_name to the to categories identified under CLIF. | `prone`, `supine`|
