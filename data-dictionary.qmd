@@ -266,9 +266,9 @@ Note: The `medication_admin_intermittent` table has exactly the same schema. The
 | Variable Name            | Data Type | Definition | Permissible values |
 |--------------------------|-----------|------------|--------------------|
 | encounter_id             | VARCHAR   | ID variable for each patient encounter | | 
-| start_dttm               | DATETIME  | Start date and time of dialysis |Datetime format should be %Y-%m-%d %H:%M:%S |
-| stop_dttm                | DATETIME  | Stop date and time of dialysis |Datetime format should be %Y-%m-%d %H:%M:%S |
-| dialysis_type            | VARCHAR   | Type of dialysis performed | |
+| start_dttm               | DATETIME  | Start date and time of dialysis session|Datetime format should be %Y-%m-%d %H:%M:%S |
+| stop_dttm                | DATETIME  | Stop date and time of dialysis session  |Datetime format should be %Y-%m-%d %H:%M:%S |
+| dialysis_type            | VARCHAR   | Type of dialysis performed |`intermittent`, `peritoneal`, `crrt` |
 | dialysate_flow_amount    | DOUBLE    | Amount of dialysate flow | |
 | ultrafiltration_amount   | DOUBLE    | Amount of ultrafiltration | |
 

@@ -39,14 +39,14 @@
     "href": "about.html",
     "title": "Meet the CLIF Team",
     "section": "",
-    "text": "William Parker, MD, PhD   \n\n\n\n\n\nJay Koyner, MD   \n\n\n\n\n\nKevin Smith, MD   \n\n\n\n\n\nKevin Buell, MBBS   \n\n\n\n\n\nBhakti Patel, MD   \n\n\n\n\n\nKaveri Chhikara, MS   \n\n\n\n\n\nRachel Baccile, MPP   \n\n\n\n\n\nKyle Carey, MS   \n\n\n\n\n\nKyle Carey, MS"
+    "text": "William Parker, MD, PhD   \n\n\n\n\n\nJay Koyner, MD   \n\n\n\n\n\nKevin Smith, MD   \n\n\n\n\n\nKevin Buell, MBBS   \n\n\n\n\n\nBhakti Patel, MD   \n\n\n\n\n\nKaveri Chhikara, MS   \n\n\n\n\n\nRachel Baccile, MPP   \n\n\n\n\n\nKyle Carey, MS   \n\n\n\n\n\nHaley Beck, MS"
   },
   {
     "objectID": "about.html#university-of-chicago",
     "href": "about.html#university-of-chicago",
     "title": "Meet the CLIF Team",
     "section": "",
-    "text": "William Parker, MD, PhD   \n\n\n\n\n\nJay Koyner, MD   \n\n\n\n\n\nKevin Smith, MD   \n\n\n\n\n\nKevin Buell, MBBS   \n\n\n\n\n\nBhakti Patel, MD   \n\n\n\n\n\nKaveri Chhikara, MS   \n\n\n\n\n\nRachel Baccile, MPP   \n\n\n\n\n\nKyle Carey, MS   \n\n\n\n\n\nKyle Carey, MS"
+    "text": "William Parker, MD, PhD   \n\n\n\n\n\nJay Koyner, MD   \n\n\n\n\n\nKevin Smith, MD   \n\n\n\n\n\nKevin Buell, MBBS   \n\n\n\n\n\nBhakti Patel, MD   \n\n\n\n\n\nKaveri Chhikara, MS   \n\n\n\n\n\nRachel Baccile, MPP   \n\n\n\n\n\nKyle Carey, MS   \n\n\n\n\n\nHaley Beck, MS"
   },
   {
     "objectID": "about.html#rush-university",
@@ -179,7 +179,7 @@
     "href": "data-dictionary.html#dialysis",
     "title": "CLIF Data Dictionary",
     "section": "Dialysis",
-    "text": "Dialysis\n\n\n\n\n\n\n\n\n\nVariable Name\nData Type\nDefinition\nPermissible values\n\n\n\n\nencounter_id\nVARCHAR\nID variable for each patient encounter\n\n\n\nstart_dttm\nDATETIME\nStart date and time of dialysis\nDatetime format should be %Y-%m-%d %H:%M:%S\n\n\nstop_dttm\nDATETIME\nStop date and time of dialysis\nDatetime format should be %Y-%m-%d %H:%M:%S\n\n\ndialysis_type\nVARCHAR\nType of dialysis performed\n\n\n\ndialysate_flow_amount\nDOUBLE\nAmount of dialysate flow\n\n\n\nultrafiltration_amount\nDOUBLE\nAmount of ultrafiltration\n\n\n\n\nExample:\n\n\n\n\n\n\n\n\n\n\n\n\nencounter_id\nstart_dttm\nstop_dttm\ndialysis_type\ndialysate_flow_amount\nultrafiltration_amount\n\n\n\n\n18\n2021-03-24 09:00:00\n2021-03-24 10:00:00\ncrrt\n0.86\n0\n\n\n18\n2021-03-24 10:00:00\n2021-03-24 11:00:00\ncrrt\n3.89\n0\n\n\n18\n2021-03-24 11:00:00\n2021-03-24 12:00:00\ncrrt\n3.82\n0\n\n\n18\n2021-03-24 12:00:00\n2021-03-24 13:00:00\ncrrt\n3.89\n0\n\n\n18\n2021-03-24 13:00:00\n2021-03-24 14:00:00\ncrrt\n3.89\n0\n\n\n18\n2021-03-24 14:00:00\n2021-03-24 15:00:00\ncrrt\n3.900\n0"
+    "text": "Dialysis\n\n\n\n\n\n\n\n\n\nVariable Name\nData Type\nDefinition\nPermissible values\n\n\n\n\nencounter_id\nVARCHAR\nID variable for each patient encounter\n\n\n\nstart_dttm\nDATETIME\nStart date and time of dialysis session\nDatetime format should be %Y-%m-%d %H:%M:%S\n\n\nstop_dttm\nDATETIME\nStop date and time of dialysis session\nDatetime format should be %Y-%m-%d %H:%M:%S\n\n\ndialysis_type\nVARCHAR\nType of dialysis performed\nintermittent, peritoneal, crrt\n\n\ndialysate_flow_amount\nDOUBLE\nAmount of dialysate flow\n\n\n\nultrafiltration_amount\nDOUBLE\nAmount of ultrafiltration\n\n\n\n\nExample:\n\n\n\n\n\n\n\n\n\n\n\n\nencounter_id\nstart_dttm\nstop_dttm\ndialysis_type\ndialysate_flow_amount\nultrafiltration_amount\n\n\n\n\n18\n2021-03-24 09:00:00\n2021-03-24 10:00:00\ncrrt\n0.86\n0\n\n\n18\n2021-03-24 10:00:00\n2021-03-24 11:00:00\ncrrt\n3.89\n0\n\n\n18\n2021-03-24 11:00:00\n2021-03-24 12:00:00\ncrrt\n3.82\n0\n\n\n18\n2021-03-24 12:00:00\n2021-03-24 13:00:00\ncrrt\n3.89\n0\n\n\n18\n2021-03-24 13:00:00\n2021-03-24 14:00:00\ncrrt\n3.89\n0\n\n\n18\n2021-03-24 14:00:00\n2021-03-24 15:00:00\ncrrt\n3.900\n0"
   },
   {
     "objectID": "data-dictionary.html#adt",
