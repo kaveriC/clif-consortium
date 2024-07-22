@@ -397,5 +397,12 @@
     "title": "CLIF Data Dictionary",
     "section": "Prone",
     "text": "Prone"
+  },
+  {
+    "objectID": "data-dictionary.html#position",
+    "href": "data-dictionary.html#position",
+    "title": "CLIF Data Dictionary",
+    "section": "Position",
+    "text": "Position\n\n\n\n\n\n\n\n\n\nVariable Name\nData Type\nDefinition\nPermissible Values\n\n\n\n\nencounter_id\nINT\nID variable for each patient encounter.\n\n\n\nrecorded_dttm\nDATETIME\nDate and time when the vital is recorded.\nDatetime format should be %Y-%m-%d %H:%M:%S\n\n\nposition_name\nVARCHAR\nThis field is used to store the description of the position from the source data. This field is not used for analysis.\nNo restriction\n\n\nposition_category\nVARCHAR\nMap flowsheet measures stored in vital_name to the to categories identified under CLIF.\nprone, supine\n\n\n\nExample:\n\n\n\n\n\n\n\n\n\n\nencounter_id\nrecorded_dttm\nposition_name\nposition_category\n\n\n\n\n13\n2017-10-25 12:31:00\nLying down\nsupine\n\n\n13\n2017-10-25 14:07:00\nSitting\nsupine\n\n\n13\n2017-10-26 08:11:00\nLying down\nsupine\n\n\n13\n2017-10-27 08:24:00\nProne\nprone\n\n\n13\n2017-11-19 17:05:00\nLying down;HOB equal/greater than 30 degrees\nsupine\n\n\n13\n2017-11-20 11:23:00\nLying down;Prone\nprone"
   }
 ]

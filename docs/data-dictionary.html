@@ -141,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#respiratory_support" id="toc-respiratory_support" class="nav-link" data-scroll-target="#respiratory_support">Respiratory_support</a></li>
   <li><a href="#medication_admin_continuous" id="toc-medication_admin_continuous" class="nav-link" data-scroll-target="#medication_admin_continuous">Medication_admin_continuous</a></li>
   <li><a href="#dialysis" id="toc-dialysis" class="nav-link" data-scroll-target="#dialysis">Dialysis</a></li>
-  <li><a href="#provider" id="toc-provider" class="nav-link" data-scroll-target="#provider">Provider</a></li>
+  <li><a href="#position" id="toc-position" class="nav-link" data-scroll-target="#position">Position</a></li>
   </ul>
 </nav>
     </div>
@@ -201,7 +201,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <p><strong>Example:</strong></p>
 <div class="scrollable-table">
-<table class="table">
+<table class="table-striped table-hover table">
 <thead>
 <tr class="header">
 <th>patient_id</th>
@@ -283,7 +283,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <p><strong>Example:</strong></p>
 <div class="scrollable-table">
-<table class="table">
+<table class="table-striped table-hover table">
 <thead>
 <tr class="header">
 <th>patient_id</th>
@@ -378,7 +378,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <p><strong>Example:</strong></p>
 <div class="scrollable-table">
-<table class="table">
+<table class="table-striped table-hover table">
 <colgroup>
 <col style="width: 14%">
 <col style="width: 24%">
@@ -488,7 +488,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <p><strong>Example:</strong></p>
 <div class="scrollable-table">
-<table class="table">
+<table class="table-striped table-hover table">
 <colgroup>
 <col style="width: 17%">
 <col style="width: 22%">
@@ -608,7 +608,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <p><strong>Example:</strong></p>
 <div class="scrollable-table">
-<table class="table">
+<table class="table-striped table-hover table">
 <colgroup>
 <col style="width: 13%">
 <col style="width: 13%">
@@ -730,14 +730,14 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <p><strong>Example:</strong></p>
 <div class="scrollable-table">
-<table class="table">
+<table class="table-striped table-hover table">
 <colgroup>
-<col style="width: 14%">
-<col style="width: 20%">
-<col style="width: 18%">
-<col style="width: 19%">
-<col style="width: 13%">
+<col style="width: 11%">
 <col style="width: 16%">
+<col style="width: 31%">
+<col style="width: 15%">
+<col style="width: 10%">
+<col style="width: 13%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -878,7 +878,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <p><strong>Example:</strong></p>
 <div class="scrollable-table">
-<table class="table">
+<table class="table-striped table-hover table">
 <colgroup>
 <col style="width: 8%">
 <col style="width: 12%">
@@ -1143,7 +1143,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <p><strong>Example:</strong></p>
 <div class="scrollable-table">
-<table class="table">
+<table class="table-striped table-hover table">
 <colgroup>
 <col style="width: 3%">
 <col style="width: 4%">
@@ -1637,7 +1637,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <p><strong>Example:</strong></p>
 <div class="scrollable-table">
-<table class="table">
+<table class="table-striped table-hover table">
 <colgroup>
 <col style="width: 11%">
 <col style="width: 17%">
@@ -1709,44 +1709,115 @@ ul.task-list li input[type="checkbox"] {
 </table>
 </div>
 </section>
-<section id="provider" class="level2">
-<h2 class="anchored" data-anchor-id="provider">Provider</h2>
+<section id="position" class="level2">
+<h2 class="anchored" data-anchor-id="position">Position</h2>
 <table class="table">
 <colgroup>
-<col style="width: 53%">
-<col style="width: 22%">
-<col style="width: 24%">
+<col style="width: 16%">
+<col style="width: 9%">
+<col style="width: 55%">
+<col style="width: 18%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Variable Name</th>
 <th>Data Type</th>
 <th>Definition</th>
+<th>Permissible Values</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>encounter_id</td>
 <td>INT</td>
-<td>ID variable for each patient encounter</td>
+<td>ID variable for each patient encounter.</td>
+<td></td>
 </tr>
 <tr class="even">
-<td>provider_id</td>
-<td>VARCHAR</td>
-<td>ID variable for each primary attending</td>
+<td>recorded_dttm</td>
+<td>DATETIME</td>
+<td>Date and time when the vital is recorded.</td>
+<td>Datetime format should be %Y-%m-%d %H:%M:%S</td>
 </tr>
 <tr class="odd">
-<td>start_dttm</td>
-<td>DATETIME</td>
-<td>Start date and time of the provider (in the format %Y-%m-%d %H:%M:%S)</td>
+<td>position_name</td>
+<td>VARCHAR</td>
+<td>This field is used to store the description of the position from the source data. This field is not used for analysis.</td>
+<td>No restriction</td>
 </tr>
 <tr class="even">
-<td>stop_dttm</td>
-<td>DATETIME</td>
-<td>Stop date and time of the provider (in the format %Y-%m-%d %H:%M:%S)</td>
+<td>position_category</td>
+<td>VARCHAR</td>
+<td>Map flowsheet measures stored in vital_name to the to categories identified under CLIF.</td>
+<td><code>prone</code>, <code>supine</code></td>
 </tr>
 </tbody>
 </table>
+<p><strong>Example:</strong></p>
+<div class="scrollable-table">
+<table class="table-striped table-hover table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 20%">
+<col style="width: 46%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>encounter_id</th>
+<th>recorded_dttm</th>
+<th>position_name</th>
+<th>position_category</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>13</td>
+<td>2017-10-25 12:31:00</td>
+<td>Lying down</td>
+<td>supine</td>
+</tr>
+<tr class="even">
+<td>13</td>
+<td>2017-10-25 14:07:00</td>
+<td>Sitting</td>
+<td>supine</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>2017-10-26 08:11:00</td>
+<td>Lying down</td>
+<td>supine</td>
+</tr>
+<tr class="even">
+<td>13</td>
+<td>2017-10-27 08:24:00</td>
+<td>Prone</td>
+<td>prone</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>2017-11-19 17:05:00</td>
+<td>Lying down;HOB equal/greater than 30 degrees</td>
+<td>supine</td>
+</tr>
+<tr class="even">
+<td>13</td>
+<td>2017-11-20 11:23:00</td>
+<td>Lying down;Prone</td>
+<td>prone</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- ## Provider
+
+| Variable Name            | Data Type | Definition |
+|--------------------------|-----------|------------|
+| encounter_id             | INT       | ID variable for each patient encounter |
+| provider_id              | VARCHAR   | ID variable for each primary attending  |
+| start_dttm               | DATETIME  | Start date and time of the provider (in the format %Y-%m-%d %H:%M:%S) |
+| stop_dttm                | DATETIME  | Stop date and time of the provider (in the format %Y-%m-%d %H:%M:%S) | -->
 
 
 </section>
