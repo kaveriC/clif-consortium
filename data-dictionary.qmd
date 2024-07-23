@@ -302,11 +302,11 @@ Note: The `medication_admin_intermittent` table has exactly the same schema. The
 ::: {.scrollable-table}
 | encounter_id | recorded_dttm      | position_name                                | position_category |
 |--------------|--------------------|----------------------------------------------|-------------------|
-| 13           | 2017-10-25 12:31:00| Lying down                                   | supine            |
-| 13           | 2017-10-25 14:07:00| Sitting                                      | supine            |
-| 13           | 2017-10-26 08:11:00| Lying down                                   | supine            |
+| 13           | 2017-10-25 12:31:00| Lying down                                   | not_prone            |
+| 13           | 2017-10-25 14:07:00| Sitting                                      | not_prone            |
+| 13           | 2017-10-26 08:11:00| Lying down                                   | not_prone            |
 | 13           | 2017-10-27 08:24:00| Prone                                        | prone             |
-| 13           | 2017-11-19 17:05:00| Lying down;HOB equal/greater than 30 degrees | supine            |
+| 13           | 2017-11-19 17:05:00| Lying down;HOB equal/greater than 30 degrees | not_prone            |
 | 13           | 2017-11-20 11:23:00| Lying down;Prone                             | prone             |
 : {.striped .hover}
 :::
