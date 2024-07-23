@@ -294,7 +294,7 @@ Note: The `medication_admin_intermittent` table has exactly the same schema. The
 | encounter_id      | VARCHAR   | ID variable for each patient encounter. This table only includes those encounters that have proning documented ever.  | |
 | recorded_dttm     | DATETIME  | Date and time when the vital is recorded. |Datetime format should be %Y-%m-%d %H:%M:%S  |
 | position_name     | VARCHAR   | This field is used to store the description of the position from the source data. This field is not used for analysis. | No restriction |
-| position_category | VARCHAR   | Map flowsheet measures stored in vital_name to the to categories identified under CLIF. | `prone`, `not_prone`|
+| position_category | VARCHAR   | Map position_name to the to categories identified under CLIF. | `prone`, `not_prone`|
 
 
 **Example:**
