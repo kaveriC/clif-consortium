@@ -138,6 +138,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#adt" id="toc-adt" class="nav-link" data-scroll-target="#adt">ADT</a></li>
   <li><a href="#vitals" id="toc-vitals" class="nav-link" data-scroll-target="#vitals">Vitals</a></li>
   <li><a href="#labs" id="toc-labs" class="nav-link" data-scroll-target="#labs">Labs</a></li>
+  <li><a href="#microbiology" id="toc-microbiology" class="nav-link" data-scroll-target="#microbiology">Microbiology</a></li>
   <li><a href="#respiratory_support" id="toc-respiratory_support" class="nav-link" data-scroll-target="#respiratory_support">Respiratory_support</a></li>
   <li><a href="#medication_admin_continuous" id="toc-medication_admin_continuous" class="nav-link" data-scroll-target="#medication_admin_continuous">Medication_admin_continuous</a></li>
   <li><a href="#dialysis" id="toc-dialysis" class="nav-link" data-scroll-target="#dialysis">Dialysis</a></li>
@@ -817,25 +818,25 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td>encounter_id</td>
 <td>VARCHAR</td>
-<td>ID variable for each patient encounter</td>
+<td>ID variable for each patient encounter.</td>
 <td></td>
 </tr>
 <tr class="even">
 <td>lab_order_dttm</td>
 <td>DATETIME</td>
-<td>Date and time when the lab is ordered</td>
+<td>Date and time when the lab is ordered.</td>
 <td>Datetime format should be %Y-%m-%d %H:%M:%S</td>
 </tr>
 <tr class="odd">
 <td>lab_collect_dttm</td>
 <td>DATETIME</td>
-<td>Date and time when the specimen is collected</td>
+<td>Date and time when the specimen is collected.</td>
 <td>Datetime format should be %Y-%m-%d %H:%M:%S</td>
 </tr>
 <tr class="even">
 <td>lab_result_dttm</td>
 <td>DATETIME</td>
-<td>Date and time when the lab results are available</td>
+<td>Date and time when the lab results are available.</td>
 <td>Datetime format should be %Y-%m-%d %H:%M:%S</td>
 </tr>
 <tr class="odd">
@@ -847,31 +848,31 @@ ul.task-list li input[type="checkbox"] {
 <tr class="even">
 <td>lab_category</td>
 <td>VARCHAR</td>
-<td>43 labs identified by the CLIF consortium</td>
+<td>43 labs identified by the CLIF consortium.</td>
 <td><a href="https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/clif_vocab_labs.csv">List of lab categories in CLIF</a></td>
 </tr>
 <tr class="odd">
 <td>lab_group</td>
 <td>VARCHAR</td>
-<td>Lab categories roll up to form lab groups</td>
+<td>Lab categories roll up to form lab groups.</td>
 <td><code>ABG</code>, <code>BMP</code>, <code>CBC</code>, <code>Coags</code>, <code>LFT</code>, <code>Lactic Acid</code>, <code>Misc</code>, <code>VBG</code></td>
 </tr>
 <tr class="even">
 <td>lab_value</td>
 <td>DOUBLE</td>
-<td>Recorded value corresponding to a lab</td>
+<td>Recorded value corresponding to a lab.</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td>reference_unit</td>
 <td>VARCHAR</td>
-<td>Unit of measurement for that lab</td>
+<td>Unit of measurement for that lab .</td>
 <td>Permissible reference values for each <code>lab_category</code> listed <a href="https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/clif_vocab_labs.csv">here</a></td>
 </tr>
 <tr class="even">
 <td>lab_type_name</td>
 <td>VARCHAR</td>
-<td>Type of lab</td>
+<td>Type of lab.</td>
 <td><code>arterial</code>, <code>venous</code>, <code>standard</code>, <code>poc</code></td>
 </tr>
 </tbody>
@@ -982,6 +983,194 @@ ul.task-list li input[type="checkbox"] {
 </table>
 </div>
 <p><em>Note</em>: The <code>lab_value</code> field often has non-numeric entries that are useful to make project-specific decisions. A site may choose to keep the <code>lab_value</code> field as a character and create a new field <code>lab_value_numeric</code> that only parses the character field to extract the numeric part of the string.</p>
+</section>
+<section id="microbiology" class="level2">
+<h2 class="anchored" data-anchor-id="microbiology">Microbiology</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Variable Name</th>
+<th>Data Type</th>
+<th>Definition</th>
+<th>Permissible Values</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>encounter_id</td>
+<td>VARCHAR</td>
+<td>ID variable for each patient encounter.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>test_id</td>
+<td>VARCHAR</td>
+<td>An ID for a specific component, such as a gram culture smear, taken from a fluid sample with a unique order and collection time, if two different pathogens are identified, the result will be recorded as two separate rows, each sharing the same test_id.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>order_dttm</td>
+<td>DATETIME</td>
+<td>Date and time when the test is ordered.</td>
+<td>Datetime format should be %Y-%m-%d %H:%M:%S</td>
+</tr>
+<tr class="even">
+<td>collect_dttm</td>
+<td>DATETIME</td>
+<td>Date and time when the specimen is collected.</td>
+<td>Datetime format should be %Y-%m-%d %H:%M:%S</td>
+</tr>
+<tr class="odd">
+<td>result_dttm</td>
+<td>DATETIME</td>
+<td>Date and time when the results are available.</td>
+<td>Datetime format should be %Y-%m-%d %H:%M:%S</td>
+</tr>
+<tr class="even">
+<td>fluid_name</td>
+<td>VARCHAR</td>
+<td>Cleaned fluid name string from the raw data. This field is not used for analysis.</td>
+<td>No restriction. Check this file for examples: <a href="https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/ucmc/clif_vocab_microbiology_fluid_ucmc.csv">clif_vocab_microbiology_fluid_ucmc.csv</a></td>
+</tr>
+<tr class="odd">
+<td>fluid_category</td>
+<td>VARCHAR</td>
+<td>Fluid categories defined according to the NIH common data elements.</td>
+<td><a href="https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/clif_nih_vocab_microbiology_fluid.csv">CDE NIH Infection Site</a></td>
+</tr>
+<tr class="even">
+<td>component_name</td>
+<td>VARCHAR</td>
+<td>Original componenet names from the source data.</td>
+<td>No restriction</td>
+</tr>
+<tr class="odd">
+<td>component_category</td>
+<td>VARCHAR</td>
+<td>Map component names to the categories identified under CLIF.</td>
+<td><code>culture</code>, <code>gram stain</code>, <code>smear</code></td>
+</tr>
+<tr class="even">
+<td>organism_name</td>
+<td>VARCHAR</td>
+<td>Cleaned oragnism name string from the raw data. This field is not used for analysis.</td>
+<td>No restriction. Check this file for examples: <a href="https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/ucmc/clif_vocab_microbiology_organism_ucmc.csv">clif_vocab_microbiology_organism_ucmc.csv</a></td>
+</tr>
+<tr class="odd">
+<td>organism_category</td>
+<td>VARCHAR</td>
+<td>Organism categories defined according to the NIH common data elements.</td>
+<td><a href="https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/clif_nih_vocab_microbiology_organism.csv">CDE NIH Organism</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example:</strong></p>
+<div class="scrollable-table">
+<table class="table-striped table-hover table">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 9%">
+<col style="width: 18%">
+<col style="width: 8%">
+<col style="width: 6%">
+<col style="width: 8%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>encounter_id</th>
+<th>test_id</th>
+<th>culture_id</th>
+<th>order_dttm</th>
+<th>collect_dttm</th>
+<th>result_dttm</th>
+<th>fluid_name</th>
+<th>fluid_category</th>
+<th>component_name</th>
+<th>component_category</th>
+<th>organism_name</th>
+<th>organism_category</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+<td></td>
+<td>5/11/20 15:14</td>
+<td>5/11/20 15:17</td>
+<td>5/12/20 15:17</td>
+<td>culture &amp; stain, pleural fluid</td>
+<td>pleural cavity, pleural fluid</td>
+<td>quant. gram stain</td>
+<td>gram stain</td>
+<td>gram negative rod (nos)</td>
+<td>gram negative rod (nos)</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>5/11/20 15:14</td>
+<td>5/11/20 15:17</td>
+<td>5/14/20 15:17</td>
+<td>culture &amp; stain, pleural fluid</td>
+<td>pleural cavity, pleural fluid</td>
+<td>culture</td>
+<td>culture</td>
+<td>morganella_morganii</td>
+<td>other bacteria</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>3</td>
+<td></td>
+<td>7/20/20 19:23</td>
+<td>7/20/20 19:24</td>
+<td>7/22/20 16:07</td>
+<td>culture &amp; stain, fluid</td>
+<td>gallbladder and billary tree (not hepatitis), pancreas</td>
+<td>gram stain</td>
+<td>gram stain</td>
+<td>no growth</td>
+<td>no growth</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>4</td>
+<td>2</td>
+<td>7/20/20 19:23</td>
+<td>7/20/20 19:24</td>
+<td>7/23/20 17:07</td>
+<td>culture &amp; stain, fluid</td>
+<td>gallbladder and billary tree (not hepatitis), pancreas</td>
+<td>culture</td>
+<td>culture</td>
+<td>haemophilus_influenzae</td>
+<td>haemophilus (all species including influenzae)</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>5</td>
+<td>3</td>
+<td>8/7/20 22:38</td>
+<td>8/8/20 22:38</td>
+<td>8/10/20 22:38</td>
+<td>culture &amp; stain, respiratory</td>
+<td>lower respiratory tract (lung)</td>
+<td>culture, fungal and bacterial</td>
+<td>culture</td>
+<td>rhizopus_sp</td>
+<td>mucormycosis (zygomycetes, rhizopus)</td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="respiratory_support" class="level2">
 <h2 class="anchored" data-anchor-id="respiratory_support">Respiratory_support</h2>

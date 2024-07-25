@@ -12,21 +12,24 @@ format:
 
 ## Introduction
 
- This guide provides detailed steps on how to construct the CLIF microbiology table using EHR data. 
+ This guide provides detailed steps on how to construct the CLIF microbiology table using EHR data. This version of the microbiology table only has cultures, and does not include PCR, antibodies, antigen and other non-culture based infectious labs.  
 
-![](schema.png){fig-align="center" width="300" height="400"}
+![](microbiology_image.jpg){fig-align="center"}
 
 ### Desired CLIF Table Structure
-* encounter_id
-* test_id: For one component (e.g., gram culture smear) for a given fluid with a unique order and collection time. If two pathogens are identified, this yields two rows with the same test_id.
-* organism_id: For one culture for a given fluid with a unique order and collection time, linked to a separate sensitivity table. If two pathogens are identified, this yields two rows with the same culture_id.
-* order_dttm
-* collect_dttm
-* result_dttm
-* fluid_name
-* fluid_category (Defined by NIH CDE)
-* organism_name
-* organism_category (Defined by NIH CDE)
+| Variable Name     | Data Type | Definition                                                      | Permissible Values |
+|-------------------|-----------|-----------------------------------------------------------------|--------------------|
+| encounter_id      | VARCHAR   | ID variable for each patient encounter.                          |                    |
+| test_id           | VARCHAR   | An ID for a specific component. |                    |
+| order_dttm        | DATETIME  | Date and time when the test is ordered.                          |Datetime format should be %Y-%m-%d %H:%M:%S |
+| collect_dttm      | DATETIME  | Date and time when the specimen is collected.                    |Datetime format should be %Y-%m-%d %H:%M:%S |
+| result_dttm       | DATETIME  | Date and time when the results are available.                    |Datetime format should be %Y-%m-%d %H:%M:%S |
+| fluid_name        | VARCHAR   | Cleaned fluid name string from the raw data. This field is not used for analysis. | No restriction. Check this file for examples: [clif_vocab_microbiology_fluid_ucmc.csv](https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/ucmc/clif_vocab_microbiology_fluid_ucmc.csv) |
+| fluid_category    | VARCHAR   | Fluid categories defined according to the NIH common data elements. |[CDE NIH Infection Site](https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/clif_nih_vocab_microbiology_fluid.csv)|
+| component_name    | VARCHAR   | Original componenet names from the source data.                     | No restriction|
+| component_category| VARCHAR   | Map component names to the categories identified under CLIF.        |`culture`, `gram stain`, `smear` |
+| organism_name     | VARCHAR   | Cleaned oragnism name string from the raw data. This field is not used for analysis. |No restriction. Check this file for examples: [clif_vocab_microbiology_organism_ucmc.csv](https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/ucmc/clif_vocab_microbiology_organism_ucmc.csv) |
+| organism_category | VARCHAR   | Organism categories defined according to the NIH common data elements.| [CDE NIH Organism](https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/clif_nih_vocab_microbiology_organism.csv)|
 
 ### Documents to facilitate cleaning data
 
@@ -72,26 +75,42 @@ In the below example, we reclassify fluid categories for brain and eyes:
 
 ```r
 # Reclassify fluid categories for brain
-sipa_data.brain.pre <- sipa_data.v7 %>%
+data.brain.pre <- data.v7 %>%
   filter(fluid_category == "other unspecified" | fluid_category == "brain") %>%
   mutate(fluid_category = case_when(component_name == "specimen description" & grepl("brain", ord_value, ignore.case = TRUE) ~ "brain",
                                     TRUE ~ fluid_category)) %>%
   ungroup()
 
 # Reclassify fluid categories for eyes
-sipa_data.eyes.pre <- sipa_data.v7 %>%
-  filter(fluid_category == "other unspecified" | fluid_category == "eyes") %>%
-  mutate(fluid_category = case_when(component_name == "specimen description" & grepl("conjunctival|conjunctivall|corneal|corneal
+data.eyes.pre <- data.v7 %>% 
+   filter(fluid_category == "other unspecified" | fluid_category == "eyes") %>% 
+  mutate(fluid_category = case_when(component_name == "specimen description" & grepl("conjunctiva|conjunctival|cornea|corneal|right eye|left eye|\\beye\\b|\\beyes\\b|supraorbital|infraorbital|orbital", ord_value, ignore.case = TRUE) ~ "eyes",
+    TRUE ~ fluid_category)) %>%  
+  ungroup()
 
+data.eyes.post <- data.eyes.pre %>% 
+  group_by(encounter_id, order_dttm, collect_dttm, fluid_name) %>% 
+  mutate(
+    eyes_flag = any(fluid_category == "eyes"),
+    fluid_category = if_else(eyes_flag, "eyes", fluid_category)) %>%
+  select(-eyes_flag) %>%  
+  ungroup() %>% 
+  filter(fluid_category == "eyes")
+
+#double check no discordant fluid name and fluid category
+data.eyes.post %>% 
+  distinct(fluid_name, fluid_category)
 ```
 
-Ensure that your reclassification is correct by checking for coherenc. Be careful with your grepl term because it is EXTREMELY easy to miscategorise fluids. 
+Ensure that your reclassification is correct by checking for coherence. 
+Be careful with your grepl term because it is EXTREMELY easy to miscategorise fluids. 
 
-For instance,  `bladder` could be `gallbladder`or `urinary bladder` 
+For instance,  in using string `bladder` for grepl because it can catch the strings of `gallbladder` or `urinary bladder` which belong to two separate fluid categories.
+
 ```r
 Data %>%
   mutate(fluid_category = case_when(
-    str_detect(fluid_name, "bladder") ~ "urinary bladder",
+    str_detect(fluid_name, "bladder") ~ "Kidneys, Renal Pelvis, Ureters and Bladder",
     TRUE ~ fluid_category
   ))
 ```
@@ -100,8 +119,8 @@ After every grepl/case_when, you need to
 
 ```r
 Data %>%
-  filter(fluid_category == "fluid_category") %>%
-  distinct(fluid_names, fluid_category)
+  filter(fluid_category == "Kidneys, Renal Pelvis, Ureters and Bladder") %>%
+  distinct(fluid_name, fluid_category)
 ```
 
 Look at the table to see that the pairings are coherent. 
@@ -156,14 +175,15 @@ For updating the organism name ontology table, you could also use the [CLIF Assi
 
 #### Create Test ID and Culture ID
 
-A test_id is a unique number that identifies one patient, one infectious lab (fluid_name) collected at one time point, and its component_name.
+The test id is a unique number that sequentially labels all infectious samples. A separate number is assigned to a distinct component (gram stain, smear, culture) of an infectious lab (fluid name) collected at a unique time for an encounter id.
+For example, a sputum sample collected for a patient at a specific time would have two separate test id for the gram stain and culture . 
 
-A culture_id is a unique number that identifies one patient, one infectious lab (fluid_name) collected at one time point, and its component_name for a culture.
+Similarly, the culture id is a unique number that sequentially labels all cultures. Unlike the test id, it only labels cultures (and not gram stains or smears). It is used to link the culture sensitivity table to the correct culture.
 
 
 ## Potential additional steps
 
-Whether or not you need to perform these additional steps depends on how many redundant string rows your dataset has
+These steps might not be relevant for all sites. Whether or not you need to perform these additional steps depends on the presence of duplicates and other redundant string rows your dataset. 
 
 1.  **Remove Duplicate Rows**
 
@@ -174,19 +194,20 @@ distinct(encounter_id, order_dttm, collect_dttm, result_dttm, fluid_name, fluid_
 ```
 
   - One organism collected from a patient, from one body fluid, at one time, growing one bug, with a set susceptibility pattern should take up one row
-    - If two different bugs grow from same culture, they take up two rows
-    - If two identical bugs grow with different susceptibility profile, they take up two rows 
+    - If two different pathogens grow from same culture, they take up two rows
+    - If two identical pathogens grow with different susceptibility profile, they take up two rows 
 
 
 2. Review additional rows of
 
   - No growth 
-    - Example that no growth should be removed. The below screenshot is one culture.  The `“no growth”` of `“no bacteroides fragilis group or clostridium perfringes isolated”` comes from left bind. It is not appropriate given the culture actually grows pseudomonas.
+    - If in your dataset, one culture spans across multiple rows, then the left_bind can bring in multiple rows of no growth.
+    - Example when redudant no growth rows should be removed. The below screenshot is one culture.  The `“no growth”` of `“no bacteroides fragilis group or clostridium perfringes isolated”` comes from left bind. It is not appropriate given the culture actually grows pseudomonas.
 
     ![](nogrowth.png){fig-align="center"}
 
   - Other bacteria
-    - Example that other bacteria should be removed. We ultimately want one row showing the growth enterococcus and not `“other bacteria”` 
+    - Here's an example when other bacteria rows should be dropped. Here, the bottom two rows are inappropriate given the same culture has enterococcus faecalis in the two first rows. We ultimately want one row showing the growth enterococcus and not `“other bacteria”` 
 
     ![](otherbac.png){fig-align="center"}
 

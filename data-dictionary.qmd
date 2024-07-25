@@ -157,16 +157,16 @@ You can use our custom GPT- [CLIF Assistant](https://chatgpt.com/g/g-h1nk6d3eR-c
 
 | Variable Name     | Data Type | Definition                                                      | Permissible Values |
 |-------------------|-----------|-----------------------------------------------------------------|-----------------|
-| encounter_id      | VARCHAR       | ID variable for each patient encounter                          | 
-| lab_order_dttm    | DATETIME  | Date and time when the lab is ordered                           |Datetime format should be %Y-%m-%d %H:%M:%S |
-| lab_collect_dttm  | DATETIME  | Date and time when the specimen is collected                    |Datetime format should be %Y-%m-%d %H:%M:%S |
-| lab_result_dttm   | DATETIME  | Date and time when the lab results are available                |Datetime format should be %Y-%m-%d %H:%M:%S |
+| encounter_id      | VARCHAR   | ID variable for each patient encounter.                      |                 |
+| lab_order_dttm    | DATETIME  | Date and time when the lab is ordered.                           |Datetime format should be %Y-%m-%d %H:%M:%S |
+| lab_collect_dttm  | DATETIME  | Date and time when the specimen is collected.                    |Datetime format should be %Y-%m-%d %H:%M:%S |
+| lab_result_dttm   | DATETIME  | Date and time when the lab results are available.                |Datetime format should be %Y-%m-%d %H:%M:%S |
 | lab_name          | VARCHAR   | Original lab name string recorded in the raw data. This field is not used for analysis. |  |
-| lab_category      | VARCHAR   | 43 labs identified by the CLIF consortium                       |[List of lab categories in CLIF](https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/clif_vocab_labs.csv) |
-| lab_group         | VARCHAR   | Lab categories roll up to form lab groups                       | `ABG`, `BMP`, `CBC`, `Coags`, `LFT`, `Lactic Acid`, `Misc`, `VBG `|
-| lab_value         | DOUBLE    | Recorded value corresponding to a lab                           |                                    |
-| reference_unit    | VARCHAR   | Unit of measurement for that lab                                |Permissible reference values for each `lab_category` listed [here](https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/clif_vocab_labs.csv)                                                         |
-| lab_type_name     | VARCHAR   | Type of lab                                                     | `arterial`, `venous`, `standard`, `poc`                 |
+| lab_category      | VARCHAR   | 43 labs identified by the CLIF consortium.                       |[List of lab categories in CLIF](https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/clif_vocab_labs.csv) |
+| lab_group         | VARCHAR   | Lab categories roll up to form lab groups.                       | `ABG`, `BMP`, `CBC`, `Coags`, `LFT`, `Lactic Acid`, `Misc`, `VBG `|
+| lab_value         | DOUBLE    | Recorded value corresponding to a lab.                           |                                    |
+| reference_unit    | VARCHAR   | Unit of measurement for that lab .                               |Permissible reference values for each `lab_category` listed [here](https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/clif_vocab_labs.csv)                                                         |
+| lab_type_name     | VARCHAR   | Type of lab.                                                    | `arterial`, `venous`, `standard`, `poc`                 |
 
 **Example:**
 
@@ -183,6 +183,38 @@ You can use our custom GPT- [CLIF Assistant](https://chatgpt.com/g/g-h1nk6d3eR-c
 :::
 
 *Note*: The `lab_value` field often has non-numeric entries that are useful to make project-specific decisions. A site may choose to keep the `lab_value` field as a character and create a new field `lab_value_numeric` that only parses the character field to extract the numeric part of the string.
+
+## Microbiology
+
+| Variable Name     | Data Type | Definition                                                      | Permissible Values |
+|-------------------|-----------|-----------------------------------------------------------------|--------------------|
+| encounter_id      | VARCHAR   | ID variable for each patient encounter.                          |                    |
+| test_id           | VARCHAR   | An ID for a specific component, such as a gram culture smear, taken from a fluid sample with a unique order and collection time, if two different pathogens are identified, the result will be recorded as two separate rows, each sharing the same test_id. |                    |
+| order_dttm        | DATETIME  | Date and time when the test is ordered.                          |Datetime format should be %Y-%m-%d %H:%M:%S |
+| collect_dttm      | DATETIME  | Date and time when the specimen is collected.                    |Datetime format should be %Y-%m-%d %H:%M:%S |
+| result_dttm       | DATETIME  | Date and time when the results are available.                    |Datetime format should be %Y-%m-%d %H:%M:%S |
+| fluid_name        | VARCHAR   | Cleaned fluid name string from the raw data. This field is not used for analysis. | No restriction. Check this file for examples: [clif_vocab_microbiology_fluid_ucmc.csv](https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/ucmc/clif_vocab_microbiology_fluid_ucmc.csv) |
+| fluid_category    | VARCHAR   | Fluid categories defined according to the NIH common data elements. |[CDE NIH Infection Site](https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/clif_nih_vocab_microbiology_fluid.csv)|
+| component_name    | VARCHAR   | Original componenet names from the source data.                     | No restriction|
+| component_category| VARCHAR   | Map component names to the categories identified under CLIF.        |`culture`, `gram stain`, `smear` |
+| organism_name     | VARCHAR   | Cleaned oragnism name string from the raw data. This field is not used for analysis. |No restriction. Check this file for examples: [clif_vocab_microbiology_organism_ucmc.csv](https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/ucmc/clif_vocab_microbiology_organism_ucmc.csv) |
+| organism_category | VARCHAR   | Organism categories defined according to the NIH common data elements.| [CDE NIH Organism](https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/clif_nih_vocab_microbiology_organism.csv)|
+
+**Example:**
+
+::: {.scrollable-table}
+| encounter_id | test_id | culture_id | order_dttm      | collect_dttm    | result_dttm     | fluid_name                 | fluid_category                                      | component_name          | component_category | organism_name          | organism_category                                  |
+|--------------|---------|------------|-----------------|-----------------|-----------------|---------------------------|----------------------------------------------------|-------------------------|--------------------|------------------------|----------------------------------------------------|
+| 1            | 1       |            | 5/11/20 15:14   | 5/11/20 15:17   | 5/12/20 15:17   | culture & stain, pleural fluid | pleural cavity, pleural fluid                      | quant. gram stain       | gram stain         | gram negative rod (nos) | gram negative rod (nos)                           |
+| 1            | 2       | 1          | 5/11/20 15:14   | 5/11/20 15:17   | 5/14/20 15:17   | culture & stain, pleural fluid | pleural cavity, pleural fluid                      | culture                 | culture            | morganella_morganii     | other bacteria                                      |
+| 2            | 3       |            | 7/20/20 19:23   | 7/20/20 19:24   | 7/22/20 16:07   | culture & stain, fluid         | gallbladder and billary tree (not hepatitis), pancreas | gram stain              | gram stain         | no growth               | no growth                                           |
+| 2            | 4       | 2          | 7/20/20 19:23   | 7/20/20 19:24   | 7/23/20 17:07   | culture & stain, fluid         | gallbladder and billary tree (not hepatitis), pancreas | culture                 | culture            | haemophilus_influenzae  | haemophilus (all species including influenzae)     |
+| 3            | 5       | 3          | 8/7/20 22:38    | 8/8/20 22:38    | 8/10/20 22:38   | culture & stain, respiratory   | lower respiratory tract (lung)                     | culture, fungal and bacterial | culture           | rhizopus_sp             | mucormycosis (zygomycetes, rhizopus)               |
+: {.striped .hover}
+:::
+
+
+
 
 ## Respiratory_support
 
@@ -310,6 +342,13 @@ Note: The `medication_admin_intermittent` table has exactly the same schema. The
 | 13           | 2017-11-20 11:23:00| Lying down;Prone                             | prone             |
 : {.striped .hover}
 :::
+
+
+
+
+
+
+
 
 <!-- ## Provider
 

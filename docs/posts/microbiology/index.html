@@ -229,26 +229,98 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>This guide provides detailed steps on how to construct the CLIF microbiology table using EHR data.</p>
+<p>This guide provides detailed steps on how to construct the CLIF microbiology table using EHR data. This version of the microbiology table only has cultures, and does not include PCR, antibodies, antigen and other non-culture based infectious labs.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="schema.png" class="quarto-figure quarto-figure-center figure-img" width="300" height="400"></p>
+<p><img src="microbiology_image.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 <section id="desired-clif-table-structure" class="level3">
 <h3 class="anchored" data-anchor-id="desired-clif-table-structure">Desired CLIF Table Structure</h3>
-<ul>
-<li>encounter_id</li>
-<li>test_id: For one component (e.g., gram culture smear) for a given fluid with a unique order and collection time. If two pathogens are identified, this yields two rows with the same test_id.</li>
-<li>organism_id: For one culture for a given fluid with a unique order and collection time, linked to a separate sensitivity table. If two pathogens are identified, this yields two rows with the same culture_id.</li>
-<li>order_dttm</li>
-<li>collect_dttm</li>
-<li>result_dttm</li>
-<li>fluid_name</li>
-<li>fluid_category (Defined by NIH CDE)</li>
-<li>organism_name</li>
-<li>organism_category (Defined by NIH CDE)</li>
-</ul>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable Name</th>
+<th>Data Type</th>
+<th>Definition</th>
+<th>Permissible Values</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>encounter_id</td>
+<td>VARCHAR</td>
+<td>ID variable for each patient encounter.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>test_id</td>
+<td>VARCHAR</td>
+<td>An ID for a specific component.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>order_dttm</td>
+<td>DATETIME</td>
+<td>Date and time when the test is ordered.</td>
+<td>Datetime format should be %Y-%m-%d %H:%M:%S</td>
+</tr>
+<tr class="even">
+<td>collect_dttm</td>
+<td>DATETIME</td>
+<td>Date and time when the specimen is collected.</td>
+<td>Datetime format should be %Y-%m-%d %H:%M:%S</td>
+</tr>
+<tr class="odd">
+<td>result_dttm</td>
+<td>DATETIME</td>
+<td>Date and time when the results are available.</td>
+<td>Datetime format should be %Y-%m-%d %H:%M:%S</td>
+</tr>
+<tr class="even">
+<td>fluid_name</td>
+<td>VARCHAR</td>
+<td>Cleaned fluid name string from the raw data. This field is not used for analysis.</td>
+<td>No restriction. Check this file for examples: <a href="https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/ucmc/clif_vocab_microbiology_fluid_ucmc.csv">clif_vocab_microbiology_fluid_ucmc.csv</a></td>
+</tr>
+<tr class="odd">
+<td>fluid_category</td>
+<td>VARCHAR</td>
+<td>Fluid categories defined according to the NIH common data elements.</td>
+<td><a href="https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/clif_nih_vocab_microbiology_fluid.csv">CDE NIH Infection Site</a></td>
+</tr>
+<tr class="even">
+<td>component_name</td>
+<td>VARCHAR</td>
+<td>Original componenet names from the source data.</td>
+<td>No restriction</td>
+</tr>
+<tr class="odd">
+<td>component_category</td>
+<td>VARCHAR</td>
+<td>Map component names to the categories identified under CLIF.</td>
+<td><code>culture</code>, <code>gram stain</code>, <code>smear</code></td>
+</tr>
+<tr class="even">
+<td>organism_name</td>
+<td>VARCHAR</td>
+<td>Cleaned oragnism name string from the raw data. This field is not used for analysis.</td>
+<td>No restriction. Check this file for examples: <a href="https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/ucmc/clif_vocab_microbiology_organism_ucmc.csv">clif_vocab_microbiology_organism_ucmc.csv</a></td>
+</tr>
+<tr class="odd">
+<td>organism_category</td>
+<td>VARCHAR</td>
+<td>Organism categories defined according to the NIH common data elements.</td>
+<td><a href="https://github.com/kaveriC/CLIF-1.0/blob/main/mCIDE/clif_nih_vocab_microbiology_organism.csv">CDE NIH Organism</a></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="documents-to-facilitate-cleaning-data" class="level3">
 <h3 class="anchored" data-anchor-id="documents-to-facilitate-cleaning-data">Documents to facilitate cleaning data</h3>
@@ -284,27 +356,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Reclassify these “other_unspecified” cultures into their correct fluid_category. At UoC, the <code>fluid_description</code> is a string typed in by the clinician in EPIC and is therefore the correct <code>fluid_category</code>.</p>
 <p>In the below example, we reclassify fluid categories for brain and eyes:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reclassify fluid categories for brain</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>sipa_data.brain.pre <span class="ot">&lt;-</span> sipa_data.v7 <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data.brain.pre <span class="ot">&lt;-</span> data.v7 <span class="sc">%&gt;%</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(fluid_category <span class="sc">==</span> <span class="st">"other unspecified"</span> <span class="sc">|</span> fluid_category <span class="sc">==</span> <span class="st">"brain"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fluid_category =</span> <span class="fu">case_when</span>(component_name <span class="sc">==</span> <span class="st">"specimen description"</span> <span class="sc">&amp;</span> <span class="fu">grepl</span>(<span class="st">"brain"</span>, ord_value, <span class="at">ignore.case =</span> <span class="cn">TRUE</span>) <span class="sc">~</span> <span class="st">"brain"</span>,</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                                    <span class="cn">TRUE</span> <span class="sc">~</span> fluid_category)) <span class="sc">%&gt;%</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Reclassify fluid categories for eyes</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>sipa_data.eyes.pre <span class="ot">&lt;-</span> sipa_data.v7 <span class="sc">%&gt;%</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(fluid_category <span class="sc">==</span> <span class="st">"other unspecified"</span> <span class="sc">|</span> fluid_category <span class="sc">==</span> <span class="st">"eyes"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fluid_category =</span> <span class="fu">case_when</span>(component_name <span class="sc">==</span> <span class="st">"specimen description"</span> <span class="sc">&amp;</span> <span class="fu">grepl</span>(<span class="st">"conjunctival|conjunctivall|corneal|corneal</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Ensure that your reclassification is correct by checking for coherenc. Be careful with your grepl term because it is EXTREMELY easy to miscategorise fluids.</p>
-<p>For instance, <code>bladder</code> could be <code>gallbladder</code>or <code>urinary bladder</code></p>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>data.eyes.pre <span class="ot">&lt;-</span> data.v7 <span class="sc">%&gt;%</span> </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(fluid_category <span class="sc">==</span> <span class="st">"other unspecified"</span> <span class="sc">|</span> fluid_category <span class="sc">==</span> <span class="st">"eyes"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fluid_category =</span> <span class="fu">case_when</span>(component_name <span class="sc">==</span> <span class="st">"specimen description"</span> <span class="sc">&amp;</span> <span class="fu">grepl</span>(<span class="st">"conjunctiva|conjunctival|cornea|corneal|right eye|left eye|</span><span class="sc">\\</span><span class="st">beye</span><span class="sc">\\</span><span class="st">b|</span><span class="sc">\\</span><span class="st">beyes</span><span class="sc">\\</span><span class="st">b|supraorbital|infraorbital|orbital"</span>, ord_value, <span class="at">ignore.case =</span> <span class="cn">TRUE</span>) <span class="sc">~</span> <span class="st">"eyes"</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> fluid_category)) <span class="sc">%&gt;%</span>  </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>data.eyes.post <span class="ot">&lt;-</span> data.eyes.pre <span class="sc">%&gt;%</span> </span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(encounter_id, order_dttm, collect_dttm, fluid_name) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">eyes_flag =</span> <span class="fu">any</span>(fluid_category <span class="sc">==</span> <span class="st">"eyes"</span>),</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">fluid_category =</span> <span class="fu">if_else</span>(eyes_flag, <span class="st">"eyes"</span>, fluid_category)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>eyes_flag) <span class="sc">%&gt;%</span>  </span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(fluid_category <span class="sc">==</span> <span class="st">"eyes"</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co">#double check no discordant fluid name and fluid category</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>data.eyes.post <span class="sc">%&gt;%</span> </span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(fluid_name, fluid_category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Ensure that your reclassification is correct by checking for coherence. Be careful with your grepl term because it is EXTREMELY easy to miscategorise fluids.</p>
+<p>For instance, in using string <code>bladder</code> for grepl because it can catch the strings of <code>gallbladder</code> or <code>urinary bladder</code> which belong to two separate fluid categories.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Data <span class="sc">%&gt;%</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fluid_category =</span> <span class="fu">case_when</span>(</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_detect</span>(fluid_name, <span class="st">"bladder"</span>) <span class="sc">~</span> <span class="st">"urinary bladder"</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_detect</span>(fluid_name, <span class="st">"bladder"</span>) <span class="sc">~</span> <span class="st">"Kidneys, Renal Pelvis, Ureters and Bladder"</span>,</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> fluid_category</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>After every grepl/case_when, you need to</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Data <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(fluid_category <span class="sc">==</span> <span class="st">"fluid_category"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(fluid_names, fluid_category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(fluid_category <span class="sc">==</span> <span class="st">"Kidneys, Renal Pelvis, Ureters and Bladder"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(fluid_name, fluid_category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Look at the table to see that the pairings are coherent.</p>
 </section>
 <section id="step-3-create-component-categories" class="level2">
@@ -348,13 +435,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="step-5-final-steps-to-clean-the-data">Step 5: Final Steps to Clean the Data</h2>
 <section id="create-test-id-and-culture-id" class="level4">
 <h4 class="anchored" data-anchor-id="create-test-id-and-culture-id">Create Test ID and Culture ID</h4>
-<p>A test_id is a unique number that identifies one patient, one infectious lab (fluid_name) collected at one time point, and its component_name.</p>
-<p>A culture_id is a unique number that identifies one patient, one infectious lab (fluid_name) collected at one time point, and its component_name for a culture.</p>
+<p>The test id is a unique number that sequentially labels all infectious samples. A separate number is assigned to a distinct component (gram stain, smear, culture) of an infectious lab (fluid name) collected at a unique time for an encounter id. For example, a sputum sample collected for a patient at a specific time would have two separate test id for the gram stain and culture .</p>
+<p>Similarly, the culture id is a unique number that sequentially labels all cultures. Unlike the test id, it only labels cultures (and not gram stains or smears). It is used to link the culture sensitivity table to the correct culture.</p>
 </section>
 </section>
 <section id="potential-additional-steps" class="level2">
 <h2 class="anchored" data-anchor-id="potential-additional-steps">Potential additional steps</h2>
-<p>Whether or not you need to perform these additional steps depends on how many redundant string rows your dataset has</p>
+<p>These steps might not be relevant for all sites. Whether or not you need to perform these additional steps depends on the presence of duplicates and other redundant string rows your dataset.</p>
 <ol type="1">
 <li><strong>Remove Duplicate Rows</strong></li>
 </ol>
@@ -365,8 +452,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>One organism collected from a patient, from one body fluid, at one time, growing one bug, with a set susceptibility pattern should take up one row
 <ul>
-<li>If two different bugs grow from same culture, they take up two rows</li>
-<li>If two identical bugs grow with different susceptibility profile, they take up two rows</li>
+<li>If two different pathogens grow from same culture, they take up two rows</li>
+<li>If two identical pathogens grow with different susceptibility profile, they take up two rows</li>
 </ul></li>
 </ul>
 <ol start="2" type="1">
@@ -375,7 +462,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p>No growth</p>
 <ul>
-<li>Example that no growth should be removed. The below screenshot is one culture. The <code>“no growth”</code> of <code>“no bacteroides fragilis group or clostridium perfringes isolated”</code> comes from left bind. It is not appropriate given the culture actually grows pseudomonas.</li>
+<li>If in your dataset, one culture spans across multiple rows, then the left_bind can bring in multiple rows of no growth.</li>
+<li>Example when redudant no growth rows should be removed. The below screenshot is one culture. The <code>“no growth”</code> of <code>“no bacteroides fragilis group or clostridium perfringes isolated”</code> comes from left bind. It is not appropriate given the culture actually grows pseudomonas.</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -384,7 +472,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div></li>
 <li><p>Other bacteria</p>
 <ul>
-<li>Example that other bacteria should be removed. We ultimately want one row showing the growth enterococcus and not <code>“other bacteria”</code></li>
+<li>Here’s an example when other bacteria rows should be dropped. Here, the bottom two rows are inappropriate given the same culture has enterococcus faecalis in the two first rows. We ultimately want one row showing the growth enterococcus and not <code>“other bacteria”</code></li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
